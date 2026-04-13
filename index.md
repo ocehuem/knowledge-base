@@ -5,7 +5,4 @@ title: Home
 
 # Welcome
 
-This is my knowledge base.
-
-## Courses
-- [DSA](./DSA/intro.md)
+Select a course from the sidebar.
