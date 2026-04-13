@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>{{ page.title }}</title>
+  <style>
+    body { display: flex; font-family: Arial; }
+    .sidebar { width: 250px; background: #f4f4f4; padding: 10px; }
+    .content { margin-left: 20px; padding: 10px; }
+    a { text-decoration: none; display: block; margin: 5px 0; }
+  </style>
+</head>
+<body>
+
+<div class="sidebar">
+  <h3>Courses</h3>
+
+  <div onclick="toggle('c1')" style="cursor:pointer;">➕ Course 1</div>
+  <div id="c1" style="display:none; margin-left:10px;">
+    <a href="/course1/intro.html">Intro</a>
+    <a href="/course1/topic1.html">Topic 1</a>
+  </div>
+</div>
+
+<div class="content">
+  {{ content }}
+</div>
+
+<script>
+function toggle(id){
+  const el = document.getElementById(id);
+  el.style.display = el.style.display === "none" ? "block" : "none";
+}
+</script>
+
+</body>
+</html>
