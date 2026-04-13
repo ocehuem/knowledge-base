@@ -1,5 +1,5 @@
 title: Knowledge Base
-
+baseurl: "/knowledge-base"
 collections:
   courses:
     output: true
