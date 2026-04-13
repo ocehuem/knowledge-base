@@ -4,9 +4,9 @@
   <title>{{ page.title }}</title>
   <style>
     body { display: flex; font-family: Arial; }
-    .sidebar { width: 250px; background: #f4f4f4; padding: 10px; }
-    .content { margin-left: 20px; padding: 10px; }
-    a { text-decoration: none; display: block; margin: 5px 0; }
+    .sidebar { width: 260px; background: #f4f4f4; padding: 10px; }
+    .content { padding: 20px; flex: 1; }
+    a { display: block; text-decoration: none; margin: 4px 0; }
   </style>
 </head>
 <body>
@@ -14,11 +14,22 @@
 <div class="sidebar">
   <h3>Courses</h3>
 
-  <div onclick="toggle('c1')" style="cursor:pointer;">➕ DSA</div>
-  <div id="c1" style="display:none; margin-left:10px;">
-    <a href="/DSA/intro.html">Intro</a>
-    <a href="/DSA/topic1.html">Topic 1</a>
-  </div>
+  {% assign grouped = site.courses | group_by: "course" %}
+
+  {% for group in grouped %}
+    {% assign courseData = site.data.courses[group.name] %}
+
+    <div onclick="toggle('{{ group.name }}')" style="cursor:pointer;">
+      ➕ {{ courseData.name }}
+    </div>
+
+    <div id="{{ group.name }}" style="display:none; margin-left:10px;">
+      {% assign pages = group.items | sort: "order" %}
+      {% for p in pages %}
+        <a href="{{ p.url }}">{{ p.title }}</a>
+      {% endfor %}
+    </div>
+  {% endfor %}
 </div>
 
 <div class="content">
