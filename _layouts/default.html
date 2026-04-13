@@ -2,17 +2,71 @@
 <html>
 <head>
   <title>{{ page.title }}</title>
+
   <style>
-    body { display: flex; font-family: Arial; }
-    .sidebar { width: 260px; background: #f4f4f4; padding: 10px; }
-    .content { padding: 20px; flex: 1; }
-    a { display: block; text-decoration: none; margin: 4px 0; }
+    body {
+      display: flex;
+      margin: 0;
+      font-family: system-ui;
+    }
+
+    .sidebar {
+      width: 260px;
+      background: #1e293b;
+      color: white;
+      height: 100vh;
+      overflow-y: auto;
+      padding: 15px;
+    }
+
+    .sidebar h3 {
+      margin-top: 0;
+    }
+
+    .sidebar a {
+      color: #cbd5f5;
+      padding: 5px;
+      border-radius: 5px;
+    }
+
+    .sidebar a:hover {
+      background: #334155;
+    }
+
+    .content {
+      flex: 1;
+      padding: 30px;
+      background: #f8fafc;
+    }
+
+    input {
+      width: 100%;
+      padding: 6px;
+      margin-bottom: 10px;
+      border-radius: 5px;
+      border: none;
+    }
+
+    #results-container a {
+      font-size: 14px;
+      color: #93c5fd;
+    }
+
+    hr {
+      margin-top: 40px;
+    }
   </style>
 </head>
+
 <body>
 
 <div class="sidebar">
+
   <h3>Courses</h3>
+
+  <!-- 🔍 SEARCH BAR -->
+  <input type="text" id="search-input" placeholder="Search..." />
+  <ul id="results-container"></ul>
 
   {% assign grouped = site.courses | group_by: "course" %}
 
@@ -26,7 +80,7 @@
     <div id="{{ group.name }}" style="display:none; margin-left:10px;">
       {% assign pages = group.items | sort: "order" %}
       {% for p in pages %}
-       <a href="{{ site.baseurl }}{{ p.url }}">{{ p.title }}</a>
+        <a href="{{ site.baseurl }}{{ p.url }}">{{ p.title }}</a>
       {% endfor %}
     </div>
   {% endfor %}
@@ -34,13 +88,55 @@
 
 <div class="content">
   {{ content }}
+
+  <!-- 📌 NEXT / PREVIOUS -->
+  <hr>
+
+  <div style="display:flex; justify-content:space-between;">
+
+  {% assign pages = site.courses | where: "course", page.course | sort: "order" %}
+
+  {% for p in pages %}
+    {% if p.url == page.url %}
+      
+      {% assign index = forloop.index0 %}
+      
+      {% if index > 0 %}
+        {% assign prev = pages[index | minus: 1] %}
+        <a href="{{ site.baseurl }}{{ prev.url }}">⬅ {{ prev.title }}</a>
+      {% endif %}
+
+      {% if index < pages.size | minus: 1 %}
+        {% assign next = pages[index | plus: 1] %}
+        <a href="{{ site.baseurl }}{{ next.url }}">{{ next.title }} ➡</a>
+      {% endif %}
+
+    {% endif %}
+  {% endfor %}
+
+  </div>
+
 </div>
 
+<!-- 🔁 Toggle -->
 <script>
 function toggle(id){
   const el = document.getElementById(id);
   el.style.display = el.style.display === "none" ? "block" : "none";
 }
+</script>
+
+<!-- 🔍 SEARCH SCRIPT -->
+<script src="https://unpkg.com/simple-jekyll-search/dest/simple-jekyll-search.min.js"></script>
+
+<script>
+SimpleJekyllSearch({
+  searchInput: document.getElementById('search-input'),
+  resultsContainer: document.getElementById('results-container'),
+  json: '{{ site.baseurl }}/search.json',
+  searchResultTemplate: '<li><a href="{url}">{title}</a></li>',
+  noResultsText: 'No results found'
+});
 </script>
 
 </body>
