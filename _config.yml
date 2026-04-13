@@ -1,2 +1,5 @@
 title: Knowledge Base
-theme: minima
+
+collections:
+  courses:
+    output: true
