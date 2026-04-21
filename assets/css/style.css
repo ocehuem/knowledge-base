@@ -340,3 +340,26 @@ body.dark-mode #sidebar-toggle {
 .lesson-nav a:only-child {
   margin-left: auto;
 }
+
+/* =====================
+   REFERENCES PAGE POLISH (SAFE)
+===================== */
+
+.lesson-section {
+  background: var(--card-bg);
+  padding: 18px;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+  border: 1px solid rgba(0,0,0,0.05);
+}
+
+/* better spacing for links inside sections */
+.lesson-section h3 a {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+/* subtle divider between sections */
+.lesson-section + .lesson-section {
+  margin-top: 20px;
+}
