@@ -1,6 +1,26 @@
 document.addEventListener("DOMContentLoaded", () => {
 
   // =====================
+  // TAB SYSTEM
+  // =====================
+  window.openTab = function (tabId, el) {
+    document.querySelectorAll(".tab-content").forEach(t => t.classList.remove("active"));
+    document.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("active"));
+
+    document.getElementById(tabId).classList.add("active");
+    el.classList.add("active");
+
+    localStorage.setItem("activeTab", tabId);
+  };
+
+  // restore tab
+  const savedTab = localStorage.getItem("activeTab");
+  if (savedTab) {
+    const btn = document.querySelector(`.tab-btn[onclick*="${savedTab}"]`);
+    if (btn) btn.click();
+  }
+
+  // =====================
   // THEME TOGGLE
   // =====================
   const toggleBtn = document.getElementById("theme-toggle");
@@ -40,7 +60,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const isOpen = content.classList.contains("open");
 
-      // Close all
       document.querySelectorAll(".course-content").forEach(el => {
         el.style.height = "0px";
         el.classList.remove("open");
@@ -50,7 +69,6 @@ document.addEventListener("DOMContentLoaded", () => {
         h.classList.remove("active");
       });
 
-      // Open clicked
       if (!isOpen) {
         content.classList.add("open");
         header.classList.add("active");
@@ -60,7 +78,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // =====================
-  // SIDEBAR TOGGLE (☰)
+  // SIDEBAR TOGGLE
   // =====================
   const sidebarToggle = document.getElementById("sidebar-toggle");
   const sidebar = document.querySelector(".sidebar");
@@ -72,20 +90,20 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // =====================
-  // ACTIVE LINK HIGHLIGHT
+  // ACTIVE LINK
   // =====================
   const links = document.querySelectorAll(".sidebar a");
   const currentPath = window.location.pathname;
 
   links.forEach(link => {
     if (link.getAttribute("href") === currentPath) {
-      link.style.color = rgba(158, 228, 250, 0.25);
+      link.style.color = "rgba(158, 228, 250, 0.85)";
       link.style.fontWeight = "600";
     }
   });
 
   // =====================
-  // AUTO EXPAND ACTIVE SECTION
+  // AUTO EXPAND
   // =====================
   headers.forEach(header => {
     const targetId = header.getAttribute("data-target");
@@ -105,13 +123,3 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
 });
-
-<script>
-function openTab(tabId, el) {
-  document.querySelectorAll(".tab-content").forEach(t => t.classList.remove("active"));
-  document.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("active"));
-
-  document.getElementById(tabId).classList.add("active");
-  el.classList.add("active");
-}
-</script>
