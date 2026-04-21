@@ -435,3 +435,43 @@ body.dark-mode .tab-btn {
     flex: 0 0 auto;
   }
 }
+
+/* =====================
+   FIX: DESKTOP SIDEBAR + TOGGLES
+===================== */
+
+/* Make sidebar fixed on ALL screens */
+.sidebar {
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100vh;
+}
+
+/* Push content to the right (desktop default) */
+.content {
+  margin-left: 260px; /* same as sidebar width */
+  transition: margin-left 0.3s ease;
+}
+
+/* When sidebar is closed */
+.sidebar.closed + .content {
+  margin-left: 0;
+}
+
+/* Ensure buttons are always clickable */
+#theme-toggle,
+#sidebar-toggle {
+  z-index: 2000;
+}
+
+/* =====================
+   OPTIONAL: BETTER DESKTOP UX
+===================== */
+
+/* On large screens, keep sidebar visible by default */
+@media (min-width: 769px) {
+  .sidebar {
+    transform: translateX(0) !important;
+  }
+}
