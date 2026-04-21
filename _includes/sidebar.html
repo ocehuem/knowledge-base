@@ -1,4 +1,4 @@
-<div class="sidebar">
+<!-- <div class="sidebar">
   <h3>Courses</h3>
 
   {% for course in site.data.courses %}
@@ -10,6 +10,26 @@
 
       <div class="course-content">
         {% for lesson in course[1].lessons %}
+          <a href="{{ lesson.url | relative_url }}">
+            {{ lesson.title }}
+          </a>
+        {% endfor %}
+      </div>
+
+    </div>
+  {% endfor %}
+</div> -->
+<button id="sidebar-toggle">☰</button>
+<div class="sidebar">
+  {% for key in site.data.courses %}
+    <div class="course">
+     <div class="course-header" data-target="course-{{ forloop.index }}">
+        {{ key[1].name }}<span class="arrow">➤</span>
+      </div>
+
+
+      <div id="course-{{ forloop.index }}" class="course-content">
+        {% for lesson in key[1].lessons %}
           <a href="{{ lesson.url | relative_url }}">
             {{ lesson.title }}
           </a>

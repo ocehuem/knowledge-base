@@ -1,11 +1,11 @@
 suggestions:
   name: The Ultimate Guide
   lessons:
-    - title: "Mastering Persuasion: Lessons from Blair Warren’s Work"
+    - title: Mastering Persuasion
       url: /courses/suggestions/blairWarren.html
 
 web:
-  name: Web Developmen
+  name: Web Development
   lessons:
     - title: HTML Basics
       url: /courses/web/intro.html

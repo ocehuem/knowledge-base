@@ -2,16 +2,21 @@
 <html>
 <head>
   <title>Home</title>
-
-  <!-- Ensure proper responsiveness -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Prevent flash -->
+  <script>
+    if (localStorage.getItem("theme") === "dark") {
+      document.documentElement.classList.add("dark-mode");
+    }
+  </script>
 
   <link rel="stylesheet" href="/knowledge-base/assets/css/style.css">
 </head>
 
 <body>
 
-  <div class="sidebar">
+  <!-- <div class="sidebar">
   <h3>Courses</h3>
 
   
@@ -24,7 +29,7 @@
       <div class="course-content">
         
           <a href="/knowledge-base/courses/suggestions/blairWarren.html">
-            Mastering Persuasion: Lessons from Blair Warren’s Work
+            Mastering Persuasion
           </a>
         
       </div>
@@ -34,7 +39,7 @@
     <div class="course">
 
       <div class="course-header" onclick="toggle(this)">
-        ➕ Web Developmen
+        ➕ Web Development
       </div>
 
       <div class="course-content">
@@ -67,18 +72,107 @@
 
     </div>
   
+</div> -->
+<button id="sidebar-toggle">☰</button>
+<div class="sidebar">
+  
+    <div class="course">
+     <div class="course-header" data-target="course-1">
+        The Ultimate Guide<span class="arrow">➤</span>
+      </div>
+
+
+      <div id="course-1" class="course-content">
+        
+          <a href="/knowledge-base/courses/suggestions/blairWarren.html">
+            Mastering Persuasion
+          </a>
+        
+      </div>
+
+    </div>
+  
+    <div class="course">
+     <div class="course-header" data-target="course-2">
+        Web Development<span class="arrow">➤</span>
+      </div>
+
+
+      <div id="course-2" class="course-content">
+        
+          <a href="/knowledge-base/courses/web/intro.html">
+            HTML Basics
+          </a>
+        
+      </div>
+
+    </div>
+  
+    <div class="course">
+     <div class="course-header" data-target="course-3">
+        Data Structures<span class="arrow">➤</span>
+      </div>
+
+
+      <div id="course-3" class="course-content">
+        
+          <a href="/knowledge-base/courses/dsa/intro.html">
+            Introduction
+          </a>
+        
+          <a href="/knowledge-base/courses/dsa/arrays.html">
+            Arrays-courd
+          </a>
+        
+      </div>
+
+    </div>
+  
 </div>
 
-
-  <!-- Better placement: wrap in a container if possible -->
   <button id="theme-toggle">🌙</button>
 
   <div class="content">
     <h1 id="welcome">Welcome</h1>
 <p>Select a course from the sidebar.</p>
 
+    
+    <div class="lesson-nav">
+      
+    
+      
+        
+    
+        
+          
+          
+    
+        
+      
+        
+    
+        
+          
+          
+    
+        
+      
+        
+    
+        
+          
+          
+    
+        
+          
+          
+    
+        
+      
+    </div>
   </div>
 
   <script src="/knowledge-base/assets/js/main.js"></script>
+
 </body>
 </html>

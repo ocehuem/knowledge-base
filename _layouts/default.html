@@ -2,9 +2,14 @@
 <html>
 <head>
   <title>{{ page.title }}</title>
-
-  <!-- Ensure proper responsiveness -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Prevent flash -->
+  <script>
+    if (localStorage.getItem("theme") === "dark") {
+      document.documentElement.classList.add("dark-mode");
+    }
+  </script>
 
   <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
 </head>
@@ -13,13 +18,43 @@
 
   {% include sidebar.html %}
 
-  <!-- Better placement: wrap in a container if possible -->
   <button id="theme-toggle">🌙</button>
 
   <div class="content">
     {{ content }}
+    
+    <div class="lesson-nav">
+      {% assign current_url = page.url %}
+    
+      {% for course in site.data.courses %}
+        {% assign lessons = course[1].lessons %}
+    
+        {% for lesson in lessons %}
+          
+          {% if lesson.url == current_url %}
+    
+            <!-- PREVIOUS -->
+            {% if forloop.index0 > 0 %}
+              {% assign prev_index = forloop.index0 | minus: 1 %}
+              {% assign prev = lessons[prev_index] %}
+              <a href="{{ prev.url | relative_url }}">⬅ Previous</a>
+            {% endif %}
+    
+            <!-- NEXT -->
+            {% if forloop.index0 < lessons.size | minus: 1 %}
+              {% assign next_index = forloop.index0 | plus: 1 %}
+              {% assign next = lessons[next_index] %}
+              <a href="{{ next.url | relative_url }}">Next ➡</a>
+            {% endif %}
+    
+          {% endif %}
+    
+        {% endfor %}
+      {% endfor %}
+    </div>
   </div>
 
   <script src="{{ '/assets/js/main.js' | relative_url }}"></script>
+
 </body>
 </html>
