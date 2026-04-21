@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // restore tab
   const savedTab = localStorage.getItem("activeTab");
   if (savedTab) {
-    const btn = document.querySelector(`.tab-btn[onclick*="${savedTab}"]`);
+    const btn = document.querySelector(`.tab-btn[data-tab="${savedTab}"]`);
     if (btn) btn.click();
   }
 
