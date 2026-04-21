@@ -37,8 +37,6 @@ body {
   color: var(--text-color);
   line-height: 1.6;
   transition: background 0.3s ease, color 0.3s ease;
-
-  
 }
 
 a {
@@ -47,9 +45,12 @@ a {
 }
 
 /* =====================
-   SIDEBAR
+   SIDEBAR (FIXED)
 ===================== */
 .sidebar {
+  position: fixed;
+  left: 0;
+  top: 0;
   width: 260px;
   height: 100vh;
   overflow-y: auto;
@@ -58,6 +59,7 @@ a {
   backdrop-filter: blur(10px);
   color: var(--sidebar-text);
   transition: transform 0.3s ease;
+  z-index: 1000;
 }
 
 /* COLLAPSED */
@@ -77,14 +79,12 @@ a {
   align-items: center;
 }
 
-/* Arrow */
 .arrow {
   font-size: 12px;
   opacity: 0.8;
   transition: transform 0.3s ease;
 }
 
-/* Rotate arrow */
 .course-header.active .arrow {
   transform: rotate(90deg);
 }
@@ -116,16 +116,20 @@ a {
 }
 
 /* =====================
-   CONTENT
+   CONTENT (FIXED)
 ===================== */
 .content {
   flex: 1;
   padding: 40px;
   max-width: 900px;
+
   margin: 20px;
+  margin-left: 260px;
+
   background: var(--card-bg);
   border-radius: 16px;
   box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+
   transition: margin-left 0.3s ease;
 }
 
@@ -134,40 +138,19 @@ a {
   margin-left: 0;
 }
 
-
 /* =====================
    CONTENT STYLING
 ===================== */
+.content h1 { font-size: 32px; }
+.content h2 { margin-top: 30px; font-size: 22px; }
+.content p { margin: 10px 0; }
+.content ul { padding-left: 20px; }
 
-.content h1 {
-  font-size: 32px;
-  margin-bottom: 10px;
-}
-
-.content h2 {
-  margin-top: 30px;
-  font-size: 22px;
-}
-
-.content p {
-  margin: 10px 0;
-  color: var(--text-color);
-}
-
-.content ul {
-  padding-left: 20px;
-}
-
-.content li {
-  margin-bottom: 6px;
-}
 /* =====================
-   CODE BLOCKS (IMPROVED)
+   CODE BLOCKS
 ===================== */
-
-/* LIGHT MODE */
 pre {
-  background: #f6f8fa; /* soft gray (NOT white) */
+  background: #f6f8fa;
   color: #24292e;
   padding: 16px;
   border-radius: 12px;
@@ -175,224 +158,95 @@ pre {
   border: 1px solid #e1e4e8;
 }
 
-/* DARK MODE */
 body.dark-mode pre {
-  background: #161b22; /* NOT pitch black */
+  background: #161b22;
   color: #c9d1d9;
   border: 1px solid #30363d;
 }
 
-/* INLINE CODE */
 code {
-  background: rgba(0, 0, 0, 0.06);
+  background: rgba(0,0,0,0.06);
   padding: 3px 6px;
   border-radius: 6px;
-  font-size: 0.95em;
 }
 
-/* INLINE CODE DARK */
 body.dark-mode code {
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(255,255,255,0.08);
 }
-
 
 /* =====================
-   LESSON STRUCTURE
+   LESSON UI
 ===================== */
-
-.lesson-header h1 {
-  margin-bottom: 5px;
-}
-
-.lesson-meta {
-  font-size: 14px;
-  opacity: 0.7;
-}
-
-/* Sections */
 .lesson-section {
   margin-top: 30px;
+  background: var(--card-bg);
+  padding: 18px;
+  border-radius: 12px;
 }
 
-/* Boxes */
 .note-box {
-  margin-top: 20px;
-  padding: 15px;
   border-left: 5px solid #4caf50;
-  background: rgba(76, 175, 80, 0.1);
-  border-radius: 8px;
+  background: rgba(76,175,80,0.1);
+  padding: 15px;
 }
 
 .warning-box {
-  margin-top: 20px;
-  padding: 15px;
   border-left: 5px solid #ff9800;
-  background: rgba(255, 152, 0, 0.1);
-  border-radius: 8px;
-}
-
-/* Navigation */
-.lesson-nav {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 40px;
-}
-
-.lesson-nav a {
-  padding: 10px 16px;
-  border-radius: 8px;
-  background: var(--link-color);
-  color: white;
-  font-size: 14px;
-}
-
-.lesson-nav a:hover {
-  opacity: 0.85;
+  background: rgba(255,152,0,0.1);
+  padding: 15px;
 }
 
 /* =====================
-   BUTTONS
+   NAVIGATION
 ===================== */
-
-/* Dark mode */
-#theme-toggle {
-  position: fixed;
-  top: 15px;
-  right: 20px;
-  cursor: pointer;
-  padding: 8px 14px;
-  border: none;
-  border-radius: 20px;
-  background: #ffffff;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-}
-
-body.dark-mode #theme-toggle {
-  background: #2a2a2a;
-  color: white;
-}
-
-/* Sidebar toggle */
-#sidebar-toggle {
-  position: fixed;
-  top: 15px;
-  left: 20px;
-  z-index: 1000;
-  padding: 8px 12px;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  background: #ffffff;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-}
-
-body.dark-mode #sidebar-toggle {
-  background: #2a2a2a;
-  color: white;
-}
-
-/* =====================
-   LESSON NAV
-===================== */
-
 .lesson-nav {
   display: flex;
   justify-content: space-between;
   gap: 12px;
-  
   margin-top: 50px;
   padding: 16px;
 
   background: var(--card-bg);
   border-radius: 14px;
 
-  /* subtle elevation */
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
-
-  border: 1px solid rgba(0, 0, 0, 0.06);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.08);
   position: sticky;
   bottom: 10px;
 }
 
-/* buttons */
 .lesson-nav a {
   padding: 10px 18px;
   border-radius: 10px;
-
   background: var(--link-color);
   color: white;
-  font-size: 14px;
-  font-weight: 500;
-
-  transition: all 0.25s ease;
-
-  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  transition: 0.25s;
 }
 
-/* hover effect */
 .lesson-nav a:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 18px rgba(0,0,0,0.2);
-  opacity: 0.95;
-}
-
-/* disabled spacing when only one button exists */
-.lesson-nav a:only-child {
-  margin-left: auto;
 }
 
 /* =====================
-   REFERENCES PAGE POLISH (SAFE)
+   BUTTONS (FIXED)
 ===================== */
-
-.lesson-section {
-  background: var(--card-bg);
-  padding: 18px;
-  border-radius: 12px;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
-  border: 1px solid rgba(0,0,0,0.05);
+#theme-toggle,
+#sidebar-toggle {
+  position: fixed;
+  top: 15px;
+  z-index: 2000;
 }
 
-/* better spacing for links inside sections */
-.lesson-section h3 a {
-  font-size: 18px;
-  font-weight: 600;
+#theme-toggle {
+  right: 20px;
 }
 
-/* subtle divider between sections */
-.lesson-section + .lesson-section {
-  margin-top: 20px;
+#sidebar-toggle {
+  left: 20px;
 }
 
 /* =====================
-   MOBILE FIX (IMPORTANT)
+   TABS
 ===================== */
-
-@media (max-width: 768px) {
-
-  /* content should take full width */
-  .content {
-    max-width: 100%;
-    margin: 0;
-    border-radius: 0;
-  }
-
-  /* add inner padding instead */
-  .content {
-    padding: 20px;
-  }
-
-  /* sidebar overlay style */
-  .sidebar {
-    position: fixed;
-    z-index: 999;
-    height: 100%;
-  }
-}
-/* =====================
-   TABS (SAFE)
-===================== */
-
 .tabs {
   display: flex;
   gap: 10px;
@@ -416,7 +270,6 @@ body.dark-mode .tab-btn {
   color: white;
 }
 
-/* content */
 .tab-content {
   display: none;
 }
@@ -425,51 +278,26 @@ body.dark-mode .tab-btn {
   display: block;
 }
 
+/* =====================
+   MOBILE
+===================== */
 @media (max-width: 768px) {
-  .tabs {
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
+
+  .content {
+    margin: 0;
+    margin-left: 0;
+    padding: 20px;
+    border-radius: 0;
   }
 
-  .tab-btn {
-    flex: 0 0 auto;
+  .sidebar {
+    z-index: 1500;
   }
 }
 
 /* =====================
-   FIX: DESKTOP SIDEBAR + TOGGLES
+   DESKTOP FORCE SIDEBAR
 ===================== */
-
-/* Make sidebar fixed on ALL screens */
-.sidebar {
-  position: fixed;
-  left: 0;
-  top: 0;
-  height: 100vh;
-}
-
-/* Push content to the right (desktop default) */
-.content {
-  margin-left: 260px; /* same as sidebar width */
-  transition: margin-left 0.3s ease;
-}
-
-/* When sidebar is closed */
-.sidebar.closed + .content {
-  margin-left: 0;
-}
-
-/* Ensure buttons are always clickable */
-#theme-toggle,
-#sidebar-toggle {
-  z-index: 2000;
-}
-
-/* =====================
-   OPTIONAL: BETTER DESKTOP UX
-===================== */
-
-/* On large screens, keep sidebar visible by default */
 @media (min-width: 769px) {
   .sidebar {
     transform: translateX(0) !important;
