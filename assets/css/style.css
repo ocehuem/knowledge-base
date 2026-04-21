@@ -424,3 +424,14 @@ body.dark-mode .tab-btn {
 .tab-content.active {
   display: block;
 }
+
+@media (max-width: 768px) {
+  .tabs {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .tab-btn {
+    flex: 0 0 auto;
+  }
+}
