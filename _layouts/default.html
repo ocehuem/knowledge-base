@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>{{ page.title }}</title>
+
+  <!-- Ensure proper responsiveness -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+</head>
+
+<body>
+
+  {% include sidebar.html %}
+
+  <!-- Better placement: wrap in a container if possible -->
+  <button id="theme-toggle">🌙</button>
+
+  <div class="content">
+    {{ content }}
+  </div>
+
+  <script src="{{ '/assets/js/main.js' | relative_url }}"></script>
+</body>
+</html>

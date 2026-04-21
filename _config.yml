@@ -1,0 +1,19 @@
+title: Knowledge Base
+baseurl: "/knowledge-base"
+
+collections:
+  courses:
+    output: true
+
+defaults:
+  - scope:
+      path: ""
+        # applies to normal pages
+    values:
+      layout: default
+
+  - scope:
+      path: ""
+      type: "courses"   
+    values:
+      layout: default
