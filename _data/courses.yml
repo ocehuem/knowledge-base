@@ -17,6 +17,12 @@ dsa:
       url: /courses/dsa/intro.html
     - title: Arrays-courd
       url: /courses/dsa/arrays.html
+
+improvement:
+  name: Brain Training
+  lessons:
+    - title: 7 Day Challenge
+      url: /courses/improvement/BrainTrain.html
     
 
 
