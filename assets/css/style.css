@@ -389,3 +389,38 @@ body.dark-mode #sidebar-toggle {
     height: 100%;
   }
 }
+/* =====================
+   TABS (SAFE)
+===================== */
+
+.tabs {
+  display: flex;
+  gap: 10px;
+  margin: 20px 0;
+}
+
+.tab-btn {
+  padding: 8px 16px;
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
+  background: rgba(0,0,0,0.05);
+}
+
+body.dark-mode .tab-btn {
+  background: rgba(255,255,255,0.1);
+}
+
+.tab-btn.active {
+  background: var(--link-color);
+  color: white;
+}
+
+/* content */
+.tab-content {
+  display: none;
+}
+
+.tab-content.active {
+  display: block;
+}
