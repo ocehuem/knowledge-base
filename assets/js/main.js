@@ -107,11 +107,11 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 <script>
-function openTab(tabId) {
+function openTab(tabId, el) {
   document.querySelectorAll(".tab-content").forEach(t => t.classList.remove("active"));
   document.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("active"));
 
   document.getElementById(tabId).classList.add("active");
-  event.target.classList.add("active");
+  el.classList.add("active");
 }
 </script>
