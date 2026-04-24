@@ -37,14 +37,20 @@
             {% if forloop.index0 > 0 %}
               {% assign prev_index = forloop.index0 | minus: 1 %}
               {% assign prev = lessons[prev_index] %}
-              <a href="{{ prev.url | relative_url }}">⬅ Previous</a>
+              <a href="{{ prev.url | relative_url }}">
+                <span class="nav-icon">←</span>
+                <span>Previous</span>  
+              </a>
             {% endif %}
     
             <!-- NEXT -->
             {% if forloop.index0 < lessons.size | minus: 1 %}
               {% assign next_index = forloop.index0 | plus: 1 %}
               {% assign next = lessons[next_index] %}
-              <a href="{{ next.url | relative_url }}">Next ➡</a>
+            <a href="{{ next.url | relative_url }}">
+            <span>Next</span>
+                <span class="nav-icon">→</span>  
+            </a>
             {% endif %}
     
           {% endif %}
