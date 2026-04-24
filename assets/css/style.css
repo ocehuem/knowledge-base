@@ -261,7 +261,6 @@ body.dark-mode code {
   opacity: 0.95;
 }
 
-
 /* =====================
    TABS WRAPPER
 ===================== */
@@ -510,4 +509,173 @@ input[type="checkbox"] {
   text-align: left;
   font-weight: 500;
   padding-left: 14px;
+}
+
+
+.lp-container * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.lp-container {
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(120deg, #eef2f7, #d9e4f5);
+    color: #333;
+    overflow-x: hidden;
+    min-height: 100vh;
+}
+
+/* Header */
+.lp-header {
+    text-align: center;
+    padding: 60px 20px;
+    background: linear-gradient(135deg, #4CAF50, #1b5e20);
+    color: white;
+    animation: lp-fadeIn 1.5s ease;
+}
+
+.lp-header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+.lp-header h2 {
+    margin-top: 15px;
+    font-weight: 400;
+}
+
+/* Section */
+.lp-section {
+    max-width: 1000px;
+    margin: auto;
+    padding: 40px 20px;
+}
+
+/* Cards */
+.lp-card {
+    background: white;
+    border-radius: 16px;
+    padding: 25px;
+    margin: 25px 0;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    transform: translateY(40px);
+    opacity: 0;
+    animation: lp-slideUp 1s forwards;
+}
+
+.lp-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+}
+
+.lp-card h2 {
+    color: #2e7d32;
+    margin-bottom: 10px;
+}
+
+.lp-card h3 {
+    margin-top: 20px;
+}
+
+/* Images */
+.lp-img {
+    width: 100%;
+    border-radius: 12px;
+    margin-top: 15px;
+    transition: transform 0.5s ease, filter 0.5s ease;
+}
+
+.lp-img:hover {
+    transform: scale(1.05);
+    filter: brightness(1.1);
+}
+
+/* Warning */
+.lp-warning {
+    background: linear-gradient(135deg, #ffdddd, #ffeaea);
+    border-left: 6px solid red;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 30px 0;
+    animation: lp-pulse 2s infinite;
+}
+
+/* Floating bubbles */
+.lp-bubble {
+    position: fixed;
+    bottom: -100px;
+    width: 40px;
+    height: 40px;
+    background: rgba(76, 175, 80, 0.2);
+    border-radius: 50%;
+    animation: lp-floatUp 10s linear infinite;
+}
+
+.lp-bubble:nth-child(1) { left: 10%; animation-duration: 8s; }
+.lp-bubble:nth-child(2) { left: 30%; animation-duration: 12s; }
+.lp-bubble:nth-child(3) { left: 60%; animation-duration: 10s; }
+.lp-bubble:nth-child(4) { left: 80%; animation-duration: 14s; }
+
+/* Animations */
+@keyframes lp-fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; }
+}
+
+@keyframes lp-slideUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes lp-pulse {
+    0%,100% { transform: scale(1); }
+    50% { transform: scale(1.02); }
+}
+
+@keyframes lp-floatUp {
+    0% {
+        transform: translateY(0) scale(1);
+        opacity: 0.5;
+    }
+    100% {
+        transform: translateY(-120vh) scale(1.5);
+        opacity: 0;
+    }
+}
+
+
+/* =====================
+   LIFE PAGE (LP) DARK
+===================== */
+body.dark-mode .lp-container {
+  background: linear-gradient(120deg, #0f172a, #09111d);
+  color: #e6e6e6;
+}
+
+body.dark-mode .lp-card {
+  background: #1f1f1f;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.6);
+}
+
+body.dark-mode .lp-card h2 {
+  color: #6ee7b7; /* softer green */
+}
+
+body.dark-mode .lp-card p {
+  color: #cfcfcf;
+}
+
+/* warning box */
+body.dark-mode .lp-warning {
+  background: linear-gradient(135deg, #3b1f1f, #2a1616);
+  border-left: 6px solid #ff4d4d;
+  color: #f5c2c2;
+}
+
+/* bubbles softer in dark */
+body.dark-mode .lp-bubble {
+  background: rgba(229, 245, 230, 0.2);
 }
