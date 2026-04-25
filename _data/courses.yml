@@ -1,11 +1,11 @@
 suggestions:
-  name: The Ultimate Guide
+  name: The Ultimate Guide for
   lessons:
-    - title: Mastering Persuasion
+    - title: Article: Mastering Persuasion
       url: /courses/suggestions/blairWarren.html
-    - title: References- youtube
+    - title: DSA + AIML References- youtube- MIT+Stanford
       url: /courses/suggestions/References.html
-    - title: The Three Great Addictions
+    - title: Article: The Three Great Addictions
       url: /courses/suggestions/TheThreeGreatAddictions.html
       
 
@@ -24,10 +24,12 @@ dsa:
       url: /courses/dsa/arrays.html
 
 improvement:
-  name: Brain Training
+  name: Improvement Plans
   lessons:
     - title: 7 Day Challenge
       url: /courses/improvement/BrainTrain.html
+    - title: 8 Months AIML Track
+      url: /courses/improvement/8MonthAIMLTrack.html
     
 
 
