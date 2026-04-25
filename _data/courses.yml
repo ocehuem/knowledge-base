@@ -7,7 +7,6 @@ suggestions:
       url: /courses/suggestions/References.html
     - title: Article: The Three Great Addictions
       url: /courses/suggestions/TheThreeGreatAddictions.html
-      
 
 web:
   name: Web Development
@@ -30,6 +29,3 @@ improvement:
       url: /courses/improvement/BrainTrain.html
     - title: 8 Months AIML Track
       url: /courses/improvement/8MonthAIMLTrack.html
-    
-
-
