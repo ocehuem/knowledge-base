@@ -1,11 +1,11 @@
 suggestions:
   name: The Ultimate Guide for
   lessons:
-    - title: Article: Mastering Persuasion
+    - title: "Article: Mastering Persuasion"
       url: /courses/suggestions/blairWarren.html
-    - title: DSA + AIML References- youtube- MIT+Stanford
+    - title: "DSA + AIML References- youtube- MIT+Stanford"
       url: /courses/suggestions/References.html
-    - title: Article: The Three Great Addictions
+    - title: "Article: The Three Great Addictions"
       url: /courses/suggestions/TheThreeGreatAddictions.html
 
 web:
