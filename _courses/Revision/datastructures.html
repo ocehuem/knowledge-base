@@ -1,0 +1,183 @@
+---
+layout: default
+title: Visual Guide to Data Structures
+---
+
+
+<div class="lp-container">
+
+    <div class="lp-bubble"></div>
+    <div class="lp-bubble"></div>
+    <div class="lp-bubble"></div>
+    <div class="lp-bubble"></div>
+
+    <header class="lp-header">
+        <h1>Visual Guide to Data Structures</h1>
+        <p>How data is organized, stored, searched, and optimized</p>
+        <h3>From Arrays to LRU Cache</h3>
+    </header>
+
+    <section class="lp-section">
+
+        <div class="lp-card">
+            <h2>Arrays</h2>
+            <p><strong>Definition:</strong> Fixed-size ordered memory blocks.</p>
+            <p><strong>Access:</strong> O(1)</p>
+            <p><strong>Insert/Delete:</strong> O(n)</p>
+            <pre>[10][20][30][40]</pre>
+            <p>Used in image pixels, matrices, buffers.</p>
+        </div>
+
+        <div class="lp-card">
+            <h2>Linked List</h2>
+            <p><strong>Definition:</strong> Nodes linked with pointers.</p>
+            <p><strong>Traversal:</strong> O(n)</p>
+            <p><strong>Insert:</strong> O(1)</p>
+            <pre>10 → 20 → 30 → 40</pre>
+            <p>Useful for dynamic memory structures.</p>
+        </div>
+
+        <div class="lp-card">
+            <h2>Stack</h2>
+            <p><strong>Rule:</strong> Last In First Out (LIFO)</p>
+            <pre>
+| 3 |
+| 2 |
+| 1 |
+            </pre>
+            <p>Operations: push(), pop()</p>
+            <p>Used in recursion, undo, expression parsing.</p>
+        </div>
+
+        <div class="lp-card">
+            <h2>Queue</h2>
+            <p><strong>Rule:</strong> First In First Out (FIFO)</p>
+            <pre>Front → [1][2][3][4] ← Rear</pre>
+            <p>enqueue(), dequeue()</p>
+            <p>Used in scheduling, BFS, printers.</p>
+        </div>
+
+        <div class="lp-card">
+            <h2>Deque</h2>
+            <p>Insertion/removal from both ends.</p>
+            <pre>← [1][2][3][4] →</pre>
+            <p>Acts as both stack and queue.</p>
+            <p>Used in sliding window problems.</p>
+        </div>
+
+        <div class="lp-card">
+            <h2>HashMap</h2>
+            <p>Stores key-value pairs.</p>
+            <pre>
+"mom" → 987654321
+"id"  → 102
+            </pre>
+            <p>Average lookup: O(1)</p>
+            <p>Used in dictionaries, caching.</p>
+        </div>
+
+        <div class="lp-card">
+            <h2>HashSet</h2>
+            <p>Stores only unique values.</p>
+            <pre>{1, 5, 7, 10}</pre>
+            <p>Fast membership checking.</p>
+            <p>Used in duplicate detection.</p>
+        </div>
+
+        <div class="lp-card">
+            <h2>Tree</h2>
+            <pre>
+        A
+      /   \
+     B     C
+    / \
+   D   E
+            </pre>
+            <p>Hierarchical structure.</p>
+            <p>Used in DOM, folders, org charts.</p>
+        </div>
+
+        <div class="lp-card">
+            <h2>Binary Search Tree</h2>
+            <pre>
+      8
+     / \
+    4   12
+            </pre>
+            <p>Left smaller, right larger.</p>
+            <p>Search in O(log n) when balanced.</p>
+        </div>
+
+        <div class="lp-card">
+            <h2>Heap</h2>
+            <pre>
+      1
+     / \
+    3   5
+            </pre>
+            <p>Priority structure.</p>
+            <p>MinHeap / MaxHeap.</p>
+            <p>Used in schedulers, Dijkstra.</p>
+        </div>
+
+        <div class="lp-card">
+            <h2>Graph</h2>
+            <pre>
+A --- B
+|   / |
+C --- D
+            </pre>
+            <p>Nodes + edges.</p>
+            <p>Used in maps, networks, social graphs.</p>
+        </div>
+
+        <div class="lp-card">
+            <h2>Trie</h2>
+            <pre>
+root
+ └ a
+   └ p
+     └ p
+            </pre>
+            <p>Prefix tree for strings.</p>
+            <p>Used in autocomplete, spell check.</p>
+        </div>
+
+        <div class="lp-card">
+            <h2>Disjoint Set</h2>
+            <pre>
+1—2   3—4
+Union(2,3)
+1—2—3—4
+            </pre>
+            <p>Tracks connected groups.</p>
+            <p>Used in Kruskal, connectivity.</p>
+        </div>
+
+        <div class="lp-card">
+            <h2>Bloom Filter</h2>
+            <p>Probabilistic membership structure.</p>
+            <p>No false negatives.</p>
+            <p>Possible false positives.</p>
+            <p>Memory efficient filtering.</p>
+        </div>
+
+        <div class="lp-card">
+            <h2>LRU Cache</h2>
+            <pre>
+Recent → A B C D ← Old
+            </pre>
+            <p>Evicts least recently used item.</p>
+            <p>HashMap + Doubly Linked List.</p>
+        </div>
+
+        <div class="lp-warning">
+            <strong>Important:</strong>
+            Data structures are tradeoffs.
+            Arrays optimize access, linked lists optimize updates,
+            heaps optimize priority, graphs optimize relationships,
+            and hashmaps optimize lookup.
+        </div>
+
+    </section>
+</div>
