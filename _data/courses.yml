@@ -3,7 +3,10 @@ Sony:
   lessons:
     - title: "Day1- Arrays"
       url: /courses/Sony/Day1.html
-
+    - title: "Day2 — Strings"
+      url: /courses/Sony/Day2.html
+    - title: "Day3 — Hashmaps"
+      url: /courses/Sony/Day3.html
 Revision:
   name: Revision
   lessons:

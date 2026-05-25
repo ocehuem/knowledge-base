@@ -1,0 +1,131 @@
+---
+layout: default
+title: Day 3 - HashMaps & Sets Practice
+---
+
+
+<link rel="stylesheet" href="Day.css">
+<div class="lesson-header">
+
+    <div class="day-selector">
+
+        <select onchange="window.location.href=this.value">
+
+            {% for lesson in site.data.courses.Sony.lessons %}
+
+                <option
+                    value="{{ lesson.url | relative_url }}"
+                    {% if page.url == lesson.url %}selected{% endif %}
+                >
+                    {{ lesson.title }}
+                </option>
+
+            {% endfor %}
+
+        </select>
+
+    </div>
+
+    <h1>📙 Day 3 — HashMaps & Sets</h1>
+
+    <p class="lesson-meta">
+    HashMaps • Dictionaries • Sets • LeetCode
+    </p>
+
+</div>
+
+<section class="lesson-section">
+
+<h2>🗂️ Step 1 • Learn Dictionaries & Sets</h2>
+
+<h3>
+
+<a href="https://docs.python.org/3/tutorial/datastructures.html#dictionaries" target="_blank">
+
+Python Dictionaries Documentation
+
+</a>
+
+</h3>
+
+<p>
+Understand key-value pairs, lookup, insertion, deletion, iteration and uniqueness.
+</p>
+
+</section>
+
+<section class="lesson-section">
+
+<h2>💻 Step 2 • Explore in VS Code</h2>
+
+<ul>
+
+<li>🔑 Create dictionaries</li>
+
+<li>📦 Add key-value pairs</li>
+
+<li>🗑️ Delete entries</li>
+
+<li>🔍 Access values by key</li>
+
+<li>🔁 Loop through keys and values</li>
+
+<li>🧮 Count frequencies</li>
+
+<li>✨ Create sets</li>
+
+<li>🚫 Remove duplicates using sets</li>
+
+</ul>
+
+</section>
+
+<section class="lesson-section">
+
+<h2>🧩 Step 3 • Beginner Practice Questions</h2>
+
+<ol>
+
+<li>Create a dictionary storing name, age, city for one student.</li>
+
+<li>Add a new key "grade" with value "A".</li>
+
+<li>Print all dictionary keys and values using loops.</li>
+
+<li>Count character frequency in "banana" using a dictionary.</li>
+
+<li>Create a set from [1,2,2,3,4,4,5] and print unique values.</li>
+
+<li>Check whether "apple" exists inside a fruit set.</li>
+
+<li>Find duplicate numbers inside [1,2,3,2,4,1,5,3].</li>
+
+<li>Create a word frequency counter for "AI AI ML DL AI ML".</li>
+
+</ol>
+
+</section>
+
+<section class="lesson-section">
+
+<h2>🔥 Step 4 • LeetCode Practice</h2>
+
+<ul>
+
+<li>217. Contains Duplicate</li>
+
+<li>242. Valid Anagram</li>
+
+<li>1. Two Sum</li>
+
+<li>349. Intersection of Two Arrays</li>
+
+<li>205. Isomorphic Strings</li>
+
+</ul>
+
+</section>
+
+<div class="warning-box">
+⚠️ Master lookup and frequency counting patterns — they appear everywhere in interviews.
+</div>

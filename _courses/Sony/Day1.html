@@ -1,135 +1,228 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Day 1 - Arrays & Lists Practice</title>
-    <link rel="stylesheet" href="Day1.css">
-</head>
-<body>
+---
+layout: default
+title: Day 1 - Arrays & Lists Practice
+---
 
-    <div class="container">
+<link rel="stylesheet" href="Day.css">
+<div class="lesson-header">
 
-        <h1>Day 1 — Arrays / Lists Practice</h1>
+    <div class="day-selector">
 
-        <section>
-            <h2>Step 1: Choose Language</h2>
-            <p><strong>Preferred:</strong> Python 🐍</p>
+        <select onchange="window.location.href=this.value">
 
-            <p>
-                First go through Python Lists documentation:
-            </p>
+            {% for lesson in site.data.courses.Sony.lessons %}
 
-            <a href="https://docs.python.org/3/tutorial/introduction.html#lists" target="_blank">
-                Python Lists Documentation
-            </a>
-        </section>
+                <option
+                    value="{{ lesson.url | relative_url }}"
+                    {% if page.url == lesson.url %}selected{% endif %}
+                >
+                    {{ lesson.title }}
+                </option>
 
-        <section>
-            <h2>Step 2: Explore Lists in VS Code</h2>
+            {% endfor %}
 
-            <ul>
-                <li>Create lists</li>
-                <li>Access elements</li>
-                <li>Modify values</li>
-                <li>Use loops</li>
-                <li>Use conditions</li>
-                <li>Experiment with append(), pop(), remove(), sort()</li>
-                <li>Nested loops on lists</li>
-            </ul>
-
-            <button onclick="showExample()">Show Python Example</button>
-
-            <pre id="exampleBox"></pre>
-        </section>
-
-        <section>
-            <h2>Step 3: Simple Beginner Questions</h2>
-
-            <ol>
-                <li>Create a list of 5 numbers.</li>
-                <li>Print the first and last element.</li>
-                <li>Pop an element.</li>
-                <li>Append a new value.</li>
-                <li>Find the largest number.</li>
-                <li>Count even numbers.</li>
-                <li>Reverse a list.</li>
-                <li>Find sum of elements.</li>
-                <li>Remove duplicates.</li>
-                <li>Check if an element exists.</li>
-            </ol>
-        </section>
-
-        <section>
-            <h2>Step 4: LeetCode Problems</h2>
-
-            <p>
-                Spend <strong>30 minutes minimum per problem.</strong>
-            </p>
-
-            <p>
-                If you cannot even get a brute force approach → refer solution.
-            </p>
-
-            <p>
-                If solved → still check:
-            </p>
-
-            <ul>
-                <li>Editorial solution</li>
-                <li>Different runtimes</li>
-                <li>Solutions tab</li>
-                <li>Discussion tab</li>
-            </ul>
-
-            <div class="problems">
-
-                <div class="card">
-                    <h3>1437. Check If All 1's Are at Least Length K Places Away</h3>
-                    <p>64.3% • Easy</p>
-                </div>
-
-                <div class="card">
-                    <h3>485. Max Consecutive Ones</h3>
-                    <p>65.2% • Easy</p>
-                </div>
-
-                <div class="card">
-                    <h3>3912. Valid Elements in an Array</h3>
-                    <p>57.1% • Easy</p>
-                </div>
-
-                <div class="card">
-                    <h3>896. Monotonic Array</h3>
-                    <p>62.3% • Easy</p>
-                </div>
-
-                <div class="card">
-                    <h3>189. Rotate Array</h3>
-                    <p>Medium</p>
-                </div>
-
-            </div>
-        </section>
-
-        <section>
-            <h2>Step 5: Debugging Practice</h2>
-
-            <p>
-                Try problems inside VS Code debugger.
-            </p>
-
-            <ul>
-                <li>F10 → Step Over</li>
-                <li>F11 → Step Into</li>
-                <li>Shift + F11 → Step Out</li>
-            </ul>
-
-        </section>
+        </select>
 
     </div>
 
-    <script src="Day1.js"></script>
+    <h1>📘 Day 1 — Arrays & Lists Practice</h1>
 
-</body>
-</html>
+    <p class="lesson-meta">
+        Lists • Beginner Questions • VSCode • LeetCode
+    </p>
+
+</div>
+
+
+<section class="lesson-section">
+
+<h2>🐍 Step 1: Choose Language</h2>
+
+<p>
+<b>Recommended:</b> Python
+</p>
+
+<p>
+Before solving problems, first understand how Python lists work.
+</p>
+
+<h3>
+<a href="https://docs.python.org/3/tutorial/introduction.html#lists" target="_blank">
+Python Lists Documentation
+</a>
+</h3>
+
+<p>
+Read the documentation once, then immediately try things yourself.
+</p>
+
+</section>
+
+<section class="lesson-section">
+
+<h2>🐞 Step 2 • VS Code Debugging Practice</h2>
+
+<p>
+Try solving or testing your solutions using the VS Code debugger.
+</p>
+
+<p>
+You can inspect variables and watch execution step-by-step.
+</p>
+
+<ul>
+
+<li>F10 → Step Over</li>
+
+<li>F11 → Step Into</li>
+
+<li>Shift + F11 → Step Out</li>
+
+<li>Watch how variables change line-by-line.</li>
+
+<li>Observe loops, indexes and conditions carefully.</li>
+
+</ul>
+
+</section>
+
+<section class="lesson-section">
+
+<h2>💻 Step 3: Open VS Code & Explore Lists</h2>
+
+<p>
+Spend some time experimenting before touching problems.
+</p>
+
+<ul>
+<li>Create lists</li>
+<li>Access elements using indexing</li>
+<li>Modify values</li>
+<li>Use loops with lists</li>
+<li>Use conditions with lists</li>
+<li>Nested loops</li>
+<li>append()</li>
+<li>pop()</li>
+<li>remove()</li>
+<li>sort()</li>
+<li>reverse()</li>
+<li>len()</li>
+<li>in operator</li>
+<li>List slicing</li>
+</ul>
+
+
+</section>
+
+<section class="lesson-section">
+
+    <h2>🧩 Step 4 • Beginner Array / List Questions</h2>
+
+<p>
+Do these simple questions first before LeetCode.
+</p>
+
+<ol >
+
+<li>
+Create a list containing these 5 fruits: Apple, Mango, Banana, Orange, Grapes. Print the first, third, and last fruit.
+</li>
+
+<li>
+Create a list of student marks: 45, 78, 91, 34, 88, 62, 55, 29. Replace the lowest mark with 100.
+</li>
+
+<li>
+Create a shopping list containing: Milk, Bread, Eggs, Rice, Soap, Apples. Add Cheese and Coffee, then remove Apples.
+</li>
+
+<li>
+Create a list of ages: 12, 17, 18, 21, 15, 30, 42, 16, 19, 25. Count how many ages are 18 or older.
+</li>
+
+<li>
+Create a list of cities: Tokyo, Mumbai, Paris, London, Seoul, Sydney, Dubai. Check whether "Tokyo" exists.
+</li>
+
+<li>
+Create a list of temperatures: 28.5, 31.2, 26.8, 33.0, 29.4, 35.1, 27.9, 30.6. Find highest, lowest, and average.
+</li>
+
+<li>
+Create a list of numbers: 25, 10, 25, 44, 18, 25, 91, 44, 72, 25, 10, 60. Count how many times 25 appears.
+</li>
+
+<li>
+Create two movie lists: ["Inception", "Interstellar", "Dune", "The Matrix"] and ["Avatar", "Titanic", "Joker", "Oppenheimer"]. Merge them.
+</li>
+
+<li>
+Create a username list: alex21, sam_dev, alex21, maya07, sam_dev, john99, maya07, nova88. Remove duplicate usernames.
+</li>
+
+<li>
+Create a programming language list: Python, Java, C++, Rust, Go, JavaScript. Sort alphabetically, then reverse the sorted list.
+</li>
+
+</ol>
+
+
+
+</section>
+
+<section class="lesson-section">
+
+    <h2>🔥 Step 5 • LeetCode Practice</h2>
+
+
+
+<p>
+<b>Rules:</b>
+</p>
+
+<ul>
+
+<li>Spend <b>30 minutes minimum</b> per problem.</li>
+
+<li>If you don't even reach a brute force approach → refer to solution.</li>
+
+<li>If you solve it → still review other approaches,Read Discussion tab,Solutions tab of the problem,Compare runtimes after submission with others see if u can find better ones and see what made others code better than yours and what made their code worse.</li>
+
+
+</ul>
+<p>
+    <b>Problem list:</b>
+    </p>
+    
+    <h3>
+    <a href="https://leetcode.com/problem-list/d92nghpg/" target="_blank">
+    Arrays / Lists Practice List
+    </a>
+    </h3>
+
+<p>
+    <b>Problems:</b>
+    </p>
+
+<ul>
+<li>
+    1437. Check If All 1's Are at Least Length K Places Away
+</li>
+<li>
+    485. Max Consecutive Ones
+</li><li>
+    3912. Valid Elements in an Array
+</li><li>
+    896. Monotonic Array
+</li><li>
+    189. Rotate Array
+</li>
+</ul>
+
+</section>
+
+
+<div class="warning-box">
+⚠️ Do not rush. Understand brute force clearly before chasing optimizations.
+</div>
+
