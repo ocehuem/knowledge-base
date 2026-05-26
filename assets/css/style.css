@@ -325,7 +325,7 @@ body.dark-mode code {
    BUTTONS
 ===================== */
 
-#theme-toggle,
+#theme-toggle,#home,
 #sidebar-toggle {
   position: fixed;
   top: 15px;
@@ -340,9 +340,10 @@ body.dark-mode code {
 }
 
 #theme-toggle { right: 20px; }
+#home{right: 80px; }
 #sidebar-toggle { left: 20px; z-index: 1000; }
 
-body.dark-mode #theme-toggle,
+body.dark-mode #theme-toggle,body.dark-mode #home,
 body.dark-mode #sidebar-toggle {
   background: #2a2a2a;
   color: white;
