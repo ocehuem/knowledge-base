@@ -20,6 +20,18 @@ const books = [
     pagesRead: 2,
     totalPages: 250,
     category: ["Math", "QuantFinance", "InterviewPrep"]
+},
+{
+    title: "Alex Xu",
+    pagesRead: 4,
+    totalPages: 269,
+    category: ["SystemDesign", "InterviewPrep"]
+},
+{
+    title: "Ancient India RS-Sharma",
+    pagesRead: 2,
+    totalPages: 194,
+    category: ["Social"]
 }
 ];
 

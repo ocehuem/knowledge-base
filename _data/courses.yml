@@ -16,7 +16,7 @@ Revision:
       url: /courses/Revision/oneServerTwoServer.html
 
 suggestions:
-  name: The Ultimate Guide for
+  name: Misc+References
   lessons:
     - title: "Article: Mastering Persuasion"
       url: /courses/suggestions/blairWarren.html
@@ -24,20 +24,6 @@ suggestions:
       url: /courses/suggestions/References.html
     - title: "Article: The Three Great Addictions"
       url: /courses/suggestions/TheThreeGreatAddictions.html
-
-web:
-  name: Web Development
-  lessons:
-    - title: HTML Basics
-      url: /courses/web/intro.html
-
-dsa:
-  name: Data Structures
-  lessons:
-    - title: Introduction
-      url: /courses/dsa/intro.html
-    - title: Arrays-courd
-      url: /courses/dsa/arrays.html
 
 improvement:
   name: Improvement Plans

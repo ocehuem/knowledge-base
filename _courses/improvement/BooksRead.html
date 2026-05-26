@@ -1,112 +1,111 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Tiny LeetProfile</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tiny LeetProfile</title>
 
-<link rel="stylesheet" href="BooksRead.css">
-</head>
+  <link rel="stylesheet" href="BooksRead.css">
 
 
-<body>
-
-<div class="container">
+  <div class="container">
 
     <div class="container">
 
-        <div class="card">
-          <h1 id="username"></h1>
-          <p id="subtitle"></p>
-        </div>
-        <div class="card">
-            <h2>Reading </h2>
-            <canvas id="ratingChart"></canvas>
-        </div>
-      
-        <div class="card">
-          <h2>Stats</h2>
-          <div class="stats">
-            <div class="stat-box">
-              <div class="stat-number" id="booksRead"></div>
-              Books Read
-            </div>
-            <div class="stat-box">
-              <div class="stat-number" id="pagesRead"></div>
-              Pages Read
-            </div>
-            <div class="stat-box">
-              <div class="stat-number" id="currentStreak"></div>
-              Current Streak
-            </div>
-            <div class="stat-box">
-              <div class="stat-number" id="maxStreak"></div>
-              Max Streak
-            </div>
+      <div class="card">
+        <h1 id="username"></h1>
+        <p id="subtitle"></p>
+      </div>
+      <div class="card">
+        <h2>Reading </h2>
+        <canvas id="ratingChart"></canvas>
+      </div>
+
+      <div class="card">
+        <h2>Stats</h2>
+        <div class="stats">
+          <div class="stat-box">
+            <div class="stat-number" id="booksRead"></div>
+            Books Read
+          </div>
+          <div class="stat-box">
+            <div class="stat-number" id="pagesRead"></div>
+            Pages Read
+          </div>
+          <div class="stat-box">
+            <div class="stat-number" id="currentStreak"></div>
+            Current Streak
+          </div>
+          <div class="stat-box">
+            <div class="stat-number" id="maxStreak"></div>
+            Max Streak
           </div>
         </div>
-      
-        <div class="card" id="progressCard">
-            <h2>Books Progress</h2>
-            <p id="progressText"></p>
-            <div class="progress-bar">
-              <div class="progress-fill" id="progressFill"></div>
-            </div>
-          </div>
-      
-          <div class="card">
-            <h2>Contribution Graph</h2>
-          
-            <div class="heatmap-wrapper">
-              <div class="month-labels" id="monthLabels"></div>
-          
-              <div class="heatmap-body">
-                
-                <div class="day-labels">
-                  <span>Mon</span>
-                  <span>Wed</span>
-                  <span>Fri</span>
-                </div>
-          
-                <div class="heatmap" id="heatmap"></div>
-              </div>
-            </div>
-          </div>
-      
-        <div class="card">
-          <h2>Book Categories</h2>
-          <div class="tags" id="categories"></div>
+      </div>
+
+      <div class="card" id="progressCard">
+        <h2>Books Progress</h2>
+        <p id="progressText"></p>
+        <div class="progress-bar">
+          <div class="progress-fill" id="progressFill"></div>
         </div>
-      
-        <div class="card">
-            <h2>Books</h2>
-            <table class="books-table">
-              <thead>
-                <tr>
-                  <th>Title</th>
-                  <th>Status</th>
-                  <th>Progress</th>
-                  <th>Category</th>
-                </tr>
-              </thead>
-              <tbody id="bookList"></tbody>
-            </table>
+      </div>
+
+      <div class="card">
+        <h2>Contribution Graph</h2>
+
+        <div class="heatmap-wrapper">
+          <div class="month-labels" id="monthLabels"></div>
+
+          <div class="heatmap-body">
+
+            <div class="day-labels">
+              <span>Mon</span>
+              <span>Wed</span>
+              <span>Fri</span>
+            </div>
+
+            <div class="heatmap" id="heatmap"></div>
           </div>
-      
-        <div class="card">
-            <h2>Achievements</h2>
-            <span class="badge">7 Day Streak</span>
-            <span class="badge">1000 Pages Club</span>
-            <span class="badge">CS Explorer</span>
-            <span class="badge">Night Owl Reader</span>
         </div>
-        
+      </div>
+
+      <div class="card">
+        <h2>Book Categories</h2>
+        <div class="tags" id="categories"></div>
+      </div>
+
+      <div class="card">
+        <h2>Books</h2>
+        <table class="books-table">
+          <thead>
+            <tr>
+              <th>Title</th>
+              <th>Status</th>
+              <th>Progress</th>
+              <th>Category</th>
+            </tr>
+          </thead>
+          <tbody id="bookList"></tbody>
+        </table>
+      </div>
+
+      <div class="card">
+        <h2>Achievements</h2>
+        <span class="badge">7 Day Streak</span>
+        <span class="badge">1000 Pages Club</span>
+        <span class="badge">CS Explorer</span>
+        <span class="badge">Night Owl Reader</span>
+      </div>
+
 
     </div>
 
-  
-    
+
+
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="BooksRead.js"></script> 
-</body>
+    <script src="BooksRead.js"></script>
+    </body>
+
 </html>
