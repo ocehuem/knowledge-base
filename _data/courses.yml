@@ -11,7 +11,7 @@ Revision:
   name: Revision
   lessons:
     - title: "Data Structures Revision"
-      url: /courses/Revision/DataStructures.html
+      url: /courses/Revision/datastructures.html
     - title: "Basic Web Architecture & Databases"
       url: /courses/Revision/oneServerTwoServer.html
 
