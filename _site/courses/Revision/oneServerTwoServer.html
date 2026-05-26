@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Basic Web Architecture & Databases</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Prevent flash -->
+  <script>
+    if (localStorage.getItem("theme") === "dark") {
+      document.documentElement.classList.add("dark-mode");
+    }
+  </script>
+
+  <link rel="stylesheet" href="/knowledge-base/assets/css/style.css">
+</head>
+
+<body>
+
+  <!-- <div class="sidebar">
+  <h3>Courses</h3>
+
+  
+    <div class="course">
+
+      <div class="course-header" onclick="toggle(this)">
+        ➕ Sony
+      </div>
+
+      <div class="course-content">
+        
+          <a href="/knowledge-base/courses/Sony/Day1.html">
+            Day1- Arrays
+          </a>
+        
+          <a href="/knowledge-base/courses/Sony/Day2.html">
+            Day2 — Strings
+          </a>
+        
+          <a href="/knowledge-base/courses/Sony/Day3.html">
+            Day3 — Hashmaps
+          </a>
+        
+      </div>
+
+    </div>
+  
+    <div class="course">
+
+      <div class="course-header" onclick="toggle(this)">
+        ➕ Revision
+      </div>
+
+      <div class="course-content">
+        
+          <a href="/knowledge-base/courses/Revision/DataStructures.html">
+            Data Structures Revision
+          </a>
+        
+          <a href="/knowledge-base/courses/Revision/oneServerTwoServer.html">
+            Basic Web Architecture & Databases
+          </a>
+        
+      </div>
+
+    </div>
+  
+    <div class="course">
+
+      <div class="course-header" onclick="toggle(this)">
+        ➕ The Ultimate Guide for
+      </div>
+
+      <div class="course-content">
+        
+          <a href="/knowledge-base/courses/suggestions/blairWarren.html">
+            Article: Mastering Persuasion
+          </a>
+        
+          <a href="/knowledge-base/courses/suggestions/References.html">
+            References
+          </a>
+        
+          <a href="/knowledge-base/courses/suggestions/TheThreeGreatAddictions.html">
+            Article: The Three Great Addictions
+          </a>
+        
+      </div>
+
+    </div>
+  
+    <div class="course">
+
+      <div class="course-header" onclick="toggle(this)">
+        ➕ Web Development
+      </div>
+
+      <div class="course-content">
+        
+          <a href="/knowledge-base/courses/web/intro.html">
+            HTML Basics
+          </a>
+        
+      </div>
+
+    </div>
+  
+    <div class="course">
+
+      <div class="course-header" onclick="toggle(this)">
+        ➕ Data Structures
+      </div>
+
+      <div class="course-content">
+        
+          <a href="/knowledge-base/courses/dsa/intro.html">
+            Introduction
+          </a>
+        
+          <a href="/knowledge-base/courses/dsa/arrays.html">
+            Arrays-courd
+          </a>
+        
+      </div>
+
+    </div>
+  
+    <div class="course">
+
+      <div class="course-header" onclick="toggle(this)">
+        ➕ Improvement Plans
+      </div>
+
+      <div class="course-content">
+        
+          <a href="/knowledge-base/courses/improvement/BrainTrain.html">
+            7 Day Challenge
+          </a>
+        
+          <a href="/knowledge-base/courses/improvement/8MonthAIMLTrack.html">
+            8 Months AIML Track
+          </a>
+        
+          <a href="/knowledge-base/courses/improvement/BooksRead.html">
+            Books Read
+          </a>
+        
+      </div>
+
+    </div>
+  
+</div> -->
+<button id="sidebar-toggle">☰</button>
+<div class="sidebar">
+  
+    <div class="course">
+     <div class="course-header" data-target="course-1">
+        Sony<span class="arrow">➤</span>
+      </div>
+
+
+      <div id="course-1" class="course-content">
+        
+          <a href="/knowledge-base/courses/Sony/Day1.html">
+            Day1- Arrays
+          </a>
+        
+          <a href="/knowledge-base/courses/Sony/Day2.html">
+            Day2 — Strings
+          </a>
+        
+          <a href="/knowledge-base/courses/Sony/Day3.html">
+            Day3 — Hashmaps
+          </a>
+        
+      </div>
+
+    </div>
+  
+    <div class="course">
+     <div class="course-header" data-target="course-2">
+        Revision<span class="arrow">➤</span>
+      </div>
+
+
+      <div id="course-2" class="course-content">
+        
+          <a href="/knowledge-base/courses/Revision/DataStructures.html">
+            Data Structures Revision
+          </a>
+        
+          <a href="/knowledge-base/courses/Revision/oneServerTwoServer.html">
+            Basic Web Architecture & Databases
+          </a>
+        
+      </div>
+
+    </div>
+  
+    <div class="course">
+     <div class="course-header" data-target="course-3">
+        The Ultimate Guide for<span class="arrow">➤</span>
+      </div>
+
+
+      <div id="course-3" class="course-content">
+        
+          <a href="/knowledge-base/courses/suggestions/blairWarren.html">
+            Article: Mastering Persuasion
+          </a>
+        
+          <a href="/knowledge-base/courses/suggestions/References.html">
+            References
+          </a>
+        
+          <a href="/knowledge-base/courses/suggestions/TheThreeGreatAddictions.html">
+            Article: The Three Great Addictions
+          </a>
+        
+      </div>
+
+    </div>
+  
+    <div class="course">
+     <div class="course-header" data-target="course-4">
+        Web Development<span class="arrow">➤</span>
+      </div>
+
+
+      <div id="course-4" class="course-content">
+        
+          <a href="/knowledge-base/courses/web/intro.html">
+            HTML Basics
+          </a>
+        
+      </div>
+
+    </div>
+  
+    <div class="course">
+     <div class="course-header" data-target="course-5">
+        Data Structures<span class="arrow">➤</span>
+      </div>
+
+
+      <div id="course-5" class="course-content">
+        
+          <a href="/knowledge-base/courses/dsa/intro.html">
+            Introduction
+          </a>
+        
+          <a href="/knowledge-base/courses/dsa/arrays.html">
+            Arrays-courd
+          </a>
+        
+      </div>
+
+    </div>
+  
+    <div class="course">
+     <div class="course-header" data-target="course-6">
+        Improvement Plans<span class="arrow">➤</span>
+      </div>
+
+
+      <div id="course-6" class="course-content">
+        
+          <a href="/knowledge-base/courses/improvement/BrainTrain.html">
+            7 Day Challenge
+          </a>
+        
+          <a href="/knowledge-base/courses/improvement/8MonthAIMLTrack.html">
+            8 Months AIML Track
+          </a>
+        
+          <a href="/knowledge-base/courses/improvement/BooksRead.html">
+            Books Read
+          </a>
+        
+      </div>
+
+    </div>
+  
+</div>
+
+  <button id="theme-toggle">🌙</button>
+
+  <div class="content">
+    <style>
+    .article {
+        font-family: Charter, Georgia, serif;
+        background: #ffffff;
+        color: #242424;
+        line-height: 1.8;
+        max-width: 700px;
+        margin: auto;
+        padding: 50px 20px;
+    }
+
+    .article h1 {
+        font-size: 42px;
+        font-weight: 700;
+        line-height: 1.2;
+        margin-bottom: 30px;
+    }
+
+    .article p {
+        font-size: 21px;
+        margin-bottom: 28px;
+    }
+
+    .article strong {
+        font-weight: 700;
+    }
+
+    .article code {
+        background: #f2f2f2;
+        padding: 3px 6px;
+        border-radius: 4px;
+    }
+</style>
+
+<div class="article">
+    <h1>Basic Web Architecture & Databases</h1>
+
+
+    <p>
+        Let's say you have a mobile app and a website. You have a single server which also takes care of the database,
+        web cache, and business logic.
+    </p>
+
+    <p>
+        First, when the user clicks the link, the user's website/mobile app sends a request to the DNS to fetch the IP
+        address of the website server.The DNS is a 3rd party which will lookup the domain name and send back the ip
+        address
+    </p>
+
+    <p>
+        Now the user's device sends an HTTP (HyperText Transfer Protocol) request to the server as it knows the ip
+        address now, which then sends back
+        the requested HTTP/JSON data.
+    </p>
+
+    <p>
+        The frontend (client side) uses HTML, JS languages, whereas the backend (server side) uses Java, Python, C#,
+        etc.
+    </p>
+
+    <p>
+        Now let's say we want to separate the database from the existing server and make it into two.
+    </p>
+
+    <p>
+        Now everything is the same except the server also interacts with the database.
+    </p>
+
+    <p>
+        The types of databases are relational databases (also called RDBMS / SQL databases), which are tables with rows
+        and columns. <br>
+        Examples: MySQL, Oracle DB, PostgreSQL DB.
+    </p>
+
+    <p>
+        Another type is non-relational databases (also called NoSQL databases). There are 4 types — key-value, graph
+        nodes, column
+        stores, and document stores.<br> Examples: Cassandra, Amazon DynamoDB, etc.
+    </p>
+</div>
+    
+    <div class="lesson-nav">
+      
+    
+      
+        
+    
+        
+          
+          
+    
+        
+          
+          
+    
+        
+          
+          
+    
+        
+      
+        
+    
+        
+          
+          
+    
+        
+          
+          
+    
+            <!-- PREVIOUS -->
+            
+              
+              
+              <a href="/knowledge-base/courses/Revision/DataStructures.html">
+                <span class="nav-icon">←</span>
+                <span>Previous</span>  
+              </a>
+            
+    
+            <!-- NEXT -->
+            
+              
+              
+            <a href="">
+            <span>Next</span>
+                <span class="nav-icon">→</span>  
+            </a>
+            
+    
+          
+    
+        
+      
+        
+    
+        
+          
+          
+    
+        
+          
+          
+    
+        
+          
+          
+    
+        
+      
+        
+    
+        
+          
+          
+    
+        
+      
+        
+    
+        
+          
+          
+    
+        
+          
+          
+    
+        
+      
+        
+    
+        
+          
+          
+    
+        
+          
+          
+    
+        
+          
+          
+    
+        
+      
+    </div>
+  </div>
+
+  <script src="/knowledge-base/assets/js/main.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Home</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Prevent flash -->
+  <script>
+    if (localStorage.getItem("theme") === "dark") {
+      document.documentElement.classList.add("dark-mode");
+    }
+  </script>
+
+  <link rel="stylesheet" href="/knowledge-base/assets/css/style.css">
+</head>
+
+<body>
+
+  <!-- <div class="sidebar">
+  <h3>Courses</h3>
+
+  
+    <div class="course">
+
+      <div class="course-header" onclick="toggle(this)">
+        ➕ Sony
+      </div>
+
+      <div class="course-content">
+        
+          <a href="/knowledge-base/courses/Sony/Day1.html">
+            Day1- Arrays
+          </a>
+        
+          <a href="/knowledge-base/courses/Sony/Day2.html">
+            Day2 — Strings
+          </a>
+        
+          <a href="/knowledge-base/courses/Sony/Day3.html">
+            Day3 — Hashmaps
+          </a>
+        
+      </div>
+
+    </div>
+  
+    <div class="course">
+
+      <div class="course-header" onclick="toggle(this)">
+        ➕ Revision
+      </div>
+
+      <div class="course-content">
+        
+          <a href="/knowledge-base/courses/Revision/DataStructures.html">
+            Data Structures Revision
+          </a>
+        
+          <a href="/knowledge-base/courses/Revision/oneServerTwoServer.html">
+            Basic Web Architecture & Databases
+          </a>
+        
+      </div>
+
+    </div>
+  
+    <div class="course">
+
+      <div class="course-header" onclick="toggle(this)">
+        ➕ The Ultimate Guide for
+      </div>
+
+      <div class="course-content">
+        
+          <a href="/knowledge-base/courses/suggestions/blairWarren.html">
+            Article: Mastering Persuasion
+          </a>
+        
+          <a href="/knowledge-base/courses/suggestions/References.html">
+            References
+          </a>
+        
+          <a href="/knowledge-base/courses/suggestions/TheThreeGreatAddictions.html">
+            Article: The Three Great Addictions
+          </a>
+        
+      </div>
+
+    </div>
+  
+    <div class="course">
+
+      <div class="course-header" onclick="toggle(this)">
+        ➕ Web Development
+      </div>
+
+      <div class="course-content">
+        
+          <a href="/knowledge-base/courses/web/intro.html">
+            HTML Basics
+          </a>
+        
+      </div>
+
+    </div>
+  
+    <div class="course">
+
+      <div class="course-header" onclick="toggle(this)">
+        ➕ Data Structures
+      </div>
+
+      <div class="course-content">
+        
+          <a href="/knowledge-base/courses/dsa/intro.html">
+            Introduction
+          </a>
+        
+          <a href="/knowledge-base/courses/dsa/arrays.html">
+            Arrays-courd
+          </a>
+        
+      </div>
+
+    </div>
+  
+    <div class="course">
+
+      <div class="course-header" onclick="toggle(this)">
+        ➕ Improvement Plans
+      </div>
+
+      <div class="course-content">
+        
+          <a href="/knowledge-base/courses/improvement/BrainTrain.html">
+            7 Day Challenge
+          </a>
+        
+          <a href="/knowledge-base/courses/improvement/8MonthAIMLTrack.html">
+            8 Months AIML Track
+          </a>
+        
+          <a href="/knowledge-base/courses/improvement/BooksRead.html">
+            Books Read
+          </a>
+        
+      </div>
+
+    </div>
+  
+</div> -->
+<button id="sidebar-toggle">☰</button>
+<div class="sidebar">
+  
+    <div class="course">
+     <div class="course-header" data-target="course-1">
+        Sony<span class="arrow">➤</span>
+      </div>
+
+
+      <div id="course-1" class="course-content">
+        
+          <a href="/knowledge-base/courses/Sony/Day1.html">
+            Day1- Arrays
+          </a>
+        
+          <a href="/knowledge-base/courses/Sony/Day2.html">
+            Day2 — Strings
+          </a>
+        
+          <a href="/knowledge-base/courses/Sony/Day3.html">
+            Day3 — Hashmaps
+          </a>
+        
+      </div>
+
+    </div>
+  
+    <div class="course">
+     <div class="course-header" data-target="course-2">
+        Revision<span class="arrow">➤</span>
+      </div>
+
+
+      <div id="course-2" class="course-content">
+        
+          <a href="/knowledge-base/courses/Revision/DataStructures.html">
+            Data Structures Revision
+          </a>
+        
+          <a href="/knowledge-base/courses/Revision/oneServerTwoServer.html">
+            Basic Web Architecture & Databases
+          </a>
+        
+      </div>
+
+    </div>
+  
+    <div class="course">
+     <div class="course-header" data-target="course-3">
+        The Ultimate Guide for<span class="arrow">➤</span>
+      </div>
+
+
+      <div id="course-3" class="course-content">
+        
+          <a href="/knowledge-base/courses/suggestions/blairWarren.html">
+            Article: Mastering Persuasion
+          </a>
+        
+          <a href="/knowledge-base/courses/suggestions/References.html">
+            References
+          </a>
+        
+          <a href="/knowledge-base/courses/suggestions/TheThreeGreatAddictions.html">
+            Article: The Three Great Addictions
+          </a>
+        
+      </div>
+
+    </div>
+  
+    <div class="course">
+     <div class="course-header" data-target="course-4">
+        Web Development<span class="arrow">➤</span>
+      </div>
+
+
+      <div id="course-4" class="course-content">
+        
+          <a href="/knowledge-base/courses/web/intro.html">
+            HTML Basics
+          </a>
+        
+      </div>
+
+    </div>
+  
+    <div class="course">
+     <div class="course-header" data-target="course-5">
+        Data Structures<span class="arrow">➤</span>
+      </div>
+
+
+      <div id="course-5" class="course-content">
+        
+          <a href="/knowledge-base/courses/dsa/intro.html">
+            Introduction
+          </a>
+        
+          <a href="/knowledge-base/courses/dsa/arrays.html">
+            Arrays-courd
+          </a>
+        
+      </div>
+
+    </div>
+  
+    <div class="course">
+     <div class="course-header" data-target="course-6">
+        Improvement Plans<span class="arrow">➤</span>
+      </div>
+
+
+      <div id="course-6" class="course-content">
+        
+          <a href="/knowledge-base/courses/improvement/BrainTrain.html">
+            7 Day Challenge
+          </a>
+        
+          <a href="/knowledge-base/courses/improvement/8MonthAIMLTrack.html">
+            8 Months AIML Track
+          </a>
+        
+          <a href="/knowledge-base/courses/improvement/BooksRead.html">
+            Books Read
+          </a>
+        
+      </div>
+
+    </div>
+  
+</div>
+
+  <button id="theme-toggle">🌙</button>
+
+  <div class="content">
+    <h1 id="welcome">Welcome</h1>
+<p>Select a course from the sidebar.</p>
+
+    
+    <div class="lesson-nav">
+      
+    
+      
+        
+    
+        
+          
+          
+    
+        
+          
+          
+    
+        
+          
+          
+    
+        
+      
+        
+    
+        
+          
+          
+    
+        
+          
+          
+    
+        
+      
+        
+    
+        
+          
+          
+    
+        
+          
+          
+    
+        
+          
+          
+    
+        
+      
+        
+    
+        
+          
+          
+    
+        
+      
+        
+    
+        
+          
+          
+    
+        
+          
+          
+    
+        
+      
+        
+    
+        
+          
+          
+    
+        
+          
+          
+    
+        
+          
+          
+    
+        
+      
+    </div>
+  </div>
+
+  <script src="/knowledge-base/assets/js/main.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,85 @@
+---
+layout: default
+title: Basic Web Architecture & Databases
+---
+
+<style>
+    .article {
+        font-family: Charter, Georgia, serif;
+        background: #ffffff;
+        color: #242424;
+        line-height: 1.8;
+        max-width: 700px;
+        margin: auto;
+        padding: 50px 20px;
+    }
+
+    .article h1 {
+        font-size: 42px;
+        font-weight: 700;
+        line-height: 1.2;
+        margin-bottom: 30px;
+    }
+
+    .article p {
+        font-size: 21px;
+        margin-bottom: 28px;
+    }
+
+    .article strong {
+        font-weight: 700;
+    }
+
+    .article code {
+        background: #f2f2f2;
+        padding: 3px 6px;
+        border-radius: 4px;
+    }
+</style>
+
+<div class="article">
+    <h1>Basic Web Architecture & Databases</h1>
+
+
+    <p>
+        Let's say you have a mobile app and a website. You have a single server which also takes care of the database,
+        web cache, and business logic.
+    </p>
+
+    <p>
+        First, when the user clicks the link, the user's website/mobile app sends a request to the DNS to fetch the IP
+        address of the website server.The DNS is a 3rd party which will lookup the domain name and send back the ip
+        address
+    </p>
+
+    <p>
+        Now the user's device sends an HTTP (HyperText Transfer Protocol) request to the server as it knows the ip
+        address now, which then sends back
+        the requested HTTP/JSON data.
+    </p>
+
+    <p>
+        The frontend (client side) uses HTML, JS languages, whereas the backend (server side) uses Java, Python, C#,
+        etc.
+    </p>
+
+    <p>
+        Now let's say we want to separate the database from the existing server and make it into two.
+    </p>
+
+    <p>
+        Now everything is the same except the server also interacts with the database.
+    </p>
+
+    <p>
+        The types of databases are relational databases (also called RDBMS / SQL databases), which are tables with rows
+        and columns. <br>
+        Examples: MySQL, Oracle DB, PostgreSQL DB.
+    </p>
+
+    <p>
+        Another type is non-relational databases (also called NoSQL databases). There are 4 types — key-value, graph
+        nodes, column
+        stores, and document stores.<br> Examples: Cassandra, Amazon DynamoDB, etc.
+    </p>
+</div>

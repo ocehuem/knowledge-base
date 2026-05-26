@@ -12,6 +12,8 @@ Revision:
   lessons:
     - title: "Data Structures Revision"
       url: /courses/Revision/DataStructures.html
+    - title: "Basic Web Architecture & Databases"
+      url: /courses/Revision/oneServerTwoServer.html
 
 suggestions:
   name: The Ultimate Guide for

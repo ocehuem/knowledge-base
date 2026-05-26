@@ -13,12 +13,9 @@ title: Day 2 - Strings Practice
 
             {% for lesson in site.data.courses.Sony.lessons %}
 
-                <option
-                    value="{{ lesson.url | relative_url }}"
-                    {% if page.url == lesson.url %}selected{% endif %}
-                >
-                    {{ lesson.title }}
-                </option>
+            <option value="{{ lesson.url | relative_url }}" {% if page.url==lesson.url %}selected{% endif %}>
+                {{ lesson.title }}
+            </option>
 
             {% endfor %}
 
@@ -29,101 +26,104 @@ title: Day 2 - Strings Practice
     <h1>📗 Day 2 — Strings Practice</h1>
 
     <p class="lesson-meta">
-    Strings • Manipulation • VSCode • LeetCode
+        Strings • Manipulation • VSCode • LeetCode
     </p>
 
 </div>
-
+<h2>TASK-1</h2>
 <section class="lesson-section">
 
-<h2>🔤 Step 1 • Learn String Basics</h2>
+    <h2>🔤 Step 1 • Learn String Basics</h2>
 
-<p><b>Recommended:</b> Python</p>
+    <p><b>Recommended:</b> Python</p>
 
-<h3>
-<a href="https://docs.python.org/3/tutorial/introduction.html#text" target="_blank">
-Python String Documentation
-</a>
-</h3>
+    <h3>
+        <a href="https://docs.python.org/3/tutorial/introduction.html#text" target="_blank">
+            Python String Documentation
+        </a>
+    </h3>
 
-<p>
-Understand indexing, slicing, concatenation, immutability, loops and string methods.
-</p>
+    <p>
+        Understand indexing, slicing, concatenation, immutability, loops and string methods.
+    </p>
 
 </section>
 
 <section class="lesson-section">
 
-<h2>💻 Step 2 • Explore Strings in VS Code</h2>
+    <h2>💻 Step 2 • Explore Strings in VS Code</h2>
 
-<ul>
+    <ul>
 
-<li>✂️ String slicing</li>
+        <li>✂️ String slicing</li>
 
-<li>🔍 Character access</li>
+        <li>🔍 Character access</li>
 
-<li>🔁 Loops on strings</li>
+        <li>🔁 Loops on strings</li>
 
-<li>🔡 upper(), lower()</li>
+        <li>🔡 upper(), lower()</li>
 
-<li>🧹 strip(), replace()</li>
+        <li>🧹 strip(), replace()</li>
 
-<li>🪄 split(), join()</li>
+        <li>🪄 split(), join()</li>
 
-<li>📏 len()</li>
+        <li>📏 len()</li>
 
-<li>🔄 reverse using slicing</li>
+        <li>🔄 reverse using slicing</li>
 
-</ul>
-
-</section>
-
-<section class="lesson-section">
-
-<h2>🧩 Step 3 • Beginner String Questions</h2>
-
-<ol>
-
-<li>Create the string "Programming". Print the first, middle and last character.</li>
-
-<li>Create "OpenAI". Convert it to uppercase and lowercase.</li>
-
-<li>Count how many vowels exist inside "Mississippi".</li>
-
-<li>Reverse the string "Artificial Intelligence".</li>
-
-<li>Check whether "python" exists inside "I love python programming".</li>
-
-<li>Replace every space inside "Data Structures and Algorithms" with "-".</li>
-
-<li>Split "apple,mango,banana,grapes" into a list.</li>
-
-<li>Join ["AI","ML","DL"] into a single string using commas.</li>
-
-</ol>
+    </ul>
 
 </section>
 
 <section class="lesson-section">
 
-<h2>🔥 Step 4 • LeetCode Practice</h2>
+    <h2>🧩 Step 3 • Beginner String Questions</h2>
 
-<ul>
+    <ol>
 
-<li>344. Reverse String</li>
+        <li>Create the string "Programming". Print the first, middle and last character.</li>
 
-<li>125. Valid Palindrome</li>
+        <li>Create "OpenAI". Convert it to uppercase and lowercase.</li>
 
-<li>58. Length of Last Word</li>
+        <li>Count how many vowels exist inside "Mississippi".</li>
 
-<li>14. Longest Common Prefix</li>
+        <li>Reverse the string "Artificial Intelligence".</li>
 
-<li>28. Find the Index of First Occurrence in a String</li>
+        <li>Check whether "python" exists inside "I love python programming".</li>
 
-</ul>
+        <li>Replace every space inside "Data Structures and Algorithms" with "-".</li>
+
+        <li>Split "apple,mango,banana,grapes" into a list.</li>
+
+        <li>Join ["AI","ML","DL"] into a single string using commas.</li>
+
+    </ol>
+
+</section>
+
+<section class="lesson-section">
+
+    <h2>🔥 Step 4 • LeetCode Practice</h2>
+
+    <ul>
+
+        <li>344. Reverse String</li>
+
+        <li>125. Valid Palindrome</li>
+
+        <li>58. Length of Last Word</li>
+
+        <li>14. Longest Common Prefix</li>
+
+        <li>28. Find the Index of First Occurrence in a String</li>
+
+    </ul>
 
 </section>
 
 <div class="warning-box">
-⚠️ Focus on indexing, slicing and traversal patterns before optimization.
+    ⚠️ Focus on indexing, slicing and traversal patterns before optimization.
 </div>
+
+<h2>TASK-2</h2>
+Read this article <a href="../Revision/oneServerTwoServer.html" target="_blank">Basic Web Architecture</a>

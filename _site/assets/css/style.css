@@ -1,0 +1,798 @@
+/* =====================
+   THEME VARIABLES
+===================== */
+:root {
+  --bg-color: #f5f7fb;
+  --text-color: #1a1a1a;
+  --link-color: #1a73e8;
+
+  --sidebar-bg: linear-gradient(180deg, #5f6ad4, #7f8cff);
+  --sidebar-text: #ffffff;
+  --sidebar-link: #e0e7ff;
+
+  --card-bg: #ffffff;
+}
+
+/* DARK MODE */
+body.dark-mode {
+  --bg-color: #0f1117;
+  --text-color: #e6e6e6;
+  --link-color: #8ab4f8;
+
+  --sidebar-bg: linear-gradient(180deg, #1f1f1f, #2c2c2c);
+  --sidebar-text: #ffffff;
+  --sidebar-link: #b0b0b0;
+
+  --card-bg: #1a1d24;
+}
+
+/* =====================
+   GLOBAL
+===================== */
+body {
+  display: flex;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: var(--bg-color);
+  color: var(--text-color);
+  line-height: 1.6;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+a {
+  color: var(--link-color);
+  text-decoration: none;
+}
+
+/* =====================
+   LAYOUT WRAPPER
+===================== */
+.layout {
+  display: flex;
+  min-height: 100vh;
+  width: 100%;
+}
+
+/* =====================
+   SIDEBAR
+===================== */
+.sidebar {
+  width: 260px;
+  min-width: 260px;
+  height: 100vh;
+  position: sticky;
+  top: 0;
+
+  overflow-y: auto;
+  padding: 60px 20px 20px;
+
+  background: var(--sidebar-bg);
+  color: var(--sidebar-text);
+
+  transition: transform 0.3s ease, width 0.3s ease, min-width 0.3s ease;
+  z-index: 100;
+}
+
+/* collapsed desktop */
+.sidebar.closed {
+  transform: translateX(-100%);
+  width: 0;
+  min-width: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+/* links */
+.sidebar a {
+  display: block;
+  color: var(--sidebar-link);
+  padding: 10px 12px;
+  border-radius: 8px;
+  margin-bottom: 6px;
+  transition: 0.2s ease;
+}
+
+.sidebar a:hover {
+  background: rgba(255,255,255,0.15);
+  transform: translateX(4px);
+}
+
+/* course accordion */
+.course-header {
+  font-weight: 600;
+  margin-top: 15px;
+  cursor: pointer;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.arrow {
+  font-size: 12px;
+  opacity: 0.8;
+  transition: transform 0.3s ease;
+}
+
+.course-header.active .arrow {
+  transform: rotate(90deg);
+}
+
+.course-content {
+  height: 0;
+  overflow: hidden;
+  transition: height 0.3s ease;
+}
+
+/* =====================
+   CONTENT AREA
+===================== */
+.content {
+  flex: 1;
+  padding: 40px;
+  max-width: 900px;
+
+  margin: 20px auto;
+  background: var(--card-bg);
+
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+
+  min-width: 0;
+  transition: all 0.3s ease;
+}
+
+/* typography */
+.content h1 { font-size: 32px; margin-bottom: 10px; }
+.content h2 { font-size: 22px; margin-top: 30px; }
+.content p  { margin: 10px 0; }
+.content ul { padding-left: 20px; }
+.content li { margin-bottom: 6px; }
+
+/* =====================
+   CODE BLOCKS
+===================== */
+pre {
+  background: #f6f8fa;
+  color: #24292e;
+  padding: 16px;
+  border-radius: 12px;
+  overflow-x: auto;
+  border: 1px solid #e1e4e8;
+}
+
+body.dark-mode pre {
+  background: #161b22;
+  color: #c9d1d9;
+  border: 1px solid #30363d;
+}
+
+code {
+  background: rgba(0,0,0,0.06);
+  padding: 3px 6px;
+  border-radius: 6px;
+}
+
+body.dark-mode code {
+  background: rgba(255,255,255,0.08);
+}
+
+/* =====================
+   LESSON UI
+===================== */
+.lesson-header h1 { margin-bottom: 5px; }
+
+.lesson-meta {
+  font-size: 14px;
+  opacity: 0.7;
+}
+
+.lesson-section {
+  margin-top: 30px;
+  background: var(--card-bg);
+  padding: 18px;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+}
+
+.lesson-section + .lesson-section {
+  margin-top: 20px;
+}
+
+.lesson-section h3 a {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+/* notes */
+.note-box {
+  margin-top: 20px;
+  padding: 15px;
+  border-left: 5px solid #4caf50;
+  background: rgba(76,175,80,0.1);
+  border-radius: 8px;
+}
+
+.warning-box {
+  margin-top: 20px;
+  padding: 15px;
+  border-left: 5px solid #ff9800;
+  background: rgba(255,152,0,0.1);
+  border-radius: 8px;
+}
+
+/* =====================
+   NAVIGATION
+===================== */
+.lesson-nav {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+
+  margin-top: 50px;
+  padding: 16px;
+
+  background: var(--card-bg);
+  border-radius: 14px;
+  border: 1px solid rgba(0,0,0,0.06);
+
+  box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+
+  position: sticky;
+  bottom: 10px;
+}
+
+.lesson-nav a {
+  padding: 10px 18px;
+  border-radius: 10px;
+
+  background: var(--link-color);
+  color: white;
+
+  font-size: 14px;
+  font-weight: 500;
+
+  transition: 0.25s ease;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+.lesson-nav a:hover {
+  transform: translateY(-2px);
+  opacity: 0.95;
+}
+
+/* =====================
+   TABS WRAPPER
+===================== */
+.tabs {
+  display: flex;
+  gap: 10px;
+  margin: 20px 0;
+  padding: 6px;
+
+  background: var(--card-bg);
+  border-radius: 12px;
+
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+}
+
+/* =====================
+   TAB BUTTONS
+===================== */
+.tab-btn {
+  padding: 10px 16px;
+  border: none;
+  border-radius: 10px;
+
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+
+  background: transparent;
+  color: var(--text-color);
+
+  transition: all 0.2s ease;
+}
+
+.tab-btn:hover {
+  background: rgba(120,110,245,0.12);
+}
+
+/* ACTIVE TAB */
+.tab-btn.active {
+  background: rgba(120,110,245,0.9);
+  color: white;
+  box-shadow: 0 4px 12px rgba(120,110,245,0.25);
+}
+
+/* =====================
+   TAB CONTENT FIX
+===================== */
+.tab-content {
+  display: none;
+  animation: fadeIn 0.25s ease;
+}
+
+.tab-content.active {
+  display: block;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(5px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+/* =====================
+   BUTTONS
+===================== */
+
+#theme-toggle,
+#sidebar-toggle {
+  position: fixed;
+  top: 15px;
+
+  padding: 8px 14px;
+  border: none;
+  border-radius: 10px;
+
+  cursor: pointer;
+  background: #fff;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+#theme-toggle { right: 20px; }
+#sidebar-toggle { left: 20px; z-index: 1000; }
+
+body.dark-mode #theme-toggle,
+body.dark-mode #sidebar-toggle {
+  background: #2a2a2a;
+  color: white;
+}
+
+/* =====================
+   BACKDROP
+===================== */
+#sidebar-backdrop {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  z-index: 99;
+}
+
+#sidebar-backdrop.visible {
+  display: block;
+}
+
+/* =====================
+   MOBILE
+===================== */
+@media (max-width: 768px) {
+
+  .layout { flex-direction: column; }
+
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    width: 260px;
+    height: 100vh;
+
+    transform: translateX(-100%);
+    box-shadow: 4px 0 20px rgba(0,0,0,0.3);
+    z-index: 200;
+  }
+
+  .sidebar.open {
+    transform: translateX(0);
+  }
+
+  .content {
+    margin: 12px;
+    padding: 20px;
+  }
+
+  #theme-toggle { top: 12px; right: 12px; }
+  #sidebar-toggle { top: 12px; left: 12px; }
+}
+/* =====================
+   TABLET  (769px – 1024px)
+===================== */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .sidebar {
+    width: 220px;
+    min-width: 220px;
+    padding: 60px 14px 20px;
+  }
+
+  .content {
+    padding: 28px;
+    margin: 16px;
+  }
+}
+/* =====================
+   TABLE CLASS (THEMED FIX)
+===================== */
+
+/* =====================
+   TABLE CONTAINER
+===================== */
+table {
+  margin: 24px auto;
+  width: 90%;
+  max-width: 900px;
+
+  background: var(--card-bg);
+  border-radius: 14px;
+  overflow: hidden;
+
+  border-collapse: separate;
+  border-spacing: 0;
+
+  box-shadow: 0 10px 30px rgba(0,0,0,0.10);
+  font-size: 14px;
+}
+
+/* =====================
+   HEADER (TH)
+===================== */
+th {
+  padding: 14px 10px;
+  text-align: center;
+
+  background: rgba(120, 110, 245, 0.5);
+  color: var(--text-color);
+
+  font-weight: 600;
+  letter-spacing: 0.3px;
+
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+}
+
+/* dark mode header tweak */
+body.dark-mode th {
+  background: rgba(120, 110, 245, 0.8);
+  border-bottom: 2px solid rgba(255,255,255,0.1);
+}
+
+/* =====================
+   CELLS (TD)
+===================== */
+td {
+  padding: 14px 10px;
+  text-align: center;
+
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+  color: var(--text-color);
+}
+
+/* last row cleanup */
+tr:last-child td {
+  border-bottom: none;
+}
+
+/* =====================
+   ROW INTERACTIONS
+===================== */
+
+/* hover effect */
+tr:hover {
+  background: rgba(120, 110, 245, 0.06);
+  transition: 0.2s ease;
+}
+
+/* striping */
+tr:nth-child(even) {
+  background: rgba(0,0,0,0.03);
+}
+
+/* dark mode striping */
+body.dark-mode tr:nth-child(even) {
+  background: rgba(255,255,255,0.04);
+}
+
+/* =====================
+   CHECKBOX STYLING
+===================== */
+input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  transform: scale(1.1);
+  cursor: pointer;
+  accent-color: #7b6ef6;
+}
+
+/* =====================
+   TASK COLUMN
+===================== */
+.task {
+  text-align: left;
+  font-weight: 500;
+  padding-left: 14px;
+}
+
+
+.lp-container * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.lp-container {
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(120deg, #eef2f7, #d9e4f5);
+    color: #333;
+    overflow-x: hidden;
+    min-height: 100vh;
+}
+
+/* Header */
+.lp-header {
+    text-align: center;
+    padding: 60px 20px;
+    background: linear-gradient(135deg, #4CAF50, #1b5e20);
+    color: white;
+    animation: lp-fadeIn 1.5s ease;
+}
+
+.lp-header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+.lp-header h2 {
+    margin-top: 15px;
+    font-weight: 400;
+}
+
+/* Section */
+.lp-section {
+    max-width: 1000px;
+    margin: auto;
+    padding: 40px 20px;
+}
+
+/* Cards */
+.lp-card {
+    background: white;
+    border-radius: 16px;
+    padding: 25px;
+    margin: 25px 0;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    transform: translateY(40px);
+    opacity: 0;
+    animation: lp-slideUp 1s forwards;
+}
+
+.lp-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+}
+
+.lp-card h2 {
+    color: #2e7d32;
+    margin-bottom: 10px;
+}
+
+.lp-card h3 {
+    margin-top: 20px;
+}
+
+/* Images */
+.lp-img {
+    width: 100%;
+    border-radius: 12px;
+    margin-top: 15px;
+    transition: transform 0.5s ease, filter 0.5s ease;
+}
+
+.lp-img:hover {
+    transform: scale(1.05);
+    filter: brightness(1.1);
+}
+
+/* Warning */
+.lp-warning {
+    background: linear-gradient(135deg, #ffdddd, #ffeaea);
+    border-left: 6px solid red;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 30px 0;
+    animation: lp-pulse 2s infinite;
+}
+
+/* Floating bubbles */
+.lp-bubble {
+    position: fixed;
+    bottom: -100px;
+    width: 40px;
+    height: 40px;
+    background: rgba(76, 175, 80, 0.2);
+    border-radius: 50%;
+    animation: lp-floatUp 10s linear infinite;
+}
+
+.lp-bubble:nth-child(1) { left: 10%; animation-duration: 8s; }
+.lp-bubble:nth-child(2) { left: 30%; animation-duration: 12s; }
+.lp-bubble:nth-child(3) { left: 60%; animation-duration: 10s; }
+.lp-bubble:nth-child(4) { left: 80%; animation-duration: 14s; }
+
+/* Animations */
+@keyframes lp-fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; }
+}
+
+@keyframes lp-slideUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes lp-pulse {
+    0%,100% { transform: scale(1); }
+    50% { transform: scale(1.02); }
+}
+
+@keyframes lp-floatUp {
+    0% {
+        transform: translateY(0) scale(1);
+        opacity: 0.5;
+    }
+    100% {
+        transform: translateY(-120vh) scale(1.5);
+        opacity: 0;
+    }
+}
+
+
+/* =====================
+   LIFE PAGE (LP) DARK
+===================== */
+body.dark-mode .lp-container {
+  background: linear-gradient(120deg, #0f172a, #09111d);
+  color: #e6e6e6;
+}
+
+body.dark-mode .lp-card {
+  background: #1f1f1f;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.6);
+}
+
+body.dark-mode .lp-card h2 {
+  color: #6ee7b7; /* softer green */
+}
+
+body.dark-mode .lp-card p {
+  color: #cfcfcf;
+}
+
+/* warning box */
+body.dark-mode .lp-warning {
+  background: linear-gradient(135deg, #3b1f1f, #2a1616);
+  border-left: 6px solid #ff4d4d;
+  color: #f5c2c2;
+}
+
+/* bubbles softer in dark */
+body.dark-mode .lp-bubble {
+  background: rgba(229, 245, 230, 0.2);
+}
+
+
+
+
+.lp-container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 40px 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+.lp-header {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.lp-header h1 {
+  font-size: 3rem;
+  margin-bottom: 12px;
+  color: #38bdf8;
+}
+
+.lp-header p {
+  font-size: 1.2rem;
+  opacity: 0.85;
+}
+
+.lp-header h3 {
+  font-size: 1.4rem;
+  margin-top: 15px;
+  color: #f8fafc;
+}
+
+.lp-section {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+.lp-card {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 20px;
+  padding: 25px;
+  backdrop-filter: blur(12px);
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+.lp-card:hover {
+  transform: translateY(-8px);
+}
+
+.lp-card h2 {
+  margin-top: 0;
+  color: #7d85fc;
+}
+
+.lp-card p {
+  line-height: 1.6;
+  opacity: 0.92;
+}
+
+.lp-warning {
+  grid-column: 1 / -1;
+  padding: 20px;
+  border-radius: 16px;
+  background: rgba(239, 68, 68, 0.15);
+  border-left: 5px solid #ef4444;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+.lp-bubble {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.05);
+  animation: float 8s infinite ease-in-out;
+}
+
+.lp-bubble:nth-child(1) {
+  width: 120px;
+  height: 120px;
+  top: 10%;
+  left: 5%;
+}
+
+.lp-bubble:nth-child(2) {
+  width: 90px;
+  height: 90px;
+  top: 65%;
+  right: 8%;
+}
+
+.lp-bubble:nth-child(3) {
+  width: 140px;
+  height: 140px;
+  bottom: 10%;
+  left: 18%;
+}
+
+.lp-bubble:nth-child(4) {
+  width: 100px;
+  height: 100px;
+  top: 25%;
+  right: 25%;
+}
+
+@keyframes float {
+  0%, 100% {
+      transform: translateY(0px);
+  }
+  50% {
+      transform: translateY(-20px);
+  }
+}
