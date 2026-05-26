@@ -4,8 +4,6 @@ const profile = {
 username: "Harshitha",
 subtitle: "Start counting from May 2026...",
 totalGoal: 15,
-currentStreak: 1,
-maxStreak: 3
 };
 
 const books = [
@@ -29,7 +27,7 @@ const books = [
 },
 {
     title: "Ancient India RS-Sharma",
-    pagesRead: 2,
+    pagesRead: 3,
     totalPages: 194,
     category: ["Social"]
 }
@@ -40,12 +38,63 @@ const dailyReading = {
     "2026-05-02": 6,
     "2026-05-12": 2,
     "2026-05-25": 2,
-    "2026-05-26": 4
+    "2026-05-26": 5
     
     };
 
 // =========================================
 
+// ===== Automatic Streak Calculation =====
+
+const readingDates = Object.keys(dailyReading)
+.filter(date => dailyReading[date] > 0)
+.sort();
+
+let maxStreak = 0;
+let currentRun = 0;
+
+for (let i = 0; i < readingDates.length; i++) {
+
+    if (i === 0) {
+        currentRun = 1;
+    } else {
+
+        const prev = new Date(readingDates[i-1]);
+        const curr = new Date(readingDates[i]);
+
+        const diffDays =
+            (curr - prev) / (1000 * 60 * 60 * 24);
+
+        if (diffDays === 1) {
+            currentRun++;
+        } else {
+            currentRun = 1;
+        }
+    }
+
+    maxStreak = Math.max(maxStreak, currentRun);
+}
+
+// Current streak (counting backwards from today)
+let currentStreak = 0;
+
+const streakToday = new Date();
+streakToday.setHours(0,0,0,0);
+
+let checkDate = new Date(streakToday);
+
+while (true) {
+    const key = checkDate.toLocaleDateString("en-CA");
+
+    if (dailyReading[key] > 0) {
+        currentStreak++;
+        checkDate.setDate(checkDate.getDate() - 1);
+    } else {
+        break;
+    }
+}
+profile.currentStreak = currentStreak;
+profile.maxStreak = maxStreak;
 
 document.getElementById("username").textContent = profile.username;
 document.getElementById("subtitle").textContent = profile.subtitle;
@@ -134,7 +183,7 @@ const monthLabels = document.getElementById("monthLabels");
 const today = new Date();
 const startDate = new Date(today);
 startDate.setDate(today.getDate() - 364);
-
+startDate.setDate(startDate.getDate() - ((startDate.getDay() + 6) % 7));
 // Month labels
 let currentMonth = "";
 
@@ -156,14 +205,14 @@ for (let day = 0; day < 371; day++) {
 const date = new Date(startDate);
 date.setDate(startDate.getDate() + day);
 
-const key = date.toISOString().split("T")[0];
+const key = date.toLocaleDateString("en-CA");
 const pages = dailyReading[key] || 0;
 
 let level = "";
 
-if (pages >= 20) level = "l4";
-else if (pages >= 10) level = "l3";
-else if (pages >= 5) level = "l2";
+if (pages >= 10) level = "l4";
+else if (pages >= 6) level = "l3";
+else if (pages >= 3) level = "l2";
 else if (pages > 0) level = "l1";
 else level="l0";
 
@@ -221,3 +270,80 @@ options: {
 }
 });
 
+
+
+// ===== Topic Pie / Donut Chart =====
+
+const topicPages = {};
+
+books.forEach(book => {
+
+    const pagesPerTopic =
+        book.pagesRead / book.category.length;
+
+    book.category.forEach(cat => {
+
+        topicPages[cat] =
+            (topicPages[cat] || 0) + pagesPerTopic;
+    });
+});
+
+const topicCtx =
+document.getElementById("topicChart");
+
+const colors = Object.keys(topicPages).map((_, i) => {
+
+    const hue = (i * 35) % 360;;
+
+    return `hsl(${hue},50%,55%)`;
+});
+
+new Chart(topicCtx, {
+    type: "doughnut",
+
+    data: {
+        labels: Object.keys(topicPages),
+
+        datasets: [{
+            data:Object.values(topicPages),
+            backgroundColor: colors,
+            borderWidth: 2,
+            borderColor:"#2f2f2f"
+        }]
+    },
+
+    options: {
+        cutout: "68%", // donut style
+
+        plugins: {
+
+            legend: {
+                position: "right",
+
+                labels: {
+                    color: "#c9d1d9"
+                }
+            },
+
+            tooltip: {
+                callbacks: {
+                    label(context) {
+
+                        const total =
+                        context.dataset.data
+                        .reduce((a,b)=>a+b,0);
+
+                        const value =
+                        context.raw.toFixed(1);
+
+                        const percent =
+                        ((context.raw/total)*100)
+                        .toFixed(1);
+
+                        return `${context.label}: ${value} pages (${percent}%)`;
+                    }
+                }
+            }
+        }
+    }
+});
