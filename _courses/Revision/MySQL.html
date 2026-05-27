@@ -1,0 +1,40 @@
+---
+layout: default
+title: Basic Web Architecture & Databases
+---
+
+<link rel="stylesheet" href="Marticle.css">
+<div class="article">
+    <h1>SQL SELECT Query Structure</h1>
+
+    <p>
+        A standard SQL SELECT statement follows a specific clause order.
+        Some clauses are optional and appear only when needed.
+    </p>
+
+    <pre>
+<code>SELECT [DISTINCT] col1,col2...
+FROM table_name
+[JOIN table2 ON condition]
+[WHERE condition]
+[GROUP BY columns]
+[HAVING condition]
+[ORDER BY columns [ASC->Default|DESC]]
+[LIMIT n [OFFSET m->Default:0]];
+</code></pre>
+
+    <p>
+    <pre>  <code>SELECT name, COUNT(*)
+        FROM Employees
+        WHERE salary > 50000
+        GROUP BY name
+        HAVING COUNT(*) > 1
+        ORDER BY name
+        LIMIT 10 OFFSET 5;</code></pre>
+    </p>
+    <P>
+    <pre>Offset:
+        Default:0
+        select n rows after m (LIMIT n OFFSET m)</pre>
+    </P>
+</div>
