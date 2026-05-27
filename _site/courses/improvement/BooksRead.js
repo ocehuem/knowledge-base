@@ -27,10 +27,16 @@ const books = [
 },
 {
     title: "Ancient India RS-Sharma",
-    pagesRead: 3,
+    pagesRead: 4,
     totalPages: 194,
     category: ["Social"]
-}
+},
+{
+    title: "Online Mentors Idioms (sscstudy.com)",
+    pagesRead: 1,
+    totalPages: 23,
+    category: ["English"]
+},
 ];
 
 const dailyReading = {
@@ -38,7 +44,8 @@ const dailyReading = {
     "2026-05-02": 6,
     "2026-05-12": 2,
     "2026-05-25": 2,
-    "2026-05-26": 5
+    "2026-05-26": 5,
+    "2026-05-27": 2
     
     };
 
@@ -279,7 +286,7 @@ const topicPages = {};
 books.forEach(book => {
 
     const pagesPerTopic =
-        book.pagesRead / book.category.length;
+        book.pagesRead ;
 
     book.category.forEach(cat => {
 
