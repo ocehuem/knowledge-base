@@ -11,32 +11,66 @@ const books = [
     title: "BlairWarren",
     pagesRead: 13,
     totalPages: 13,
-    category: ["Psychology"]
+    category: ["Psychology"],
+    startedOn: "01-05-2026",
+    completedOn:"02-05-2026"
 },
 {
     title: "XinFeng Zhou",
     pagesRead: 2,
     totalPages: 250,
-    category: ["Math", "QuantFinance", "InterviewPrep"]
+    category: ["Math", "QuantFinance", "InterviewPrep"],
+    startedOn: "02-05-2026",
+    completedOn:""
 },
 {
     title: "Alex Xu",
-    pagesRead: 4,
+    pagesRead: 14,
     totalPages: 269,
-    category: ["SystemDesign", "InterviewPrep"]
+    category: ["SystemDesign", "InterviewPrep"],
+    startedOn: "12-05-2026",
+    completedOn:""
 },
 {
     title: "Ancient India RS-Sharma",
     pagesRead: 4,
     totalPages: 194,
-    category: ["Social"]
+    category: ["Social"],
+    startedOn: "25-05-2026",
+    completedOn:""
 },
 {
     title: "Online Mentors Idioms (sscstudy.com)",
-    pagesRead: 1,
-    totalPages: 23,
-    category: ["English"]
+    pagesRead: 4,
+    totalPages: 25,
+    category: ["English"],
+    startedOn: "27-05-2026",
+    completedOn:""
 },
+{
+    title: "MySQL W3Schools",
+    pagesRead: 24,
+    totalPages: 200,
+    category: ["DataBases"],
+    startedOn: "26-05-2026",
+    completedOn:""
+},
+{
+    title: "Blackbook",
+    pagesRead: 1,
+    totalPages: 720,
+    category: ["English"],
+    startedOn: "28-05-2026",
+    completedOn:""
+},
+{
+    title: "Fatman parmer",
+    pagesRead: 3,
+    totalPages: 430,
+    category: ["Social"],
+    startedOn: "28-05-2026",
+    completedOn:""
+}
 ];
 
 const dailyReading = {
@@ -45,7 +79,9 @@ const dailyReading = {
     "2026-05-12": 2,
     "2026-05-25": 2,
     "2026-05-26": 5,
-    "2026-05-27": 2
+    "2026-05-27": 20,
+    "2026-05-28": 15
+    
     
     };
 
@@ -174,6 +210,8 @@ row.innerHTML = `
     <td>${status}</td>
     <td>${book.pagesRead}/${book.totalPages} (${percent}%)</td>
     <td>${book.category.join(", ")}</td>
+    <td>${book.startedOn}</td>
+    <td>${book.completedOn || ""}</td>
 `;
 
 bookList.appendChild(row);
@@ -354,3 +392,5 @@ new Chart(topicCtx, {
         }
     }
 });
+
+
