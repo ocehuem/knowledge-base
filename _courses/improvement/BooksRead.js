@@ -25,7 +25,7 @@ const books = [
 },
 {
     title: "Alex Xu",
-    pagesRead: 14,
+    pagesRead: 23,
     totalPages: 269,
     category: ["SystemDesign", "InterviewPrep"],
     startedOn: "12-05-2026",
@@ -40,19 +40,19 @@ const books = [
     completedOn:""
 },
 {
-    title: "Online Mentors Idioms (sscstudy.com)",
-    pagesRead: 4,
-    totalPages: 25,
-    category: ["English"],
-    startedOn: "27-05-2026",
-    completedOn:""
-},
-{
     title: "MySQL W3Schools",
     pagesRead: 24,
     totalPages: 200,
     category: ["DataBases"],
     startedOn: "26-05-2026",
+    completedOn:""
+},
+{
+    title: "Online Mentors Idioms (sscstudy.com)",
+    pagesRead: 4,
+    totalPages: 25,
+    category: ["English"],
+    startedOn: "27-05-2026",
     completedOn:""
 },
 {
@@ -80,7 +80,7 @@ const dailyReading = {
     "2026-05-25": 2,
     "2026-05-26": 5,
     "2026-05-27": 20,
-    "2026-05-28": 15
+    "2026-05-28": 24
     
     
     };
