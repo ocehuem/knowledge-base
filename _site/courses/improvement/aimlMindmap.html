@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>AI/ML Mindmap</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Prevent flash -->
+  <script>
+    if (localStorage.getItem("theme") === "dark") {
+      document.documentElement.classList.add("dark-mode");
+    }
+  </script>
+
+  <link rel="stylesheet" href="/knowledge-base/assets/css/main.css">
+</head>
+
+<body>
+
+  <!-- <div class="sidebar">
+  <h3>Courses</h3>
+
+  
+    <div class="course">
+
+      <div class="course-header" onclick="toggle(this)">
+        ➕ Sony
+      </div>
+
+      <div class="course-content">
+        
+          <a href="/knowledge-base/courses/Sony/Day1.html">
+            Day1- Arrays
+          </a>
+        
+          <a href="/knowledge-base/courses/Sony/Day2.html">
+            Day2 — Strings
+          </a>
+        
+          <a href="/knowledge-base/courses/Sony/Day3.html">
+            Day3 — Hashmaps
+          </a>
+        
+      </div>
+
+    </div>
+  
+    <div class="course">
+
+      <div class="course-header" onclick="toggle(this)">
+        ➕ Revision
+      </div>
+
+      <div class="course-content">
+        
+          <a href="/knowledge-base/courses/Revision/datastructures.html">
+            Data Structures Revision
+          </a>
+        
+          <a href="/knowledge-base/courses/Revision/oneServerTwoServer.html">
+            Basic Web Architecture & Databases
+          </a>
+        
+          <a href="/knowledge-base/courses/Revision/MySQL.html">
+            MySQL
+          </a>
+        
+          <a href="/knowledge-base/courses/Revision/mathTricks.html">
+            Mind Calculation
+          </a>
+        
+      </div>
+
+    </div>
+  
+    <div class="course">
+
+      <div class="course-header" onclick="toggle(this)">
+        ➕ Misc+References
+      </div>
+
+      <div class="course-content">
+        
+          <a href="/knowledge-base/courses/suggestions/References.html">
+            References
+          </a>
+        
+          <a href="/knowledge-base/courses/suggestions/TheThreeGreatAddictions.html">
+            Article: The Three Great Addictions
+          </a>
+        
+      </div>
+
+    </div>
+  
+    <div class="course">
+
+      <div class="course-header" onclick="toggle(this)">
+        ➕ Improvement Plans
+      </div>
+
+      <div class="course-content">
+        
+          <a href="/knowledge-base/courses/improvement/BrainTrain.html">
+            7 Day Challenge
+          </a>
+        
+          <a href="/knowledge-base/courses/improvement/8MonthAIMLTrack.html">
+            8 Months AIML Track
+          </a>
+        
+          <a href="/knowledge-base/courses/improvement/BooksRead.html">
+            Books Read
+          </a>
+        
+          <a href="/knowledge-base/courses/improvement/aimlMindmap.html">
+            AI Mindmap
+          </a>
+        
+      </div>
+
+    </div>
+  
+</div> -->
+<button id="sidebar-toggle">☰</button>
+<div class="sidebar">
+  
+    <div class="course">
+     <div class="course-header" data-target="course-1">
+        Sony<span class="arrow">➤</span>
+      </div>
+
+
+      <div id="course-1" class="course-content">
+        
+          <a href="/knowledge-base/courses/Sony/Day1.html">
+            Day1- Arrays
+          </a>
+        
+          <a href="/knowledge-base/courses/Sony/Day2.html">
+            Day2 — Strings
+          </a>
+        
+          <a href="/knowledge-base/courses/Sony/Day3.html">
+            Day3 — Hashmaps
+          </a>
+        
+      </div>
+
+    </div>
+  
+    <div class="course">
+     <div class="course-header" data-target="course-2">
+        Revision<span class="arrow">➤</span>
+      </div>
+
+
+      <div id="course-2" class="course-content">
+        
+          <a href="/knowledge-base/courses/Revision/datastructures.html">
+            Data Structures Revision
+          </a>
+        
+          <a href="/knowledge-base/courses/Revision/oneServerTwoServer.html">
+            Basic Web Architecture & Databases
+          </a>
+        
+          <a href="/knowledge-base/courses/Revision/MySQL.html">
+            MySQL
+          </a>
+        
+          <a href="/knowledge-base/courses/Revision/mathTricks.html">
+            Mind Calculation
+          </a>
+        
+      </div>
+
+    </div>
+  
+    <div class="course">
+     <div class="course-header" data-target="course-3">
+        Misc+References<span class="arrow">➤</span>
+      </div>
+
+
+      <div id="course-3" class="course-content">
+        
+          <a href="/knowledge-base/courses/suggestions/References.html">
+            References
+          </a>
+        
+          <a href="/knowledge-base/courses/suggestions/TheThreeGreatAddictions.html">
+            Article: The Three Great Addictions
+          </a>
+        
+      </div>
+
+    </div>
+  
+    <div class="course">
+     <div class="course-header" data-target="course-4">
+        Improvement Plans<span class="arrow">➤</span>
+      </div>
+
+
+      <div id="course-4" class="course-content">
+        
+          <a href="/knowledge-base/courses/improvement/BrainTrain.html">
+            7 Day Challenge
+          </a>
+        
+          <a href="/knowledge-base/courses/improvement/8MonthAIMLTrack.html">
+            8 Months AIML Track
+          </a>
+        
+          <a href="/knowledge-base/courses/improvement/BooksRead.html">
+            Books Read
+          </a>
+        
+          <a href="/knowledge-base/courses/improvement/aimlMindmap.html">
+            AI Mindmap
+          </a>
+        
+      </div>
+
+    </div>
+  
+</div>
+
+  <div class="top-controls">
+    <button id="theme-toggle">🌙</button>
+
+    <button id="home" onclick="window.location.href='/knowledge-base/'">
+      🏠 Home
+    </button>
+  </div>
+  <div class="content content-full">
+    <style>
+    /* aimlMindmap.css */
+
+    body {
+        margin: 0;
+        padding: 20px;
+        font-family: Arial, sans-serif;
+        background: #f5f7fa;
+        overflow: hidden;
+    }
+
+    .aimlMindmap {
+
+        padding: 20px;
+
+        width: 100%;
+        overflow-x: auto;
+        overflow-y: auto;
+        padding: 20px;
+        box-sizing: border-box;
+
+
+    }
+
+    .aimlMindmap>ul {
+        display: inline-block;
+        min-width: max-content;
+
+        margin: 0;
+        padding: 0;
+
+        transform-origin: top left;
+    }
+
+    .aimlMindmap ul {
+        position: relative;
+        padding-top: 20px;
+        transition: all 0.5s;
+        min-width: max-content;
+        white-space: nowrap;
+        position: relative;
+        padding-top: 20px;
+        transition: all 0.3s ease;
+        white-space: nowrap;
+    }
+
+
+    .aimlMindmap li {
+        float: left;
+        text-align: center;
+        list-style-type: none;
+        position: relative;
+        padding: 20px 5px 0 5px;
+    }
+
+    .aimlMindmap li::before,
+    .aimlMindmap li::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 50%;
+        border-top: 2px solid #ccc;
+        width: 50%;
+        height: 20px;
+    }
+
+    .aimlMindmap li::after {
+        right: auto;
+        left: 50%;
+        border-left: 2px solid #ccc;
+    }
+
+    .aimlMindmap li:only-child::after,
+    .aimlMindmap li:only-child::before {
+        display: none;
+    }
+
+    .aimlMindmap li:only-child {
+        padding-top: 0;
+    }
+
+    .aimlMindmap li:first-child::before,
+    .aimlMindmap li:last-child::after {
+        border: 0 none;
+    }
+
+    .aimlMindmap li:last-child::before {
+        border-right: 2px solid #ccc;
+        border-radius: 0 5px 0 0;
+    }
+
+    .aimlMindmap li:first-child::after {
+        border-radius: 5px 0 0 0;
+    }
+
+    .aimlMindmap ul ul::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 50%;
+        border-left: 2px solid #ccc;
+        width: 0;
+        height: 20px;
+    }
+
+    .aimlNode {
+        display: inline-block;
+        padding: 10px 15px;
+        border: 2px solid #4f46e5;
+        border-radius: 10px;
+        background: white;
+        cursor: pointer;
+        transition: 0.3s;
+        min-width: 120px;
+    }
+
+    .aimlNode:hover {
+        background: #4f46e5;
+        color: white;
+    }
+
+    .rootNode {
+        background: #4f46e5;
+        color: white;
+        font-weight: bold;
+    }
+
+    .collapsed {
+        display: none;
+    }
+</style>
+
+
+<div class="aimlMindmap">
+
+    <ul>
+        <li>
+            <div class="aimlNode rootNode">AI</div>
+
+            <ul>
+
+                <li>
+                    <div class="aimlNode">Machine Learning</div>
+                    <ul>
+
+                        <li>
+                            <div class="aimlNode">Regression</div>
+                            <ul>
+                                <li>
+                                    <div class="aimlNode">Linear Regression</div>
+                                </li>
+                                <li>
+                                    <div class="aimlNode">Polynomial Regression</div>
+                                </li>
+                                <li>
+                                    <div class="aimlNode">Ridge Regression</div>
+                                </li>
+                                <li>
+                                    <div class="aimlNode">Lasso Regression</div>
+                                </li>
+                                <li>
+                                    <div class="aimlNode">Elastic Net</div>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <div class="aimlNode">Classification</div>
+                            <ul>
+                                <li>
+                                    <div class="aimlNode">Logistic Regression</div>
+                                </li>
+                                <li>
+                                    <div class="aimlNode">KNN</div>
+                                </li>
+                                <li>
+                                    <div class="aimlNode">Naive Bayes</div>
+                                </li>
+                                <li>
+                                    <div class="aimlNode">SVM</div>
+                                </li>
+                                <li>
+                                    <div class="aimlNode">Decision Tree</div>
+                                </li>
+                                <li>
+                                    <div class="aimlNode">Random Forest</div>
+                                </li>
+                                <li>
+                                    <div class="aimlNode">XGBoost</div>
+                                </li>
+                                <li>
+                                    <div class="aimlNode">LightGBM</div>
+                                </li>
+                                <li>
+                                    <div class="aimlNode">CatBoost</div>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <div class="aimlNode">Clustering</div>
+                            <ul>
+                                <li>
+                                    <div class="aimlNode">K-Means</div>
+                                </li>
+                                <li>
+                                    <div class="aimlNode">Hierarchical</div>
+                                </li>
+                                <li>
+                                    <div class="aimlNode">DBSCAN</div>
+                                </li>
+                                <li>
+                                    <div class="aimlNode">GMM</div>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <div class="aimlNode">Dimensionality Reduction</div>
+                            <ul>
+                                <li>
+                                    <div class="aimlNode">PCA</div>
+                                </li>
+                                <li>
+                                    <div class="aimlNode">SVD</div>
+                                </li>
+                                <li>
+                                    <div class="aimlNode">t-SNE</div>
+                                </li>
+                                <li>
+                                    <div class="aimlNode">UMAP</div>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <div class="aimlNode">Recommendation</div>
+                            <ul>
+                                <li>
+                                    <div class="aimlNode">Collaborative Filtering</div>
+                                </li>
+                                <li>
+                                    <div class="aimlNode">Content Based</div>
+                                </li>
+                                <li>
+                                    <div class="aimlNode">Matrix Factorization</div>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <div class="aimlNode">Anomaly Detection</div>
+                            <ul>
+                                <li>
+                                    <div class="aimlNode">Isolation Forest</div>
+                                </li>
+                                <li>
+                                    <div class="aimlNode">One-Class SVM</div>
+                                </li>
+                                <li>
+                                    <div class="aimlNode">LOF</div>
+                                </li>
+                            </ul>
+                        </li>
+
+                    </ul>
+                </li>
+
+                <li>
+                    <div class="aimlNode">Deep Learning</div>
+                    <ul>
+
+                        <li>
+                            <div class="aimlNode">MLP</div>
+                            <ul>
+                                <li>
+                                    <div class="aimlNode">Feed Forward NN</div>
+                                </li>
+                                <li>
+                                    <div class="aimlNode">Fully Connected NN</div>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <div class="aimlNode">CNN</div>
+                            <ul>
+                                <li>
+                                    <div class="aimlNode">LeNet</div>
+                                </li>
+                                <li>
+                                    <div class="aimlNode">AlexNet</div>
+                                </li>
+                                <li>
+                                    <div class="aimlNode">VGG</div>
+                                </li>
+                                <li>
+                                    <div class="aimlNode">ResNet</div>
+                                </li>
+                                <li>
+                                    <div class="aimlNode">EfficientNet</div>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <div class="aimlNode">RNN/LSTM/GRU</div>
+                        </li>
+
+                        <li>
+                            <div class="aimlNode">Transformers</div>
+                            <ul>
+                                <li>
+                                    <div class="aimlNode">BERT</div>
+                                </li>
+                                <li>
+                                    <div class="aimlNode">RoBERTa</div>
+                                </li>
+                                <li>
+                                    <div class="aimlNode">GPT</div>
+                                </li>
+                                <li>
+                                    <div class="aimlNode">Llama</div>
+                                </li>
+                                <li>
+                                    <div class="aimlNode">Mistral</div>
+                                </li>
+                                <li>
+                                    <div class="aimlNode">T5</div>
+                                </li>
+                            </ul>
+                        </li>
+
+                    </ul>
+                </li>
+
+                <li>
+                    <div class="aimlNode">Generative AI</div>
+                    <ul>
+
+                        <li>
+                            <div class="aimlNode">LLMs</div>
+                            <ul>
+                                <li>
+                                    <div class="aimlNode">GPT</div>
+                                </li>
+                                <li>
+                                    <div class="aimlNode">Claude</div>
+                                </li>
+                                <li>
+                                    <div class="aimlNode">Gemini</div>
+                                </li>
+                                <li>
+                                    <div class="aimlNode">Llama</div>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <div class="aimlNode">Diffusion Models</div>
+                            <ul>
+                                <li>
+                                    <div class="aimlNode">Stable Diffusion</div>
+                                </li>
+                                <li>
+                                    <div class="aimlNode">DALL-E</div>
+                                </li>
+                                <li>
+                                    <div class="aimlNode">Sora</div>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <div class="aimlNode">GANs</div>
+                            <ul>
+                                <li>
+                                    <div class="aimlNode">DCGAN</div>
+                                </li>
+                                <li>
+                                    <div class="aimlNode">StyleGAN</div>
+                                </li>
+                                <li>
+                                    <div class="aimlNode">CycleGAN</div>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <div class="aimlNode">VAEs</div>
+                            <ul>
+                                <li>
+                                    <div class="aimlNode">Vanilla VAE</div>
+                                </li>
+                                <li>
+                                    <div class="aimlNode">Conditional VAE</div>
+                                </li>
+                                <li>
+                                    <div class="aimlNode">β-VAE</div>
+                                </li>
+                            </ul>
+                        </li>
+
+                    </ul>
+                </li>
+
+                <li>
+                    <div class="aimlNode">Reinforcement Learning</div>
+                    <ul>
+
+                        <li>
+                            <div class="aimlNode">Value Based</div>
+                            <ul>
+                                <li>
+                                    <div class="aimlNode">Q-Learning</div>
+                                </li>
+                                <li>
+                                    <div class="aimlNode">SARSA</div>
+                                </li>
+                                <li>
+                                    <div class="aimlNode">DQN</div>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <div class="aimlNode">Policy Based</div>
+                            <ul>
+                                <li>
+                                    <div class="aimlNode">REINFORCE</div>
+                                </li>
+                                <li>
+                                    <div class="aimlNode">PPO</div>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <div class="aimlNode">Actor Critic</div>
+                            <ul>
+                                <li>
+                                    <div class="aimlNode">A2C</div>
+                                </li>
+                                <li>
+                                    <div class="aimlNode">A3C</div>
+                                </li>
+                                <li>
+                                    <div class="aimlNode">DDPG</div>
+                                </li>
+                                <li>
+                                    <div class="aimlNode">TD3</div>
+                                </li>
+                                <li>
+                                    <div class="aimlNode">SAC</div>
+                                </li>
+                            </ul>
+                        </li>
+
+                    </ul>
+                </li>
+
+            </ul>
+        </li>
+    </ul>
+
+</div>
+
+<script>
+    // aimlMindmap.js
+
+    document.querySelectorAll('.aimlNode').forEach(node => {
+        node.addEventListener('click', () => {
+            const parentLi = node.parentElement;
+            const childUl = parentLi.querySelector(':scope > ul');
+
+            if (childUl) {
+                childUl.classList.toggle('collapsed');
+            }
+        });
+    });
+</script>
+
+    <div class="lesson-nav">
+
+      <!-- HOME BUTTON -->
+
+      
+
+      
+      
+
+      
+
+      
+
+        
+
+      
+
+        
+
+      
+
+        
+        
+      
+
+      
+
+      
+
+        
+
+      
+
+        
+
+      
+
+        
+
+      
+
+        
+        
+      
+
+      
+
+      
+
+        
+
+      
+
+        
+        
+      
+
+      
+
+      
+
+        
+
+      
+
+        
+
+      
+
+        
+
+      
+
+      <!-- PREVIOUS -->
+      
+      
+      
+      <a href="/knowledge-base/courses/improvement/BooksRead.html">
+        <span class="nav-icon">←</span>
+        <span>Previous</span>
+      </a>
+      
+
+      <!-- NEXT -->
+         <a href="">
+        <span>Next</span>
+        <span class="nav-icon">→</span>
+        </a>
+        
+
+        
+
+        
+        
+    </div>
+  </div>
+
+  <script src="/knowledge-base/assets/js/main.js"></script>
+
+</body>
+
+</html>

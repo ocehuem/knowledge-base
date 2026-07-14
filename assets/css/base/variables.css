@@ -1,0 +1,192 @@
+/* ==================================
+   COLORS
+================================== */
+
+:root {
+
+  /* Backgrounds */
+  --bg-color: #f5f7fb;
+  --card-bg: #ffffff;
+
+  /* Text */
+  --text-color: #1a1a1a;
+  --text-muted: #666666;
+
+  /* Links */
+  --link-color: #1a73e8;
+
+  /* Sidebar */
+  --sidebar-bg:
+    linear-gradient(
+      180deg,
+      #5f6ad4,
+      #7f8cff
+    );
+
+  --sidebar-text: #ffffff;
+  --sidebar-link: #e0e7ff;
+
+  /* Semantic Colors */
+  --success: #4caf50;
+  --warning: #ff9800;
+  --danger: #ef4444;
+  --info: #38bdf8;
+
+  /* Borders */
+  --border-color: rgba(0,0,0,0.08);
+
+  /* Code */
+  --code-bg: #f6f8fa;
+  --code-text: #24292e;
+  --code-border: #e1e4e8;
+
+  /* Table */
+  --table-header-bg:
+    rgba(120,110,245,0.5);
+
+  --table-row-hover:
+    rgba(120,110,245,0.06);
+
+  --table-row-alt:
+    rgba(0,0,0,0.03);
+
+  /* Controls */
+  --control-bg: #ffffff;
+  --control-text: #1a1a1a;
+
+  /* Life Page */
+  --lp-bg:
+    linear-gradient(
+      120deg,
+      #eef2f7,
+      #d9e4f5
+    );
+
+  --lp-card-bg: #ffffff;
+
+  --lp-warning-bg:
+    linear-gradient(
+      135deg,
+      #ffdddd,
+      #ffeaea
+    );
+
+  --lp-warning-border: red;
+
+  --lp-bubble-bg:
+    rgba(76,175,80,0.2);
+
+  /* Mindmap */
+  --mindmap-node-border:
+    rgba(123,110,246,0.2);
+
+  --mindmap-root-bg:
+    linear-gradient(
+      135deg,
+      #7b6ef6,
+      #5f6ad4
+    );
+
+  /* Accent */
+  --accent: #7b6ef6;
+}
+
+
+
+/* ==================================
+   LAYOUT
+================================== */
+
+:root {
+
+  --sidebar-width: 260px;
+
+  --content-max-width: 900px;
+
+  --mobile-breakpoint: 768px;
+  --tablet-breakpoint: 1024px;
+}
+
+
+
+/* ==================================
+   SPACING
+================================== */
+
+:root {
+
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 40px;
+  --space-xxl: 60px;
+}
+
+
+
+/* ==================================
+   BORDER RADIUS
+================================== */
+
+:root {
+
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-pill: 999px;
+}
+
+
+
+/* ==================================
+   SHADOWS
+================================== */
+
+:root {
+
+  --shadow-sm:
+    0 4px 10px rgba(0,0,0,0.10);
+
+  --shadow-md:
+    0 8px 25px rgba(0,0,0,0.08);
+
+  --shadow-lg:
+    0 10px 30px rgba(0,0,0,0.10);
+
+  --shadow-xl:
+    0 15px 35px rgba(0,0,0,0.20);
+}
+
+
+
+/* ==================================
+   TRANSITIONS
+================================== */
+
+:root {
+
+  --transition-fast: 0.2s ease;
+
+  --transition-normal: 0.3s ease;
+
+  --transition-slow: 0.5s ease;
+}
+
+
+
+/* ==================================
+   Z INDEX
+================================== */
+
+:root {
+
+  --z-sidebar: 100;
+  --z-sidebar-mobile: 200;
+
+  --z-backdrop: 99;
+
+  --z-controls: 1000;
+
+  --z-sticky-nav: 10;
+}

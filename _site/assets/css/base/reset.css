@@ -1,0 +1,156 @@
+/* ==================================
+   MODERN RESET
+================================== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+
+/* ==================================
+   DOCUMENT
+================================== */
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+
+body {
+  margin: 0;
+  min-height: 100vh;
+}
+
+
+/* ==================================
+   TYPOGRAPHY
+================================== */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+figure {
+  margin: 0;
+}
+
+
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+}
+
+
+li {
+  list-style-position: inside;
+}
+
+
+/* ==================================
+   LINKS
+================================== */
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+
+/* ==================================
+   MEDIA
+================================== */
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+
+/* ==================================
+   FORMS
+================================== */
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+
+textarea {
+  resize: vertical;
+}
+
+
+/* ==================================
+   TABLES
+================================== */
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+
+/* ==================================
+   CODE
+================================== */
+
+pre,
+code,
+kbd,
+samp {
+  font-family:
+    Consolas,
+    Monaco,
+    "Courier New",
+    monospace;
+}
+
+
+/* ==================================
+   ACCESSIBILITY
+================================== */
+
+[hidden] {
+  display: none !important;
+}
+
+
+/* ==================================
+   REDUCE MOTION
+================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+
+    transition-duration: 0.01ms !important;
+
+    scroll-behavior: auto !important;
+  }
+}

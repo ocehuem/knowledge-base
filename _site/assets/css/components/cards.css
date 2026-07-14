@@ -1,0 +1,168 @@
+/* ==================================
+   BASE CARD
+================================== */
+
+.card {
+  background: var(--card-bg);
+
+  border-radius: var(--radius-md);
+
+  padding: var(--space-lg);
+
+  box-shadow: var(--shadow-md);
+
+  transition:
+    transform var(--transition-fast),
+    box-shadow var(--transition-fast);
+}
+
+
+.card:hover {
+  transform: translateY(-2px);
+
+  box-shadow: var(--shadow-lg);
+}
+
+
+/* ==================================
+   CARD HEADER
+================================== */
+
+.card-header {
+  margin-bottom: var(--space-md);
+}
+
+
+.card-title {
+  margin: 0;
+
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+
+.card-subtitle {
+  margin-top: 4px;
+
+  color: var(--text-muted);
+
+  font-size: 0.9rem;
+}
+
+
+/* ==================================
+   CARD CONTENT
+================================== */
+
+.card-content {
+  line-height: 1.6;
+}
+
+
+/* ==================================
+   CARD FOOTER
+================================== */
+
+.card-footer {
+  margin-top: var(--space-md);
+
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--space-sm);
+}
+
+
+/* ==================================
+   COMPACT CARD
+================================== */
+
+.card-sm {
+  padding: var(--space-md);
+}
+
+
+/* ==================================
+   LARGE CARD
+================================== */
+
+.card-lg {
+  padding: var(--space-xl);
+}
+
+
+/* ==================================
+   OUTLINE CARD
+================================== */
+
+.card-outline {
+  border: 1px solid var(--border-color);
+
+  box-shadow: none;
+}
+
+
+/* ==================================
+   GLASS CARD
+================================== */
+
+.card-glass {
+  background: rgba(255,255,255,0.08);
+
+  border: 1px solid rgba(255,255,255,0.12);
+
+  backdrop-filter: blur(12px);
+}
+
+
+/* ==================================
+   SUCCESS CARD
+================================== */
+
+.card-success {
+  border-left: 4px solid var(--success);
+}
+
+
+/* ==================================
+   WARNING CARD
+================================== */
+
+.card-warning {
+  border-left: 4px solid var(--warning);
+}
+
+
+/* ==================================
+   DANGER CARD
+================================== */
+
+.card-danger {
+  border-left: 4px solid var(--danger);
+}
+
+
+/* ==================================
+   GRID OF CARDS
+================================== */
+
+.card-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(auto-fit, minmax(280px, 1fr));
+
+  gap: var(--space-lg);
+}
+
+
+/* ==================================
+   MOBILE
+================================== */
+
+@media (max-width: 768px) {
+
+  .card {
+    padding: var(--space-md);
+  }
+
+}

@@ -1,0 +1,139 @@
+/* ==================================
+   BASE NOTE BOX
+================================== */
+
+.note-box,
+.warning-box,
+.success-box,
+.error-box,
+.info-box {
+  margin-top: var(--space-lg);
+
+  padding: 16px 18px;
+
+  border-radius: var(--radius-sm);
+
+  line-height: 1.6;
+}
+
+
+/* ==================================
+   NOTE
+================================== */
+
+.note-box {
+  background: rgba(76, 175, 80, 0.10);
+
+  border-left: 5px solid var(--success);
+}
+
+
+/* ==================================
+   WARNING
+================================== */
+
+.warning-box {
+  background: rgba(255, 152, 0, 0.10);
+
+  border-left: 5px solid var(--warning);
+}
+
+
+/* ==================================
+   ERROR
+================================== */
+
+.error-box {
+  background: rgba(239, 68, 68, 0.10);
+
+  border-left: 5px solid var(--danger);
+}
+
+
+/* ==================================
+   INFO
+================================== */
+
+.info-box {
+  background: rgba(56, 189, 248, 0.10);
+
+  border-left: 5px solid var(--info);
+}
+
+
+/* ==================================
+   SUCCESS
+================================== */
+
+.success-box {
+  background: rgba(76, 175, 80, 0.10);
+
+  border-left: 5px solid var(--success);
+}
+
+
+/* ==================================
+   TITLES
+================================== */
+
+.note-title,
+.warning-title,
+.error-title,
+.info-title,
+.success-title {
+  display: block;
+
+  margin-bottom: 8px;
+
+  font-weight: 600;
+}
+
+
+/* ==================================
+   ICON SUPPORT
+================================== */
+
+.note-box.icon,
+.warning-box.icon,
+.error-box.icon,
+.info-box.icon,
+.success-box.icon {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+
+.note-icon,
+.warning-icon,
+.error-icon,
+.info-icon,
+.success-icon {
+  font-size: 1.2rem;
+  line-height: 1.2;
+}
+
+
+/* ==================================
+   DARK MODE SUPPORT
+================================== */
+
+body.dark-mode .note-box {
+  background: rgba(76, 175, 80, 0.15);
+}
+
+body.dark-mode .warning-box {
+  background: rgba(255, 152, 0, 0.15);
+}
+
+body.dark-mode .error-box {
+  background: rgba(239, 68, 68, 0.15);
+}
+
+body.dark-mode .info-box {
+  background: rgba(56, 189, 248, 0.15);
+}
+
+body.dark-mode .success-box {
+  background: rgba(76, 175, 80, 0.15);
+}

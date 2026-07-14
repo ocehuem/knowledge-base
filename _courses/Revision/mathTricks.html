@@ -1,0 +1,320 @@
+---
+layout: default
+title: Fast Multiplication Tricks
+---
+
+<style>
+    .math-tricks__example {
+        background: #f4f4f4;
+        padding: 18px 22px;
+        margin: 20px 0;
+        border-left: 5px solid #3498db;
+        border-radius: 8px;
+    }
+
+    .math-tricks__formula {
+        font-size: 1.15em;
+        font-weight: 700;
+        margin-bottom: 10px;
+    }
+
+    .math-tricks__diagram {
+        font-size: 1.8em;
+        line-height: 1.4;
+        font-weight: 700;
+        background: white;
+        padding: 16px;
+        border-radius: 8px;
+        margin: 12px 0;
+        overflow-x: auto;
+    }
+
+    .math-tricks__result {
+        font-size: 1.15em;
+        font-weight: 600;
+        margin-top: 10px;
+    }
+
+    .math-tricks__tip {
+        background: #eef7ff;
+        border-left: 5px solid #2196f3;
+        padding: 16px;
+        margin: 20px 0;
+        border-radius: 8px;
+    }
+
+    .math-tricks__steps {
+        padding-left: 24px;
+    }
+</style>
+
+<section class="math-tricks">
+
+    <h1 class="math-tricks__title">Fast Multiplication Tricks</h1>
+
+    <h2 class="math-tricks__section-title">1. Multiplication by 11</h2>
+
+    <p class="math-tricks__text">
+        <strong>For two-digit numbers:</strong>
+    </p>
+
+    <p class="math-tricks__text">
+        Split the digits and place their sum in the middle.
+        If the sum is 10 or greater, carry the tens digit to the left.
+    </p>
+
+    <article class="math-tricks__example">
+        <div class="math-tricks__formula">35 × 11</div>
+        <div class="math-tricks__content">
+            3 (3 + 5) 5 = 385
+        </div>
+    </article>
+
+    <article class="math-tricks__example">
+        <div class="math-tricks__formula">57 × 11</div>
+        <div class="math-tricks__content">
+            5 (5 + 7) 7 → 5 12 7 → 627
+        </div>
+    </article>
+
+    <p class="math-tricks__text">
+        <strong>For three-digit numbers:</strong>
+    </p>
+
+    <p class="math-tricks__text">
+        Add adjacent digits and place the sums between the original digits.
+        Carry when necessary.
+    </p>
+
+    <article class="math-tricks__example">
+        <div class="math-tricks__formula">396 × 11</div>
+
+        <pre class="math-tricks__diagram">
+3   9   6
+ \ / \ /
+ 12  15
+        </pre>
+
+        <div class="math-tricks__result">
+            Result: 4356
+        </div>
+    </article>
+
+    <aside class="math-tricks__tip">
+        <strong>Tip:</strong> Continue adding adjacent digits and apply carries
+        from right to left when sums exceed 9.
+    </aside>
+
+    <h2 class="math-tricks__section-title">
+        2. Multiplication of Numbers Ending in 5
+    </h2>
+
+    <p class="math-tricks__text">
+        For numbers ending in 5, multiply the first part by its next
+        consecutive integer and append 25.
+    </p>
+
+    <article class="math-tricks__example">
+        <div class="math-tricks__formula">35 × 35</div>
+
+        <div class="math-tricks__content">
+            3 × 4 = 12<br>
+            Append 25 → <strong>1225</strong>
+        </div>
+    </article>
+
+    <article class="math-tricks__example">
+        <div class="math-tricks__formula">85 × 85</div>
+
+        <div class="math-tricks__content">
+            8 × 9 = 72<br>
+            Append 25 → <strong>7225</strong>
+        </div>
+    </article>
+
+    <h2 class="math-tricks__section-title">
+        3. Same First Digit, Last Digits Sum to 10
+    </h2>
+
+    <p class="math-tricks__text">
+        When two two-digit numbers have the same first digit and the last
+        digits add up to 10:
+    </p>
+
+    <ol class="math-tricks__steps">
+        <li>Multiply the first digit by its next consecutive integer.</li>
+        <li>Multiply the last digits together.</li>
+        <li>Combine the results.</li>
+    </ol>
+
+    <article class="math-tricks__example">
+        <div class="math-tricks__formula">43 × 47</div>
+
+        <div class="math-tricks__content">
+            First part: 4 × 5 = 20<br>
+            Last part: 3 × 7 = 21
+        </div>
+
+        <div class="math-tricks__result">
+            Result: 2021
+        </div>
+    </article>
+
+    <article class="math-tricks__example">
+        <div class="math-tricks__formula">62 × 68</div>
+
+        <div class="math-tricks__content">
+            First part: 6 × 7 = 42<br>
+            Last part: 2 × 8 = 16
+        </div>
+
+        <div class="math-tricks__result">
+            Result: 4216
+        </div>
+    </article>
+    <h2 class="math-tricks__section-title">
+        4. Quick Division by 5
+    </h2>
+
+    <p class="math-tricks__text">
+        Instead of performing long division by 5, double the number and move the
+        decimal point one place to the left.
+    </p>
+
+    <article class="math-tricks__example">
+        <div class="math-tricks__formula">65 ÷ 5</div>
+
+        <div class="math-tricks__content">
+            Double 65 → 130<br>
+            Move decimal one place left → 13
+        </div>
+
+        <div class="math-tricks__result">
+            Result: 13
+        </div>
+    </article>
+
+    <article class="math-tricks__example">
+        <div class="math-tricks__formula">48 ÷ 5</div>
+
+        <div class="math-tricks__content">
+            Double 48 → 96<br>
+            Move decimal one place left → 9.6
+        </div>
+
+        <div class="math-tricks__result">
+            Result: 9.6
+        </div>
+    </article>
+
+
+    <h2 class="math-tricks__section-title">
+        5. Rounding for Addition
+    </h2>
+
+    <p class="math-tricks__text">
+        Round one number to a friendlier value, perform the addition, then adjust
+        the result by the amount rounded.
+    </p>
+
+    <article class="math-tricks__example">
+        <div class="math-tricks__formula">398 + 247</div>
+
+        <div class="math-tricks__content">
+            Round 398 to 400<br>
+            400 + 247 = 647<br>
+            Subtract the extra 2
+        </div>
+
+        <div class="math-tricks__result">
+            Result: 645
+        </div>
+    </article>
+
+
+    <h2 class="math-tricks__section-title">
+        6. Percentage Trick
+    </h2>
+
+    <p class="math-tricks__text">
+        The percentage relationship can be reversed: <strong>x% of y = y% of x</strong>
+    </p>
+
+    <article class="math-tricks__example">
+        <div class="math-tricks__formula">
+            25% of 16 = 16% of 25
+        </div>
+
+        <div class="math-tricks__content">
+            Instead of finding 25% of 16,<br>
+            calculate 16% of 25.
+        </div>
+
+        <div class="math-tricks__result">
+            Result: 4
+        </div>
+    </article>
+
+    <article class="math-tricks__example">
+        <div class="math-tricks__formula">
+            18% of 50 = 50% of 18
+        </div>
+
+        <div class="math-tricks__content">
+            Half of 18 is easier to compute.
+        </div>
+
+        <div class="math-tricks__result">
+            Result: 9
+        </div>
+    </article>
+
+
+
+
+
+
+
+    <h2 class="math-tricks__section-title">
+        7. Multiplying Two-Digit Numbers
+    </h2>
+
+    <p class="math-tricks__text">
+        Multiply the first digits, find the cross-sum, and multiply the last
+        digits.
+    </p>
+
+    <article class="math-tricks__example">
+        <div class="math-tricks__formula">23 × 14</div>
+
+        <div class="math-tricks__content">
+            First digits: 2 × 1 = 2<br>
+            Cross-sum: (2 × 4) + (3 × 1) = 11<br>
+            Last digits: 3 × 4 = 12
+        </div>
+
+        <div class="math-tricks__result">
+            Result: 322
+        </div>
+    </article>
+
+    <article class="math-tricks__example">
+        <div class="math-tricks__formula">42 × 36</div>
+
+        <div class="math-tricks__content">
+            First digits: 4 × 3 = 12<br>
+            Cross-sum: (4 × 6) + (2 × 3) = 30<br>
+            Last digits: 2 × 6 = 12
+        </div>
+
+        <div class="math-tricks__result">
+            Result: 1512
+        </div>
+    </article>
+
+    <aside class="math-tricks__tip">
+        Practice these techniques regularly to improve mental math speed and
+        accuracy.
+    </aside>
+
+</section>

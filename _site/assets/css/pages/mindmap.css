@@ -1,0 +1,216 @@
+/* ==================================
+   MINDMAP PAGE
+================================== */
+
+.mindmap-page {
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+
+  padding: 30px;
+
+  -webkit-overflow-scrolling: touch;
+}
+
+
+/* ==================================
+   MINDMAP WRAPPER
+================================== */
+
+.mindmap-wrapper {
+  min-width: max-content;
+  padding: 40px;
+}
+
+
+/* ==================================
+   TREE LAYOUT
+================================== */
+
+.mindmap {
+  display: flex;
+  align-items: center;
+  gap: 80px;
+
+  min-width: max-content;
+}
+
+
+/* ==================================
+   NODE COLUMN
+================================== */
+
+.node-column {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+
+/* ==================================
+   NODE
+================================== */
+
+.node {
+  position: relative;
+
+  padding: 14px 20px;
+
+  background: var(--card-bg);
+
+  color: var(--text-color);
+
+  border: 2px solid rgba(123,110,246,0.2);
+  border-radius: 12px;
+
+  white-space: nowrap;
+
+  font-weight: 500;
+
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    border-color 0.25s ease;
+}
+
+
+.node:hover {
+  transform: translateY(-3px);
+
+  border-color: #7b6ef6;
+
+  box-shadow:
+    0 12px 24px rgba(0,0,0,0.12);
+}
+
+
+/* ==================================
+   ROOT NODE
+================================== */
+
+.node.root {
+  font-size: 24px;
+  font-weight: 700;
+
+  background:
+    linear-gradient(
+      135deg,
+      #7b6ef6,
+      #5f6ad4
+    );
+
+  color: white;
+}
+
+
+/* ==================================
+   CATEGORY NODE
+================================== */
+
+.node.category {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+
+/* ==================================
+   SUB NODE
+================================== */
+
+.node.sub {
+  font-size: 14px;
+}
+
+
+/* ==================================
+   CHILDREN
+================================== */
+
+.children {
+  margin-left: 40px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+
+/* ==================================
+   CONNECTOR
+================================== */
+
+.branch {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+
+/* ==================================
+   SCROLLBAR
+================================== */
+
+.mindmap-page::-webkit-scrollbar {
+  height: 10px;
+}
+
+.mindmap-page::-webkit-scrollbar-track {
+  background: rgba(0,0,0,0.05);
+}
+
+.mindmap-page::-webkit-scrollbar-thumb {
+  background: rgba(123,110,246,0.5);
+  border-radius: 999px;
+}
+
+.mindmap-page::-webkit-scrollbar-thumb:hover {
+  background: rgba(123,110,246,0.8);
+}
+
+
+/* ==================================
+   DARK MODE
+================================== */
+
+body.dark-mode .node {
+  border-color: rgba(123,110,246,0.35);
+}
+
+body.dark-mode .node.root {
+  background:
+    linear-gradient(
+      135deg,
+      #7b6ef6,
+      #4f46e5
+    );
+}
+
+
+/* ==================================
+   MOBILE
+================================== */
+
+@media (max-width: 768px) {
+
+  .mindmap-page {
+    padding: 15px;
+  }
+
+  .mindmap-wrapper {
+    padding: 20px;
+  }
+
+  .mindmap {
+    gap: 50px;
+  }
+
+  .node.root {
+    font-size: 20px;
+  }
+
+  .node.category {
+    font-size: 16px;
+  }
+}

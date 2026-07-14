@@ -16,6 +16,8 @@ Revision:
       url: /courses/Revision/oneServerTwoServer.html
     - title: "MySQL"
       url: /courses/Revision/MySQL.html
+    - title: "Mind Calculation"
+      url: /courses/Revision/mathTricks.html
 
 suggestions:
   name: Misc+References
@@ -34,3 +36,5 @@ improvement:
       url: /courses/improvement/8MonthAIMLTrack.html
     - title: Books Read
       url: /courses/improvement/BooksRead.html
+    - title: AI Mindmap
+      url: /courses/improvement/aimlMindmap.html
