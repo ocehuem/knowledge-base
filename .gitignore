@@ -1,0 +1,5 @@
+Ruby40-x64/
+vendor/
+_site/
+.jekyll-cache/
+.sass-cache/
