@@ -10,10 +10,9 @@ The site organizes learning material into courses and lessons. Course informatio
 
 Install the following before setting up the project:
 
-* Git
-* Ruby
-* RubyGems
-* Jekyll
+- Git
+- RubyGems(https://rubyinstaller.org/downloads/)
+- Jekyll
 
 Verify the installations:
 
@@ -131,11 +130,11 @@ Contains the Jekyll site configuration.
 
 The current configuration:
 
-* Sets the site title to `Knowledge Base`
-* Sets the GitHub Pages base URL to `/knowledge-base`
-* Enables the `courses` collection
-* Enables output for course pages
-* Applies the `default` layout to pages and courses
+- Sets the site title to `Knowledge Base`
+- Sets the GitHub Pages base URL to `/knowledge-base`
+- Enables the `courses` collection
+- Enables output for course pages
+- Applies the `default` layout to pages and courses
 
 ### `_data/courses.yml`
 
@@ -159,10 +158,10 @@ Contains the actual course content.
 
 Current course categories include:
 
-* Sony
-* Revision
-* Improvement Plans
-* Misc + References
+- Sony
+- Revision
+- Improvement Plans
+- Misc + References
 
 ### `_layouts/`
 
@@ -296,6 +295,6 @@ instead of relying on the `/knowledge-base` production base URL.
 
 ## References
 
-* Repository: https://github.com/ocehuem/knowledge-base
-* Jekyll documentation: https://jekyllrb.com/docs/
-* GitHub Pages with Jekyll: https://docs.github.com/en/pages/setting-up-a-github-pages-site-with-jekyll
+- Repository: https://github.com/ocehuem/knowledge-base
+- Jekyll documentation: https://jekyllrb.com/docs/
+- GitHub Pages with Jekyll: https://docs.github.com/en/pages/setting-up-a-github-pages-site-with-jekyll

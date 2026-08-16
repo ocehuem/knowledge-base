@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SSC CGL Progress Tracker</title>
+  <link rel="stylesheet" href="SSC_CGL.css" />
+</head>
+
+<body>
+  <div class="container">
+
+    <div class="card hero">
+      <h1>SSC CGL Progress Tracker</h1>
+      <p>Subject-wise syllabus status</p>
+      <div class="legend">
+        <span><b class="dot green">🟢</b> Fully Completed</span>
+        <span><b class="dot yellow">🟡</b> Partially Completed</span>
+        <span><b class="dot red">🔴</b> Not Started / No Evidence</span>
+        <span><b class="dot white">⚪</b> Practice / Revision Pending</span>
+      </div>
+    </div>
+
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-number" id="completedCount">0</div>
+        <div>Completed</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number" id="partialCount">0</div>
+        <div>Partial</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number" id="notStartedCount">0</div>
+        <div>Not Started</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number" id="practiceCount">0</div>
+        <div>Practice / Revision</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="section-header">
+        <h2>Overall Progress</h2>
+        <span id="progressPercent">0%</span>
+      </div>
+      <div class="progress-bar">
+        <div class="progress-fill" id="progressFill"></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Syllabus</h2>
+
+      <div class="table-wrapper">
+        <table class="syllabus-table">
+          <thead>
+            <tr>
+              <th>English</th>
+              <th>Maths</th>
+              <th>GA</th>
+              <th>Reasoning</th>
+            </tr>
+          </thead>
+          <tbody id="syllabusBody"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Subject Summary</h2>
+      <div class="subject-grid" id="subjectSummary"></div>
+    </div>
+
+  </div>
+
+  <script src="SSC_CGL.js"></script>
+</body>
+</html>
