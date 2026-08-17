@@ -17,3 +17,10 @@ defaults:
       type: "courses"   
     values:
       layout: default
+      
+exclude:
+  - Ruby40-x64
+  - vendor
+  - _site
+  - .jekyll-cache
+  - .sass-cache
