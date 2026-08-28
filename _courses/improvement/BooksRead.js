@@ -73,6 +73,20 @@ const books = [
 }
 ];
 
+const futureBooks=[
+{
+    title: "Deep work by Cal Newport",
+    category: ["Self-Help"]
+},
+{
+    title: "Range: generalists triumph ina specialized world by David Epstein",
+    category: ["Self-Help","Career Development"]
+},
+{
+    title: "I will teach you to be rich by Ramit Sethi",
+    category: ["Finance"]
+}
+]
 const dailyReading = {
     "2026-05-01": 7,
     "2026-05-02": 6,
@@ -393,4 +407,15 @@ new Chart(topicCtx, {
     }
 });
 
+//futureBooks
+const futureReads = document.getElementById("futureReads");
+futureBooks.forEach(book => {
+    const row = document.createElement("tr");
 
+    row.innerHTML = `
+        <td class="book-title">${book.title}</td>
+        <td>${book.category.join(", ")}</td>
+    `;
+
+    futureReads.appendChild(row);
+});
