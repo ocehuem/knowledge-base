@@ -14,6 +14,8 @@ Revision:
       url: /courses/Revision/datastructures.html
     - title: "Bit Wise Operations"
       url: /courses/Revision/bitWiseOperations.html
+    - title: "Shell"
+      url: /courses/Revision/shell.html
     - title: "Basic Web Architecture & Databases"
       url: /courses/Revision/oneServerTwoServer.html
     - title: "MySQL"

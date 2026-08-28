@@ -1,0 +1,1387 @@
+---
+layout: default
+title: Shell
+---
+
+<link rel="stylesheet" href="Marticle.css">
+
+<div class="article">
+
+    <p>
+        <strong>Topic:</strong>
+        Shell, terminal, Bash, command execution, arguments, quoting, globbing,
+        regular expressions, filesystem navigation, <code>find</code>,
+        <code>awk</code>, pipelines, redirection, conditionals, loops,
+        Bash scripts, permissions, and executable files.
+    </p>
+
+    <h2>1. What is a Shell?</h2>
+
+    <ul>
+        <li>A <strong>shell</strong> is a program that lets you interact with a computer by entering commands and
+            receiving their output.</li>
+        <li>It provides a <strong>textual interface</strong> to the computer.</li>
+        <li>The shell interprets commands and controls how programs are executed.</li>
+        <li>The shell runs <strong>inside a terminal</strong>. The terminal provides the interface/window, while the
+            shell performs command-line processing.</li>
+    </ul>
+
+    <div class="key">
+        <strong>Remember:</strong>
+        Terminal ≠ Shell.
+        The terminal provides the environment for text input/output;
+        the shell interprets and executes commands.
+    </div>
+
+
+    <h2>2. Why Learn the Shell?</h2>
+
+    <ul>
+        <li><strong>Speed:</strong> many operations can be performed with fewer keystrokes than GUI interaction.</li>
+        <li><strong>Automation:</strong> Bash can be used as a programming language to automate tasks.</li>
+        <li><strong>Composition:</strong> output from one program can be passed to another using pipelines.</li>
+        <li><strong>Open source:</strong> building, installing, and running many tools is commonly done through the
+            shell.</li>
+        <li><strong>CI:</strong> shell commands are widely used in software build and test pipelines.</li>
+    </ul>
+
+
+    <h2>3. Common Shells</h2>
+
+    <table>
+        <tr>
+            <th>Shell</th>
+            <th>Key point</th>
+        </tr>
+        <tr>
+            <td><code>bash</code></td>
+            <td>Bourne Again SHell; commonly used on Linux and the focus of this material.</td>
+        </tr>
+        <tr>
+            <td><code>zsh</code></td>
+            <td>Bash-compatible shell with additional usability features; common on macOS.</td>
+        </tr>
+        <tr>
+            <td><code>fish</code></td>
+            <td>Shell designed with command-line usability in mind.</td>
+        </tr>
+        <tr>
+            <td>Windows batch</td>
+            <td>Windows command environment with syntax different from Bash.</td>
+        </tr>
+        <tr>
+            <td>PowerShell</td>
+            <td>Modern Windows shell with a different programming model from Bash.</td>
+        </tr>
+    </table>
+
+    <p>
+        For Bash-focused work on Windows, use <strong>WSL</strong> or a Linux virtual machine.
+    </p>
+
+
+    <h2>4. Understanding the Prompt</h2>
+
+    <p>A typical shell prompt communicates information about the current shell context:</p>
+
+    <pre>john@XOS:~$</pre>
+
+    <ul>
+        <li><code>john</code> → username</li>
+        <li><code>XOS</code> → hostname</li>
+        <li><code>~</code> → home directory</li>
+        <li><code>$</code> → ordinary/non-root user</li>
+    </ul>
+
+
+    <h2>5. Running Commands</h2>
+
+    <p>The simplest command is the name of a program:</p>
+
+    <pre>date</pre>
+
+    <p>Commands can receive <strong>arguments</strong>:</p>
+
+    <pre>echo hello world</pre>
+
+    <ul>
+        <li><code>echo</code> → command/program</li>
+        <li><code>hello</code> → first argument</li>
+        <li><code>world</code> → second argument</li>
+    </ul>
+
+
+    <h2>6. Bash Argument Parsing</h2>
+
+    <ul>
+        <li>Input is normally split at <strong>whitespace boundaries</strong>.</li>
+        <li>Each whitespace-separated word becomes an argument.</li>
+        <li>The first word identifies the command/program to execute.</li>
+    </ul>
+
+    <pre>echo hello world</pre>
+
+    <p>Conceptually:</p>
+
+    <pre>
+command = echo
+arg1    = hello
+arg2    = world
+</pre>
+
+    <div class="note">
+        <strong>Important:</strong>
+        Multiple spaces normally act as separators. They do not necessarily remain part of an argument.
+    </div>
+
+
+    <h2>7. Quoting and Escaping</h2>
+
+    <p>
+        Use quotes when whitespace or special characters need to remain part of one argument.
+    </p>
+
+    <pre>echo "hello     world"</pre>
+
+    <p>
+        The spaces inside the quotes are preserved as part of one argument.
+    </p>
+
+    <p>
+        A <strong>backslash (<code>\</code>)</strong> is an escape character.
+        It prevents the shell from treating the following character as special.
+    </p>
+
+    <pre>echo hello\ world</pre>
+
+    <p>
+        The escaped space becomes a literal space inside the argument.
+    </p>
+
+    <h3>Common quoting problems</h3>
+
+    <ul>
+        <li>Unterminated quotes can cause Bash to display a <strong>continuation prompt</strong> and wait for more
+            input.</li>
+        <li>Paths containing spaces require appropriate quoting or escaping.</li>
+        <li>Correct argument parsing becomes increasingly important as command lines become more complex.</li>
+    </ul>
+
+
+    <h2>8. <code>man</code> — Manual Pages</h2>
+
+    <p>
+        <code>man</code> displays detailed documentation for a command.
+    </p>
+
+    <pre>
+man echo
+man date
+man bash
+man find
+man test
+</pre>
+
+    <p>
+        Manual pages can contain descriptions, options, usage information, examples,
+        exit statuses, and other technical details.
+    </p>
+
+
+    <h2>9. <code>--help</code> / <code>-h</code></h2>
+
+    <p>
+        Many commands provide a shorter usage/help summary:
+    </p>
+
+    <pre>date --help</pre>
+
+    <p>Some commands also support:</p>
+
+    <pre>command -h</pre>
+
+    <div class="key">
+        <strong>Revision shortcut:</strong>
+        Use <code>man command</code> for detailed documentation;
+        try <code>command --help</code> for a shorter overview.
+    </div>
+
+
+    <h2>10. <code>cd</code> — Change Directory</h2>
+
+    <p>
+        <code>cd</code> changes the shell's <strong>current working directory</strong>.
+    </p>
+
+    <pre>cd /bin</pre>
+
+    <p>
+        The shell prompt may change to reflect the new location.
+    </p>
+
+
+    <h2>11. Absolute vs Relative Paths</h2>
+
+    <h3>Absolute Path</h3>
+
+    <p>
+        An absolute path starts from the filesystem root.
+    </p>
+
+    <pre>/home/john/dev/project</pre>
+
+    <h3>Relative Path</h3>
+
+    <p>
+        A relative path does not start with <code>/</code>.
+        It is resolved relative to the current working directory.
+    </p>
+
+    <pre>cd bin</pre>
+
+    <table>
+        <tr>
+            <th>Path</th>
+            <th>Meaning</th>
+        </tr>
+        <tr>
+            <td><code>/bin</code></td>
+            <td>Absolute path to <code>bin</code> under the filesystem root.</td>
+        </tr>
+        <tr>
+            <td><code>bin</code></td>
+            <td>Relative path: look for <code>bin</code> inside the current directory.</td>
+        </tr>
+    </table>
+
+
+    <h2>12. Special Path Components</h2>
+
+    <ul>
+        <li><code>.</code> → current directory</li>
+        <li><code>..</code> → parent directory, one level up</li>
+        <li><code>~</code> → home directory</li>
+    </ul>
+
+    <pre>
+cd .
+cd ..
+cd ../6858
+</pre>
+
+    <p>
+        For example, if you are inside one project directory and want to move to
+        a sibling directory:
+    </p>
+
+    <pre>cd ../6858</pre>
+
+
+    <h2>13. Path Navigation — Mental Model</h2>
+
+    <ul>
+        <li><strong><code>/</code></strong> = filesystem root</li>
+        <li><strong><code>~</code></strong> = home directory</li>
+        <li><strong><code>.</code></strong> = current directory</li>
+        <li><strong><code>..</code></strong> = parent directory</li>
+        <li><strong>Absolute path</strong> = starts from root</li>
+        <li><strong>Relative path</strong> = starts from the current working directory</li>
+    </ul>
+
+
+    <h2>14. <code>PATH</code> — How Commands Are Found</h2>
+
+    <p>
+        <code>PATH</code> is an environment variable containing directories
+        where executable programs may be found.
+    </p>
+
+    <pre>echo $PATH</pre>
+
+    <p>Example:</p>
+
+    <pre>/usr/local/bin:/usr/bin:/bin</pre>
+
+    <p>
+        When you type:
+    </p>
+
+    <pre>date</pre>
+
+    <p>
+        the shell searches directories in <code>PATH</code>, in order,
+        and runs the first matching executable.
+    </p>
+
+    <div class="note">
+        The shell searches directories listed in <code>PATH</code>.
+        It does not normally search the parent directories of the current directory.
+    </div>
+
+    <h3><code>which</code></h3>
+
+    <p>
+        <code>which</code> shows where a command is found in <code>PATH</code>.
+    </p>
+
+    <pre>
+which date
+/usr/bin/date
+</pre>
+
+    <p>
+        If multiple matches exist, <code>-a</code> can show all matches:
+    </p>
+
+    <pre>which -a sh</pre>
+
+
+    <h2>15. <code>ls</code> — List Directory Contents</h2>
+
+    <p>
+        <code>ls</code> lists directory contents.
+        Without an argument, it lists the current working directory.
+    </p>
+
+    <pre>
+ls
+ls /bin
+</pre>
+
+    <div class="key">
+        <code>cd</code> → change where you are<br>
+        <code>ls</code> → see what is there
+    </div>
+
+
+    <h2>16. Globs vs Regular Expressions</h2>
+
+    <p>
+        <strong>Globs</strong> and <strong>regular expressions</strong> are both pattern languages,
+        but they are used differently.
+    </p>
+
+    <table>
+        <tr>
+            <th>Feature</th>
+            <th>Glob</th>
+            <th>Regular Expression</th>
+        </tr>
+        <tr>
+            <td>Purpose</td>
+            <td>Simple pattern matching, commonly for paths/files</td>
+            <td>General text pattern matching</td>
+        </tr>
+        <tr>
+            <td>Typical syntax</td>
+            <td><code>*</code>, <code>?</code>, <code>{}</code></td>
+            <td>More expressive pattern operators such as character classes and repetitions</td>
+        </tr>
+        <tr>
+            <td>Who interprets it?</td>
+            <td>Often the shell</td>
+            <td>Usually the program such as <code>grep</code> or <code>sed</code></td>
+        </tr>
+        <tr>
+            <td>Typical use</td>
+            <td>Matching filenames/paths</td>
+            <td>Matching text inside input</td>
+        </tr>
+    </table>
+
+    <h3>Globs are commonly expanded by the shell</h3>
+
+    <p>
+        Consider a command using a path pattern:
+    </p>
+
+    <pre>ls *.txt</pre>
+
+    <p>
+        The shell expands <code>*.txt</code> before <code>ls</code> runs.
+        If the directory contains <code>a.txt</code> and <code>b.txt</code>,
+        the command effectively receives:
+    </p>
+
+    <pre>ls a.txt b.txt</pre>
+
+    <p>
+        The glob itself is therefore not necessarily understood by <code>ls</code>;
+        the shell performs the expansion.
+    </p>
+
+    <div class="note">
+        <strong>Important distinction:</strong>
+        A program can also implement glob matching itself. In that case,
+        the shell may not expand the pattern first.
+    </div>
+
+    <h3>Globs and directory separators</h3>
+
+    <p>
+        In path globs, <code>/</code> has structural meaning.
+        For example:
+    </p>
+
+    <pre>*/file.txt</pre>
+
+    <p>
+        The <code>*</code> matches a directory component, while
+        <code>file.txt</code> is matched inside that directory.
+    </p>
+
+    <h3>Regular expressions</h3>
+
+    <p>
+        Programs such as <code>grep</code> and <code>sed</code> commonly accept
+        regular expressions as arguments.
+        Regular expressions operate on text; they do not inherently understand
+        concepts such as directories and files.
+    </p>
+
+    <div class="key">
+        <strong>Remember:</strong>
+        Glob = simpler pattern language, commonly used for filesystem paths.<br>
+        Regex = more expressive text-pattern language, commonly interpreted by programs such as
+        <code>grep</code> and <code>sed</code>.
+    </div>
+
+
+    <h2>17. <code>find</code> — Finding Files</h2>
+
+    <p>
+        <code>find</code> searches a directory hierarchy for files and directories
+        matching specified conditions.
+    </p>
+
+    <p>
+        It is <strong>recursive by default</strong>: when given a path,
+        it searches that path and everything below it.
+    </p>
+
+    <h3>Basic structure</h3>
+
+    <pre>find &lt;path&gt; &lt;conditions&gt;</pre>
+
+    <p>
+        Example: search the Downloads directory for files whose names end in
+        <code>.zip</code>:
+    </p>
+
+    <pre>find ~/Downloads -type f -name "*.zip"</pre>
+
+    <ul>
+        <li><code>~/Downloads</code> → directory to search</li>
+        <li><code>-type f</code> → match regular files</li>
+        <li><code>-name "*.zip"</code> → match names ending in <code>.zip</code></li>
+    </ul>
+
+    <div class="note">
+        <strong>Why quote the glob?</strong>
+        Quoting <code>"*.zip"</code> prevents the current shell from expanding the glob.
+        This allows <code>find</code> to receive the pattern and perform its own filename matching.
+    </div>
+
+    <h3>Time-based filtering</h3>
+
+    <p>
+        <code>find</code> can filter files based on modification time.
+    </p>
+
+    <pre>find ~/Downloads -type f -mtime +30</pre>
+
+    <p>
+        This searches for files whose modification time satisfies the
+        <code>-mtime +30</code> condition.
+    </p>
+
+    <h3>Other useful <code>find</code> filters</h3>
+
+    <ul>
+        <li>File type</li>
+        <li>Filename/path pattern</li>
+        <li>File size</li>
+        <li>Modification time</li>
+        <li>Directories</li>
+        <li>Symbolic links</li>
+        <li>Maximum search depth</li>
+    </ul>
+
+    <h3><code>-maxdepth</code></h3>
+
+    <p>
+        <code>-maxdepth</code> limits how deeply <code>find</code> recursively searches.
+    </p>
+
+    <pre>find . -maxdepth 1 -type f</pre>
+
+    <p>
+        The exact placement of <code>-maxdepth</code> matters in <code>find</code>
+        expressions; consult <code>man find</code> when constructing more complex commands.
+    </p>
+
+
+    <h2>18. <code>find -exec</code> — Run a Command for Each Match</h2>
+
+    <p>
+        The <code>-exec</code> option allows <code>find</code> to execute another
+        program for every matching path.
+    </p>
+
+    <pre>find ~/Downloads -type f -size +100M -exec ls -lh {} \;</pre>
+
+    <p>
+        Conceptually:
+    </p>
+
+    <ol>
+        <li>Search <code>~/Downloads</code>.</li>
+        <li>Keep only regular files: <code>-type f</code>.</li>
+        <li>Keep files larger than the specified size: <code>-size +100M</code>.</li>
+        <li>Run <code>ls -lh</code> for every match.</li>
+        <li>Replace <code>{}</code> with the matching path.</li>
+    </ol>
+
+    <h3><code>{}</code></h3>
+
+    <p>
+        Inside <code>-exec</code>, <code>{}</code> represents the path found by
+        <code>find</code>.
+    </p>
+
+    <p>
+        For example, if <code>find</code> discovers:
+    </p>
+
+    <pre>/home/john/Downloads/large.iso</pre>
+
+    <p>
+        the executed command is conceptually:
+    </p>
+
+    <pre>ls -lh /home/john/Downloads/large.iso</pre>
+
+    <h3><code>\;</code></h3>
+
+    <p>
+        The <code>\;</code> marks the end of the argument list belonging to
+        <code>-exec</code>.
+        The backslash prevents the shell from interpreting the semicolon itself.
+    </p>
+
+    <div class="warning">
+        <strong>Danger:</strong>
+        <code>-exec</code> can execute destructive commands.
+        For example:
+    </div>
+
+    <pre>find ~/Downloads -type f -size +100M -exec rm {} \;</pre>
+
+    <p>
+        This could delete every matching file.
+        Verify the filters carefully before replacing a harmless command such as
+        <code>ls</code> with <code>rm</code>.
+    </p>
+
+    <h3>Combining <code>find</code> with <code>grep</code></h3>
+
+    <pre>find . -type f -name "*.md" -exec grep -l "TODO" {} \;</pre>
+
+    <p>
+        This finds Markdown files in the current directory hierarchy and runs
+        <code>grep</code> on each one.
+    </p>
+
+    <p>
+        The <code>-l</code> option makes <code>grep</code> print the names of matching
+        files rather than the matching lines.
+    </p>
+
+    <div class="key">
+        <strong>Useful mental model:</strong>
+        <code>find</code> selects files;
+        <code>-exec</code> applies another program to those selected files.
+    </div>
+
+    <h3>Modern alternatives</h3>
+
+    <p>
+        Tools such as <code>fd</code> provide a more ergonomic interface for many
+        common file-search tasks.
+        <code>find</code> remains important because it is widely available and highly expressive.
+    </p>
+
+
+    <h2>19. <code>awk</code> — Parsing Structured Text</h2>
+
+    <p>
+        <code>awk</code> is a command-line text-processing tool with its own
+        programming language.
+        Whereas <code>sed</code> is commonly used for editing/transformation,
+        <code>awk</code> is particularly useful for parsing and extracting data.
+    </p>
+
+    <h3>Records and fields</h3>
+
+    <p>
+        By default, <code>awk</code> treats:
+    </p>
+
+    <ul>
+        <li>Each line as a <strong>record</strong>.</li>
+        <li>Whitespace-separated values as <strong>fields</strong>.</li>
+    </ul>
+
+    <p>
+        For example:
+    </p>
+
+    <pre>awk '{print $2}' data</pre>
+
+    <p>
+        This prints the second field of every line.
+        <code>$2</code> represents the second field.
+    </p>
+
+    <h3>Changing the field separator</h3>
+
+    <p>
+        The field separator can be changed with <code>-F</code>.
+        For example, using a comma:
+    </p>
+
+    <pre>awk -F, '{print $2}' data.csv</pre>
+
+    <p>
+        The file is now treated as comma-separated data:
+        each line is a record and comma-separated values are fields.
+    </p>
+
+    <div class="key">
+        <strong>Remember:</strong>
+        <code>awk</code> is particularly useful for extracting columns or transforming
+        semi-structured text.
+    </div>
+
+
+    <h2>20. Pipes — Connecting Commands</h2>
+
+    <p>
+        The <strong>pipe operator</strong> <code>|</code> is a Bash language construct.
+        It connects the output of one program to the input of another.
+    </p>
+
+    <pre>command1 | command2</pre>
+
+    <p>
+        Conceptually:
+    </p>
+
+    <pre>
+command1
+   │
+   │ stdout
+   ▼
+command2
+   │
+   │ stdout
+   ▼
+terminal
+</pre>
+
+    <p>
+        Example:
+    </p>
+
+    <pre>grep "TODO" notes.txt | sort</pre>
+
+    <p>
+        The output from <code>grep</code> becomes the input to <code>sort</code>.
+    </p>
+
+    <div class="key">
+        <strong>Core idea:</strong>
+        A pipeline allows multiple small programs to be composed into a larger operation.
+    </div>
+
+
+    <h2>21. Input and Output Redirection</h2>
+
+    <h3>Output redirection: <code>&gt;</code></h3>
+
+    <p>
+        <code>&gt;</code> redirects standard output into a file.
+    </p>
+
+    <pre>date &gt; date.txt</pre>
+
+    <p>
+        Instead of displaying the output on the terminal, the result is written to
+        <code>date.txt</code>.
+    </p>
+
+    <div class="warning">
+        <strong>Important:</strong>
+        <code>&gt;</code> overwrites the destination file.
+    </div>
+
+    <h3>Append: <code>&gt;&gt;</code></h3>
+
+    <p>
+        <code>&gt;&gt;</code> appends output to the file instead of replacing its contents.
+    </p>
+
+    <pre>date &gt;&gt; date.txt</pre>
+
+    <p>
+        Running this repeatedly adds additional lines to the file.
+    </p>
+
+    <h3>Input redirection: <code>&lt;</code></h3>
+
+    <p>
+        <code>&lt;</code> redirects standard input from a file.
+    </p>
+
+    <pre>cat &lt; date.txt</pre>
+
+    <p>
+        The program receives its input from <code>date.txt</code> rather than from
+        interactive terminal input.
+    </p>
+
+    <table>
+        <tr>
+            <th>Operator</th>
+            <th>Purpose</th>
+        </tr>
+        <tr>
+            <td><code>|</code></td>
+            <td>Connect stdout of one program to stdin of another.</td>
+        </tr>
+        <tr>
+            <td><code>&gt;</code></td>
+            <td>Write stdout to a file, replacing its contents.</td>
+        </tr>
+        <tr>
+            <td><code>&gt;&gt;</code></td>
+            <td>Append stdout to a file.</td>
+        </tr>
+        <tr>
+            <td><code>&lt;</code></td>
+            <td>Read stdin from a file.</td>
+        </tr>
+    </table>
+
+
+    <h2>22. Exit Status</h2>
+
+    <p>
+        Programs communicate whether they succeeded using an <strong>exit status</strong>.
+    </p>
+
+    <ul>
+        <li><code>0</code> → success</li>
+        <li>non-zero → failure or another non-success condition</li>
+    </ul>
+
+    <p>
+        For <code>grep</code> specifically:
+    </p>
+
+    <ul>
+        <li><code>0</code> → a line was selected/matched</li>
+        <li><code>1</code> → no lines were selected</li>
+        <li><code>2</code> → an error occurred</li>
+    </ul>
+
+    <div class="note">
+        <strong>Important:</strong>
+        In shell programming, a command can therefore act as a condition.
+        Whether it is considered true or false is determined by its exit status.
+    </div>
+
+
+    <h2>23. Bash Conditionals — <code>if</code></h2>
+
+    <p>
+        Bash can use a command's exit status as the condition of an
+        <code>if</code> statement.
+    </p>
+
+    <pre>
+if grep "2026" date.txt
+then
+    echo "It's 2026"
+fi
+</pre>
+
+    <p>
+        The commands inside the <code>then</code> branch execute only when
+        <code>grep</code> exits successfully.
+    </p>
+
+    <div class="key">
+        <strong>Syntax detail:</strong>
+        Bash closes an <code>if</code> block with <code>fi</code>.
+    </div>
+
+
+    <h2>24. <code>while</code> Loops</h2>
+
+    <p>
+        A <code>while</code> loop repeatedly executes commands while its condition
+        remains successful.
+    </p>
+
+    <pre>
+while grep "2026" date.txt
+do
+    echo "It's still 2026"
+    sleep 10
+done
+</pre>
+
+    <p>
+        <code>sleep 10</code> pauses execution for 10 seconds before the next iteration.
+    </p>
+
+    <p>
+        The loop stops when the condition command exits unsuccessfully.
+    </p>
+
+
+    <h2>25. <code>for</code> Loops</h2>
+
+    <p>
+        A Bash <code>for</code> loop iterates over a whitespace-separated list of words.
+    </p>
+
+    <pre>
+for var_name in A B C
+do
+    echo "$var_name"
+done
+</pre>
+
+    <p>
+        The variable takes the values:
+    </p>
+
+    <pre>
+A
+B
+C
+</pre>
+
+    <h3>Generating a numeric sequence</h3>
+
+    <p>
+        Command substitution can be used to generate the list dynamically.
+    </p>
+
+    <pre>
+for i in $(seq 1 10)
+do
+    echo "$i"
+done
+</pre>
+
+    <p>
+        <code>seq 1 10</code> produces the numbers from 1 through 10.
+        Bash command substitution:
+    </p>
+
+    <pre>$(seq 1 10)</pre>
+
+    <p>
+        replaces the expression with the command's output, after which the
+        resulting words are used by the <code>for</code> loop.
+    </p>
+
+    <div class="note">
+        <strong>Distinction:</strong>
+        Command substitution turns command output into shell text/arguments.
+        A pipe instead connects one program's stdout to another program's stdin.
+    </div>
+
+
+    <h2>26. <code>test</code> and <code>[ ]</code></h2>
+
+    <p>
+        When a Bash conditional needs to compare values or test filesystem properties,
+        the <code>test</code> command can be used.
+    </p>
+
+    <p>
+        The command also has the alternate syntax <code>[ ... ]</code>.
+        They refer to the same underlying command interface.
+    </p>
+
+    <pre>
+if [ "$hello" = "$world" ]
+then
+    echo "equal"
+else
+    echo "not equal"
+fi
+</pre>
+
+    <h3>Testing files</h3>
+
+    <p>
+        The <code>-f</code> test checks whether the specified path is a regular file.
+    </p>
+
+    <pre>
+if [ -f date.txt ]
+then
+    echo "The date file exists"
+fi
+</pre>
+
+    <p>
+        <code>test</code> supports many other conditions, including comparisons
+        and filesystem checks.
+        Use:
+    </p>
+
+    <pre>man test</pre>
+
+    <h3><code>[[ ... ]]</code></h3>
+
+    <p>
+        Bash also provides the built-in conditional syntax:
+    </p>
+
+    <pre>[[ ... ]]</pre>
+
+    <p>
+        It has similar purposes to <code>[ ... ]</code> but is a Bash language
+        construct with behavior designed to reduce some common quoting and parsing mistakes.
+    </p>
+
+
+    <h2>27. Shell Built-ins vs Programs</h2>
+
+    <p>
+        Not everything that looks like a command is a separate executable program.
+        Some constructs are built directly into Bash.
+    </p>
+
+    <table>
+        <tr>
+            <th>Construct</th>
+            <th>Type</th>
+        </tr>
+        <tr>
+            <td><code>if</code></td>
+            <td>Bash language construct</td>
+        </tr>
+        <tr>
+            <td><code>while</code></td>
+            <td>Bash language construct</td>
+        </tr>
+        <tr>
+            <td><code>|</code></td>
+            <td>Bash shell operator</td>
+        </tr>
+        <tr>
+            <td><code>cd</code></td>
+            <td>Shell built-in</td>
+        </tr>
+        <tr>
+            <td><code>test</code></td>
+            <td>Command; also exposed through <code>[ ... ]</code></td>
+        </tr>
+    </table>
+
+    <div class="key">
+        <strong>Remember:</strong>
+        <code>if</code>, <code>while</code>, and <code>|</code> are not standalone
+        programs. They are part of the shell language.
+    </div>
+
+
+    <h2>28. <code>Ctrl+C</code> — Interrupting a Command</h2>
+
+    <p>
+        <code>Ctrl+C</code> is commonly used to interrupt the current foreground process.
+    </p>
+
+    <pre>Ctrl+C</pre>
+
+    <p>
+        When pressed, the terminal may display <code>^C</code>.
+        This is simply the terminal's representation of the control character;
+        <code>^C</code> is not itself a shell command.
+    </p>
+
+    <div class="note">
+        <strong>Use:</strong>
+        Press <code>Ctrl+C</code> to cancel a running command or interrupt a foreground process.
+    </div>
+
+
+    <h2>29. Bash Scripts</h2>
+
+    <p>
+        Long command sequences can be placed into a file.
+        That file can then be executed as a <strong>Bash script</strong>.
+    </p>
+
+    <p>
+        A Bash script uses the same shell language available interactively:
+        commands, pipes, redirection, conditionals, loops, variables, and other
+        Bash constructs.
+    </p>
+
+    <p>
+        When Bash executes a script, it processes the commands in the file from
+        top to bottom.
+    </p>
+
+
+    <h2>30. Shebang — <code>#!</code></h2>
+
+    <p>
+        An executable script can begin with a <strong>shebang</strong>,
+        also called <strong>hashbang</strong>:
+    </p>
+
+    <pre>#!/bin/sh</pre>
+
+    <p>
+        The shebang specifies the interpreter that should execute the script.
+    </p>
+
+    <p>
+        For example:
+    </p>
+
+    <pre>#!/usr/bin/python</pre>
+
+    <p>
+        tells the system to use that Python interpreter for the script.
+    </p>
+
+    <p>
+        The same mechanism can be used for languages that can be directly interpreted
+        from textual source, such as Python, Ruby, R, or Julia.
+    </p>
+
+    <div class="note">
+        <strong>Important:</strong>
+        A language requiring a separate compilation workflow, such as conventional
+        Java compilation, cannot simply be executed by passing the source file
+        directly to an interpreter in the same way.
+    </div>
+
+
+    <h2>31. File Permissions</h2>
+
+    <p>
+        Executing a script requires the file to have the appropriate
+        <strong>execute permission</strong>.
+    </p>
+
+    <p>
+        Use <code>ls -l</code> to inspect file permissions:
+    </p>
+
+    <pre>ls -l lecture.sh</pre>
+
+    <p>
+        Permission symbols include:
+    </p>
+
+    <ul>
+        <li><code>r</code> → read</li>
+        <li><code>w</code> → write</li>
+        <li><code>x</code> → execute</li>
+    </ul>
+
+    <h3><code>chmod</code></h3>
+
+    <p>
+        <code>chmod</code> changes file permissions.
+        To add execute permission:
+    </p>
+
+    <pre>chmod +x lecture.sh</pre>
+
+    <p>
+        After adding the execute bit, the script can be executed directly if
+        its interpreter/shebang and path are valid.
+    </p>
+
+
+    <h2>32. <code>./</code> — Executing a Program in the Current Directory</h2>
+
+    <p>
+        Even when a script exists in the current directory, typing only its filename
+        does not normally execute it:
+    </p>
+
+    <pre>lecture.sh</pre>
+
+    <p>
+        The shell interprets this as a command name and searches the directories
+        in <code>PATH</code>.
+    </p>
+
+    <p>
+        To explicitly execute the file from the current directory, use:
+    </p>
+
+    <pre>./lecture.sh</pre>
+
+    <p>
+        Here <code>./</code> means:
+        <strong>look for this executable in the current directory.</strong>
+    </p>
+
+    <div class="warning">
+        <strong>Why is the current directory not normally in <code>PATH</code>?</strong>
+        This is a safety measure. If the current directory were searched automatically,
+        an unexpected executable named like a trusted command could be executed instead.
+    </div>
+
+    <p>
+        For example, if the current directory contained a malicious file named
+        <code>ls</code>, automatically searching the current directory could cause
+        <code>ls</code> to execute that file instead of the intended system program.
+    </p>
+
+
+    <h2>33. Useful Shell Commands &amp; Shortcuts</h2>
+
+    <table>
+        <tr>
+            <th>Command / Shortcut</th>
+            <th>Purpose</th>
+            <th>Example</th>
+        </tr>
+        <tr>
+            <td><code>date</code></td>
+            <td>Display date/time</td>
+            <td><code>date</code></td>
+        </tr>
+        <tr>
+            <td><code>echo</code></td>
+            <td>Print arguments</td>
+            <td><code>echo hello</code></td>
+        </tr>
+        <tr>
+            <td><code>man</code></td>
+            <td>Open command manual</td>
+            <td><code>man find</code></td>
+        </tr>
+        <tr>
+            <td><code>--help</code></td>
+            <td>Show command help</td>
+            <td><code>date --help</code></td>
+        </tr>
+        <tr>
+            <td><code>cd</code></td>
+            <td>Change directory</td>
+            <td><code>cd /bin</code></td>
+        </tr>
+        <tr>
+            <td><code>ls</code></td>
+            <td>List directory contents</td>
+            <td><code>ls</code></td>
+        </tr>
+        <tr>
+            <td><code>which</code></td>
+            <td>Show command location</td>
+            <td><code>which date</code></td>
+        </tr>
+        <tr>
+            <td><code>find</code></td>
+            <td>Search directory hierarchies</td>
+            <td><code>find . -type f</code></td>
+        </tr>
+        <tr>
+            <td><code>grep</code></td>
+            <td>Search text using patterns</td>
+            <td><code>grep "TODO" file.txt</code></td>
+        </tr>
+        <tr>
+            <td><code>sed</code></td>
+            <td>Transform/edit text streams</td>
+            <td><code>sed 's/old/new/' file.txt</code></td>
+        </tr>
+        <tr>
+            <td><code>awk</code></td>
+            <td>Parse and extract structured text</td>
+            <td><code>awk '{print $2}' data</code></td>
+        </tr>
+        <tr>
+            <td><code>history</code></td>
+            <td>Show previous commands</td>
+            <td><code>history</code></td>
+        </tr>
+        <tr>
+            <td><code>chmod</code></td>
+            <td>Change file permissions</td>
+            <td><code>chmod +x script.sh</code></td>
+        </tr>
+        <tr>
+            <td><code>Ctrl+C</code></td>
+            <td>Interrupt foreground process</td>
+            <td>Stop a running command</td>
+        </tr>
+        <tr>
+            <td><code>Ctrl+D</code></td>
+            <td>Send EOF; exits shell at an empty prompt</td>
+            <td>End interactive input</td>
+        </tr>
+        <tr>
+            <td><code>exit</code></td>
+            <td>Exit the shell</td>
+            <td><code>exit</code></td>
+        </tr>
+        <tr>
+            <td><code>q</code></td>
+            <td>Quit programs such as <code>man</code>/<code>less</code></td>
+            <td>Press <code>q</code></td>
+        </tr>
+        <tr>
+            <td><code>Esc</code> + <code>:q</code></td>
+            <td>Quit Vim</td>
+            <td>Press <code>Esc</code>, type <code>:q</code>, Enter</td>
+        </tr>
+        <tr>
+            <td><code>↑ / ↓</code></td>
+            <td>Navigate command history</td>
+            <td>Recall previous command</td>
+        </tr>
+        <tr>
+            <td><code>Tab</code></td>
+            <td>Autocomplete commands, filenames, and paths</td>
+            <td><code>cd bi&lt;Tab&gt;</code></td>
+        </tr>
+    </table>
+
+    <div class="note">
+        <strong>Important:</strong>
+        <code>q</code>, <code>:q</code>, and <code>Esc</code> are
+        <strong>program-specific</strong>, not universal shell commands.
+        <code>Ctrl+C</code> is the general shortcut for interrupting a
+        foreground process.
+    </div>
+
+
+    <h2>34. Quick Revision</h2>
+
+    <table>
+        <tr>
+            <th>Concept</th>
+            <th>Remember</th>
+        </tr>
+        <tr>
+            <td>Terminal</td>
+            <td>Interface/window that provides input and output.</td>
+        </tr>
+        <tr>
+            <td>Shell</td>
+            <td>Interprets commands and provides the command-line language.</td>
+        </tr>
+        <tr>
+            <td>Argument</td>
+            <td>Input passed to a command.</td>
+        </tr>
+        <tr>
+            <td>Absolute path</td>
+            <td>Starts from <code>/</code>.</td>
+        </tr>
+        <tr>
+            <td>Relative path</td>
+            <td>Resolved from the current directory.</td>
+        </tr>
+        <tr>
+            <td><code>PATH</code></td>
+            <td>Directories searched for executable commands.</td>
+        </tr>
+        <tr>
+            <td>Glob</td>
+            <td>Simple pattern language commonly used for filesystem paths.</td>
+        </tr>
+        <tr>
+            <td>Regex</td>
+            <td>More expressive text pattern language interpreted by programs such as
+                <code>grep</code>/<code>sed</code>.
+            </td>
+        </tr>
+        <tr>
+            <td><code>find</code></td>
+            <td>Recursively searches for files/directories matching conditions.</td>
+        </tr>
+        <tr>
+            <td><code>-exec</code></td>
+            <td>Runs another command for matching <code>find</code> results.</td>
+        </tr>
+        <tr>
+            <td><code>awk</code></td>
+            <td>Parses records and fields; useful for extracting structured text.</td>
+        </tr>
+        <tr>
+            <td><code>|</code></td>
+            <td>Connects stdout of one command to stdin of another.</td>
+        </tr>
+        <tr>
+            <td><code>&gt;</code></td>
+            <td>Redirects stdout and overwrites the file.</td>
+        </tr>
+        <tr>
+            <td><code>&gt;&gt;</code></td>
+            <td>Redirects stdout and appends to the file.</td>
+        </tr>
+        <tr>
+            <td>Exit status</td>
+            <td><code>0</code> normally means success; non-zero means failure/non-success.</td>
+        </tr>
+        <tr>
+            <td><code>if</code></td>
+            <td>Conditional Bash construct based on command status or tests.</td>
+        </tr>
+        <tr>
+            <td><code>while</code></td>
+            <td>Repeats while the condition succeeds.</td>
+        </tr>
+        <tr>
+            <td><code>for</code></td>
+            <td>Iterates over a list of words.</td>
+        </tr>
+        <tr>
+            <td><code>test</code> / <code>[ ]</code></td>
+            <td>Tests conditions such as comparisons and file properties.</td>
+        </tr>
+        <tr>
+            <td><code>$(...)</code></td>
+            <td>Command substitution: replace the expression with command output.</td>
+        </tr>
+        <tr>
+            <td><code>#!</code></td>
+            <td>Shebang specifying the interpreter for a script.</td>
+        </tr>
+        <tr>
+            <td><code>chmod +x</code></td>
+            <td>Adds execute permission.</td>
+        </tr>
+        <tr>
+            <td><code>./program</code></td>
+            <td>Explicitly executes a program from the current directory.</td>
+        </tr>
+    </table>
+
+    <div class="key">
+        <strong>Core mental model:</strong><br>
+        Shell parses your command → expands things such as globs →
+        executes programs → connects them with pipes/redirection →
+        uses exit statuses for control flow →
+        combines everything into reusable Bash scripts.
+    </div>
+
+</div>
