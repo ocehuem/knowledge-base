@@ -1,0 +1,1542 @@
+---
+layout: default
+title: Bitwise Operations — LeetCode Mastery
+---
+
+<link rel="stylesheet" href="Marticle.css">
+
+<div class="article">
+
+    <h1>Bitwise Operations — LeetCode Mastery</h1>
+
+    <p>
+        Bitwise operations work directly on the binary representation of integers.
+        They are extremely important in LeetCode for problems involving XOR,
+        bit manipulation, subsets, bitmasks, state compression, binary tries,
+        XOR basis, and bit DP.
+    </p>
+
+    <h2>1. Binary Representation</h2>
+
+    <p>
+        Every integer is represented internally using bits. Each bit represents
+        a power of 2.
+    </p>
+
+    <pre><code>13 = 1101
+
+  8   4   2   1
+  ↓   ↓   ↓   ↓
+  1   1   0   1
+
+13 = 1×8 + 1×4 + 0×2 + 1×1
+   = 13</code></pre>
+
+    <p>
+        Python can convert an integer to binary using <code>bin()</code>.
+    </p>
+
+    <pre><code>bin(13)
+# '0b1101'
+
+bin(13)[2:]
+# '1101'</code></pre>
+
+
+    <h2>2. Bitwise AND &amp;</h2>
+
+    <p>
+        AND produces 1 only when both corresponding bits are 1.
+    </p>
+
+    <pre><code>  1101
+&amp; 1011
+------
+  1001</code></pre>
+
+    <pre><code>13 &amp; 11
+# 9</code></pre>
+
+    <p>
+        One of the most important uses of AND is checking whether a particular
+        bit is set.
+    </p>
+
+    <pre><code>if n &amp; (1 &lt;&lt; i):
+    # ith bit is set</code></pre>
+
+
+    <h2>3. Bitwise OR |</h2>
+
+    <p>
+        OR produces 1 when at least one corresponding bit is 1.
+    </p>
+
+    <pre><code>  1101
+| 1011
+------
+  1111</code></pre>
+
+    <pre><code>13 | 11
+# 15</code></pre>
+
+    <p>
+        OR is commonly used to set bits and combine bitmasks.
+    </p>
+
+
+    <h2>4. Bitwise XOR ^</h2>
+
+    <p>
+        XOR produces 1 when the two corresponding bits are different.
+    </p>
+
+    <pre><code>0 ^ 0 = 0
+0 ^ 1 = 1
+1 ^ 0 = 1
+1 ^ 1 = 0</code></pre>
+
+    <pre><code>  1101
+^ 1011
+------
+  0110</code></pre>
+
+    <pre><code>13 ^ 11
+# 6</code></pre>
+
+    <p><strong>Important XOR identities:</strong></p>
+
+    <pre><code>x ^ x = 0
+x ^ 0 = x
+x ^ y ^ y = x</code></pre>
+
+    <p>
+        XOR is associative and commutative.
+    </p>
+
+
+    <h2>5. Bitwise NOT ~</h2>
+
+    <p>
+        NOT flips the bits of a number.
+    </p>
+
+    <pre><code>~5
+# -6</code></pre>
+
+    <p>
+        In Python:
+    </p>
+
+    <pre><code>~x = -(x + 1)</code></pre>
+
+    <pre><code>~5 == -6
+# True</code></pre>
+
+
+    <h2>6. Left Shift &lt;&lt;</h2>
+
+    <p>
+        Left shift moves bits toward the left.
+    </p>
+
+    <pre><code>5 = 0101
+
+5 &lt;&lt; 1
+= 1010
+= 10</code></pre>
+
+    <p>
+        For non-negative integers:
+    </p>
+
+    <pre><code>x &lt;&lt; k = x × 2^k</code></pre>
+
+    <pre><code>5 &lt;&lt; 1   # 10
+5 &lt;&lt; 2   # 20
+5 &lt;&lt; 3   # 40</code></pre>
+
+
+    <h2>7. Right Shift &gt;&gt;</h2>
+
+    <p>
+        Right shift moves bits toward the right.
+    </p>
+
+    <pre><code>20 = 10100
+
+20 &gt;&gt; 2
+= 00101
+= 5</code></pre>
+
+    <p>
+        For non-negative integers:
+    </p>
+
+    <pre><code>x &gt;&gt; k = x // 2^k</code></pre>
+
+
+    <h2>8. The Most Important Expression: 1 &lt;&lt; i</h2>
+
+    <p>
+        <code>1 &lt;&lt; i</code> creates a number where only bit i is set.
+    </p>
+
+    <pre><code>1 &lt;&lt; 0 = 0001 = 1
+1 &lt;&lt; 1 = 0010 = 2
+1 &lt;&lt; 2 = 0100 = 4
+1 &lt;&lt; 3 = 1000 = 8</code></pre>
+
+    <p>
+        Think of <code>1 &lt;&lt; i</code> as a bit mask for position i.
+    </p>
+
+
+    <h2>9. Check Whether Bit i Is Set</h2>
+
+    <pre><code>if n &amp; (1 &lt;&lt; i):
+    # ith bit is 1</code></pre>
+
+    <p>Example:</p>
+
+    <pre><code>n = 13
+
+13 = 1101
+
+Check bit 2:
+
+13 &amp; (1 &lt;&lt; 2)
+
+  1101
+&amp; 0100
+------
+  0100</code></pre>
+
+    <p>
+        A non-zero result means the bit is set.
+    </p>
+
+
+    <h2>10. Set Bit i</h2>
+
+    <p>
+        Make bit i equal to 1.
+    </p>
+
+    <pre><code>n |= (1 &lt;&lt; i)</code></pre>
+
+    <pre><code>n = 1001
+
+Set bit 1:
+
+  1001
+| 0010
+------
+  1011</code></pre>
+
+
+    <h2>11. Clear Bit i</h2>
+
+    <p>
+        Make bit i equal to 0.
+    </p>
+
+    <pre><code>n &amp;= ~(1 &lt;&lt; i)</code></pre>
+
+    <pre><code>n = 1011
+
+Clear bit 1:
+
+  1011
+&amp; 1101
+------
+  1001</code></pre>
+
+
+    <h2>12. Toggle Bit i</h2>
+
+    <p>
+        Toggle changes 0 to 1 and 1 to 0.
+    </p>
+
+    <pre><code>n ^= (1 &lt;&lt; i)</code></pre>
+
+
+    <h2>13. Get the Lowest Set Bit</h2>
+
+    <p>
+        One of the most important bit tricks is:
+    </p>
+
+    <pre><code>n &amp; -n</code></pre>
+
+    <pre><code>n = 12
+
+12  = 1100
+-12 = 0100
+
+12 &amp; -12
+= 0100
+= 4</code></pre>
+
+    <p>
+        This extracts the rightmost set bit.
+    </p>
+
+
+    <h2>14. Remove the Lowest Set Bit</h2>
+
+    <pre><code>n &amp;= n - 1</code></pre>
+
+    <pre><code>n = 12
+
+  1100
+&amp; 1011
+------
+  1000</code></pre>
+
+    <p>
+        This removes exactly one set bit: the lowest set bit.
+    </p>
+
+
+    <h2>15. Count Set Bits</h2>
+
+    <p>
+        Python provides <code>bit_count()</code>.
+    </p>
+
+    <pre><code>n = 13
+
+n.bit_count()
+# 3</code></pre>
+
+    <p>
+        The classic Brian Kernighan implementation is:
+    </p>
+
+    <pre><code>def count_bits(n):
+    count = 0
+
+    while n:
+        n &amp;= n - 1
+        count += 1
+
+    return count</code></pre>
+
+    <p>
+        Complexity is O(number of set bits).
+    </p>
+
+
+    <h2>16. Check Power of Two</h2>
+
+    <p>
+        A positive power of two contains exactly one set bit.
+    </p>
+
+    <pre><code>n &gt; 0 and (n &amp; (n - 1)) == 0</code></pre>
+
+    <pre><code>1  = 0001  ✓
+2  = 0010  ✓
+4  = 0100  ✓
+8  = 1000  ✓
+16 = 10000 ✓
+
+6  = 0110  ✗
+10 = 1010  ✗
+12 = 1100  ✗</code></pre>
+
+    <pre><code>class Solution:
+    def isPowerOfTwo(self, n: int) -&gt; bool:
+        return n &gt; 0 and (n &amp; (n - 1)) == 0</code></pre>
+
+
+    <h2>17. Check Odd / Even</h2>
+
+    <p>
+        The lowest bit determines whether a positive integer is odd or even.
+    </p>
+
+    <pre><code>if n &amp; 1:
+    print("odd")
+else:
+    print("even")</code></pre>
+
+    <p>
+        Last bit = 1 → odd.<br>
+        Last bit = 0 → even.
+    </p>
+
+
+    <h2>18. XOR to Find a Unique Number</h2>
+
+    <p>
+        If every number occurs twice except one, XOR can find the unique number.
+    </p>
+
+    <pre><code>nums = [4, 1, 2, 1, 2]
+
+ans = 0
+
+for x in nums:
+    ans ^= x
+
+return ans</code></pre>
+
+    <pre><code>4 ^ 1 ^ 2 ^ 1 ^ 2
+
+= 4 ^ (1 ^ 1) ^ (2 ^ 2)
+
+= 4 ^ 0 ^ 0
+
+= 4</code></pre>
+
+
+    <h2>19. XOR Difference</h2>
+
+    <p>
+        <code>a ^ b</code> identifies the bit positions where a and b differ.
+    </p>
+
+    <pre><code>a = 1010
+b = 1100
+
+  1010
+^ 1100
+------
+  0110</code></pre>
+
+    <p>
+        The 1 bits represent the differing positions.
+    </p>
+
+
+    <h2>20. Hamming Distance</h2>
+
+    <p>
+        Hamming distance between two integers is the number of bit positions
+        where they differ.
+    </p>
+
+    <pre><code>x = 1
+y = 4
+
+1 = 001
+4 = 100
+
+1 ^ 4 = 101
+
+(1 ^ 4).bit_count()
+# 2</code></pre>
+
+
+    <h2>21. Hamming Weight</h2>
+
+    <p>
+        Hamming weight means the number of set bits.
+    </p>
+
+    <pre><code>n.bit_count()</code></pre>
+
+    <p>Or:</p>
+
+    <pre><code>count = 0
+
+while n:
+    n &amp;= n - 1
+    count += 1</code></pre>
+
+
+    <h2>22. Enumerate All Bits</h2>
+
+    <pre><code>for i in range(32):
+    if n &amp; (1 &lt;&lt; i):
+        print(i)</code></pre>
+
+    <p>
+        For a positive integer, you can also process one bit at a time:
+    </p>
+
+    <pre><code>i = 0
+
+while n:
+    if n &amp; 1:
+        print(i)
+
+    n &gt;&gt;= 1
+    i += 1</code></pre>
+
+
+    <h2>23. Build a Number From Bits</h2>
+
+    <pre><code>ans = 0
+
+for bit in bits:
+    ans = (ans &lt;&lt; 1) | bit</code></pre>
+
+    <p>Example:</p>
+
+    <pre><code>bits = [1, 0, 1, 1, 0]
+
+ans = 0
+
+for bit in bits:
+    ans = (ans &lt;&lt; 1) | bit
+
+# 22</code></pre>
+
+
+    <h2>24. Reverse Bits</h2>
+
+    <p>
+        For a 32-bit integer:
+    </p>
+
+    <pre><code>ans = 0
+
+for i in range(32):
+    ans &lt;&lt;= 1
+    ans |= n &amp; 1
+    n &gt;&gt;= 1</code></pre>
+
+    <p>
+        Process the lowest bit, append it to the answer, shift the original
+        number, and repeat.
+    </p>
+
+
+    <h2>25. Missing Number Using XOR</h2>
+
+    <p>
+        XOR can find a missing number because every number appearing twice
+        cancels itself.
+    </p>
+
+    <pre><code>nums = [3, 0, 1]
+
+ans = len(nums)
+
+for i, x in enumerate(nums):
+    ans ^= i
+    ans ^= x
+
+return ans</code></pre>
+
+
+    <h2>26. Prefix XOR</h2>
+
+    <p>
+        Prefix XOR is useful for range XOR queries.
+    </p>
+
+    <pre><code>prefix[i] =
+nums[0] ^ nums[1] ^ ... ^ nums[i]</code></pre>
+
+    <p>
+        XOR of a range from l to r:
+    </p>
+
+    <pre><code>prefix[r] ^ prefix[l - 1]</code></pre>
+
+    <p>
+        Everything before l cancels because <code>x ^ x = 0</code>.
+    </p>
+
+
+    <h2>27. XOR Basis / Linear Basis</h2>
+
+    <p>
+        XOR basis is an advanced technique based on Gaussian elimination
+        over GF(2).
+    </p>
+
+    <pre><code>basis = [0] * 32
+
+for x in nums:
+    for i in range(31, -1, -1):
+
+        if not (x &amp; (1 &lt;&lt; i)):
+            continue
+
+        if basis[i]:
+            x ^= basis[i]
+        else:
+            basis[i] = x
+            break</code></pre>
+
+    <p>
+        It is useful for maximum subset XOR, subset XOR queries,
+        XOR independence, and related advanced problems.
+    </p>
+
+
+    <h2>28. Maximum XOR</h2>
+
+    <p>
+        To maximize XOR, at every bit try to choose the opposite bit.
+    </p>
+
+    <pre><code>x bit = 1
+prefer 0
+
+x bit = 0
+prefer 1</code></pre>
+
+    <p>
+        This works because:
+    </p>
+
+    <pre><code>1 ^ 0 = 1
+0 ^ 1 = 1</code></pre>
+
+    <p>
+        A binary trie is a common data structure for maximum XOR problems.
+    </p>
+
+
+    <h2>29. Bitmask as a Set</h2>
+
+    <p>
+        A bitmask can represent which elements of a set are selected.
+    </p>
+
+    <pre><code>5 elements
+
+00000</code></pre>
+
+    <p>
+        For example:
+    </p>
+
+    <pre><code>00101</code></pre>
+
+    <p>
+        means elements 0 and 2 are selected.
+    </p>
+
+
+    <h2>30. Bitmask Set Operations</h2>
+
+    <p><strong>Add element i:</strong></p>
+
+    <pre><code>mask |= (1 &lt;&lt; i)</code></pre>
+
+    <p><strong>Check element i:</strong></p>
+
+    <pre><code>if mask &amp; (1 &lt;&lt; i):
+    # selected</code></pre>
+
+    <p><strong>Remove element i:</strong></p>
+
+    <pre><code>mask &amp;= ~(1 &lt;&lt; i)</code></pre>
+
+    <p><strong>Toggle element i:</strong></p>
+
+    <pre><code>mask ^= (1 &lt;&lt; i)</code></pre>
+
+
+    <h2>31. Enumerate All Subsets</h2>
+
+    <p>
+        For n elements there are 2^n subsets.
+    </p>
+
+    <pre><code>for mask in range(1 &lt;&lt; n):
+
+    subset = []
+
+    for i in range(n):
+
+        if mask &amp; (1 &lt;&lt; i):
+            subset.append(nums[i])</code></pre>
+
+    <p>
+        For [a,b,c]:
+    </p>
+
+    <pre><code>000 → {}
+001 → {a}
+010 → {b}
+011 → {a,b}
+100 → {c}
+101 → {a,c}
+110 → {b,c}
+111 → {a,b,c}</code></pre>
+
+
+    <h2>32. Enumerate Submasks</h2>
+
+    <p>
+        To enumerate every non-zero submask of a mask:
+    </p>
+
+    <pre><code>sub = mask
+
+while sub:
+
+    # use sub
+
+    sub = (sub - 1) &amp; mask</code></pre>
+
+    <p>
+        Include zero if required:
+    </p>
+
+    <pre><code>sub = mask
+
+while True:
+
+    # use sub
+
+    if sub == 0:
+        break
+
+    sub = (sub - 1) &amp; mask</code></pre>
+
+
+    <h2>33. Complement Mask</h2>
+
+    <p>
+        In Python, integers do not have a fixed number of bits.
+        Therefore, when working with an n-bit mask, first create an n-bit
+        all-ones mask.
+    </p>
+
+    <pre><code>full = (1 &lt;&lt; n) - 1
+complement = (~mask) &amp; full</code></pre>
+
+    <pre><code>n = 4
+
+full = 1111
+mask = 0101
+
+~mask &amp; full
+= 1010</code></pre>
+
+
+    <h2>34. Gray Code</h2>
+
+    <p>
+        Gray code is generated using:
+    </p>
+
+    <pre><code>n ^ (n &gt;&gt; 1)</code></pre>
+
+    <p>
+        Example:
+    </p>
+
+    <pre><code>n = 3
+
+3       = 011
+3 &gt;&gt; 1 = 001
+
+011 ^ 001
+= 010
+
+Gray code = 2</code></pre>
+
+    <p>
+        A 2-bit Gray code sequence is:
+    </p>
+
+    <pre><code>00
+01
+11
+10</code></pre>
+
+
+    <h2>35. Brian Kernighan's Algorithm</h2>
+
+    <p>
+        Memorize:
+    </p>
+
+    <pre><code>n &amp;= n - 1</code></pre>
+
+    <p>
+        This removes the lowest set bit.
+    </p>
+
+    <pre><code>count = 0
+
+while n:
+    n &amp;= n - 1
+    count += 1</code></pre>
+
+    <p>
+        Complexity is O(number of set bits).
+    </p>
+
+
+    <h2>36. Find Lowest Set Bit Position</h2>
+
+    <pre><code>x = n &amp; -n</code></pre>
+
+    <p>
+        Once the lowest set bit is isolated, its zero-based position is:
+    </p>
+
+    <pre><code>x.bit_length() - 1</code></pre>
+
+    <pre><code>n = 40
+
+40 = 101000
+
+lowest set bit:
+001000 = 8
+
+8.bit_length() - 1
+= 3</code></pre>
+
+
+    <h2>37. Find Highest Set Bit</h2>
+
+    <pre><code>n.bit_length() - 1</code></pre>
+
+    <pre><code>13 = 1101
+
+13.bit_length()
+= 4
+
+highest bit position
+= 3</code></pre>
+
+
+    <h2>38. Round Up to the Next Power of Two</h2>
+
+    <pre><code>def next_power_of_two(n):
+
+    if n &lt;= 1:
+        return 1
+
+    return 1 &lt;&lt; (n - 1).bit_length()</code></pre>
+
+    <pre><code>5  → 8
+9  → 16
+17 → 32</code></pre>
+
+
+    <h2>39. Bitwise AND of a Range</h2>
+
+    <p>
+        Given left and right, find:
+    </p>
+
+    <pre><code>left &amp; (left + 1) &amp; ... &amp; right</code></pre>
+
+    <p>
+        If a bit changes anywhere in the range, that bit becomes zero.
+    </p>
+
+    <pre><code>while left &lt; right:
+    right &amp;= right - 1
+
+return right</code></pre>
+
+    <p>Example:</p>
+
+    <pre><code>5 = 0101
+6 = 0110
+7 = 0111
+
+5 &amp; 6 &amp; 7
+= 0100
+= 4</code></pre>
+
+
+    <h2>40. Bitwise OR of a Range</h2>
+
+    <p>
+        For range OR problems, look for bits that become 1 anywhere in
+        the range.
+    </p>
+
+    <p>
+        The important contrast is:
+    </p>
+
+    <pre><code>AND → a changed bit becomes 0
+OR  → a changed bit can become 1</code></pre>
+
+
+    <h2>41. Important AND / OR / XOR Identities</h2>
+
+    <p><strong>AND:</strong></p>
+
+    <pre><code>x &amp; 0 = 0
+x &amp; all_ones = x
+x &amp; x = x</code></pre>
+
+    <p><strong>OR:</strong></p>
+
+    <pre><code>x | 0 = x
+x | all_ones = all_ones
+x | x = x</code></pre>
+
+    <p><strong>XOR:</strong></p>
+
+    <pre><code>x ^ 0 = x
+x ^ x = 0
+x ^ y = y ^ x
+(x ^ y) ^ z = x ^ (y ^ z)</code></pre>
+
+
+    <h2>42. Power of Four</h2>
+
+    <p>
+        A power of four has exactly one set bit and that bit occurs at
+        an even position.
+    </p>
+
+    <pre><code>4  = 100
+16 = 10000
+64 = 1000000</code></pre>
+
+    <p>
+        One approach is:
+    </p>
+
+    <pre><code>return (
+    n &gt; 0
+    and (n &amp; (n - 1)) == 0
+    and (n &amp; 0xAAAAAAAA) == 0
+)</code></pre>
+
+    <p>
+        <code>0xAAAAAAAA</code> has 1s at odd bit positions, so the
+        remaining set bit must be at an even position.
+    </p>
+
+
+    <h2>43. Bitmask DP</h2>
+
+    <p>
+        Bitmasks are extremely useful for representing the state of a subset.
+    </p>
+
+    <pre><code>mask = 0101</code></pre>
+
+    <p>
+        This can mean:
+    </p>
+
+    <pre><code>element 0 → selected
+element 1 → not selected
+element 2 → selected
+element 3 → not selected</code></pre>
+
+    <p>
+        A typical DP state is:
+    </p>
+
+    <pre><code>dp[mask]</code></pre>
+
+    <p>
+        To add element i:
+    </p>
+
+    <pre><code>new_mask = mask | (1 &lt;&lt; i)</code></pre>
+
+
+    <h2>44. Bitmask DP Complexity</h2>
+
+    <p>
+        With n elements there are 2^n possible masks.
+    </p>
+
+    <pre><code>number of states = 2^n</code></pre>
+
+    <p>
+        If every state considers every element:
+    </p>
+
+    <pre><code>O(n × 2^n)</code></pre>
+
+    <p>
+        Bitmask DP is commonly practical when n is relatively small,
+        often around 20 depending on the problem.
+    </p>
+
+
+    <h2>45. Bit DP / Digit DP</h2>
+
+    <p>
+        Some advanced problems process an integer one bit at a time.
+    </p>
+
+    <pre><code>for bit in range(high_bit, -1, -1):
+    ...</code></pre>
+
+    <p>
+        Possible states include:
+    </p>
+
+    <pre><code>tight
+count
+previous_bit
+remainder</code></pre>
+
+    <p>
+        This appears in problems involving numbers ≤ N, binary constraints,
+        consecutive bits, bit counts, XOR constraints, and digit DP.
+    </p>
+
+
+    <h2>46. Binary Trie</h2>
+
+    <p>
+        A binary trie stores numbers one bit at a time.
+    </p>
+
+    <pre><code>Each node has:
+
+children[0]
+children[1]</code></pre>
+
+    <p>
+        For maximum XOR, when processing a bit:
+    </p>
+
+    <pre><code>x bit = 1 → prefer 0
+x bit = 0 → prefer 1</code></pre>
+
+    <p>
+        This is because opposite bits produce XOR = 1.
+    </p>
+
+
+    <h2>47. XOR Basis</h2>
+
+    <p>
+        XOR basis is another advanced technique for XOR problems.
+        It is essentially Gaussian elimination over GF(2).
+    </p>
+
+    <pre><code>numbers
+   ↓
+Gaussian elimination over GF(2)
+   ↓
+XOR basis
+   ↓
+maximum / minimum / distinct XOR values</code></pre>
+
+    <p>
+        In XOR arithmetic, addition is replaced by XOR.
+    </p>
+
+
+    <h2>48. Common LeetCode Bitwise Patterns</h2>
+
+    <pre><code>Unique element
+    → XOR
+
+Missing number
+    → XOR
+
+Odd / Even
+    → n &amp; 1
+
+Power of two
+    → n &amp; (n - 1)
+
+Count 1s
+    → bit_count / n &amp;= n - 1
+
+Check bit
+    → n &amp; (1 &lt;&lt; i)
+
+Set bit
+    → OR
+
+Clear bit
+    → AND + NOT
+
+Toggle bit
+    → XOR
+
+Hamming distance
+    → (x ^ y).bit_count()
+
+All subsets
+    → 1 &lt;&lt; n
+
+Subsets of mask
+    → (sub - 1) &amp; mask
+
+State compression
+    → Bitmask
+
+Maximum XOR
+    → Binary Trie / XOR Basis
+
+Subset XOR
+    → XOR Basis / DP
+
+Range AND
+    → Common binary prefix
+
+Gray code
+    → n ^ (n &gt;&gt; 1)
+
+Reverse bits
+    → Shift + mask
+
+Bit DP
+    → DP over bit positions
+
+Assignment DP
+    → Bitmask DP
+
+TSP
+    → Bitmask DP
+
+Set representation
+    → Integer mask</code></pre>
+
+
+    <h2>49. Level 1 — Fundamentals</h2>
+
+    <p>
+        First master the six basic operators:
+    </p>
+
+    <pre><code>&amp;
+|
+^
+~
+&lt;&lt;
+&gt;&gt;</code></pre>
+
+    <p>Then solve problems involving:</p>
+
+    <pre><code>Number of 1 Bits
+Counting Bits
+Binary Number with Alternating Bits
+Power of Two
+Power of Four</code></pre>
+
+
+    <h2>50. Level 2 — XOR</h2>
+
+    <p>
+        Master:
+    </p>
+
+    <pre><code>x ^ x = 0
+x ^ 0 = x</code></pre>
+
+    <p>Then solve:</p>
+
+    <pre><code>Single Number
+Missing Number
+Single Number II
+Single Number III
+Hamming Distance</code></pre>
+
+
+    <h2>51. Level 3 — Bit Manipulation</h2>
+
+    <p>
+        Master these expressions:
+    </p>
+
+    <pre><code>1 &lt;&lt; i
+n &amp; (1 &lt;&lt; i)
+n |= (1 &lt;&lt; i)
+n &amp;= ~(1 &lt;&lt; i)
+n ^= (1 &lt;&lt; i)
+n &amp; -n
+n &amp; (n - 1)</code></pre>
+
+
+    <h2>52. Level 4 — Bitmask</h2>
+
+    <p>
+        Use an integer as a compact representation of a set.
+    </p>
+
+    <pre><code>mask = 0
+
+mask | (1 &lt;&lt; i)
+mask &amp; (1 &lt;&lt; i)
+mask ^ (1 &lt;&lt; i)
+mask &amp; ~(1 &lt;&lt; i)</code></pre>
+
+    <p>
+        Then learn subset enumeration:
+    </p>
+
+    <pre><code>for mask in range(1 &lt;&lt; n):
+    ...</code></pre>
+
+
+    <h2>53. Level 5 — Submask Enumeration</h2>
+
+    <p>
+        Master:
+    </p>
+
+    <pre><code>sub = mask
+
+while sub:
+    ...
+    sub = (sub - 1) &amp; mask</code></pre>
+
+    <p>
+        This is essential for harder bitmask problems.
+    </p>
+
+
+    <h2>54. Level 6 — XOR / Maximum XOR</h2>
+
+    <p>
+        Learn:
+    </p>
+
+    <pre><code>Binary Trie
+XOR Trie
+XOR Basis</code></pre>
+
+    <p>
+        Then tackle maximum XOR and advanced subset-XOR problems.
+    </p>
+
+
+    <h2>55. Level 7 — Bitmask DP</h2>
+
+    <p>
+        Master:
+    </p>
+
+    <pre><code>dp[mask]</code></pre>
+
+    <p>
+        and:
+    </p>
+
+    <pre><code>new_mask = mask | (1 &lt;&lt; i)</code></pre>
+
+    <p>
+        Important applications:
+    </p>
+
+    <pre><code>TSP
+Assignment
+Subset partition
+State compression</code></pre>
+
+
+    <h2>56. Level 8 — Bit DP / Digit DP</h2>
+
+    <p>
+        Finally learn:
+    </p>
+
+    <pre><code>Binary digit DP
+Tight
+Leading zero
+Previous bit
+Count of ones
+Remainder</code></pre>
+
+    <p>
+        This handles many advanced bitwise problems.
+    </p>
+
+
+    <h2>57. The 15 Patterns to Memorize</h2>
+
+    <pre><code>1. Check bit
+n &amp; (1 &lt;&lt; i)
+
+2. Set bit
+n | (1 &lt;&lt; i)
+
+3. Clear bit
+n &amp; ~(1 &lt;&lt; i)
+
+4. Toggle bit
+n ^ (1 &lt;&lt; i)
+
+5. Lowest set bit
+n &amp; -n
+
+6. Remove lowest set bit
+n &amp; (n - 1)
+
+7. Count set bits
+n.bit_count()
+
+8. Power of two
+n &gt; 0 and (n &amp; (n - 1)) == 0
+
+9. Odd
+n &amp; 1
+
+10. Hamming distance
+(x ^ y).bit_count()
+
+11. All subsets
+for mask in range(1 &lt;&lt; n):
+
+12. Check subset element
+mask &amp; (1 &lt;&lt; i)
+
+13. Add to subset
+mask | (1 &lt;&lt; i)
+
+14. Enumerate submasks
+(sub - 1) &amp; mask
+
+15. Gray code
+n ^ (n &gt;&gt; 1)</code></pre>
+
+
+    <h2>58. Recognizing the Pattern</h2>
+
+    <p>
+        When you see a LeetCode problem, ask these questions before coding.
+    </p>
+
+    <p>
+        <strong>Is the problem asking about individual bits?</strong>
+    </p>
+
+    <pre><code>↓
+Use masks.</code></pre>
+
+    <p>
+        <strong>Does every number occur twice except one?</strong>
+    </p>
+
+    <pre><code>↓
+XOR.</code></pre>
+
+    <p>
+        <strong>Do I need to count 1s?</strong>
+    </p>
+
+    <pre><code>↓
+bit_count / n &amp;= n - 1</code></pre>
+
+    <p>
+        <strong>Is the question about powers of 2?</strong>
+    </p>
+
+    <pre><code>↓
+n &amp; (n - 1)</code></pre>
+
+    <p>
+        <strong>Do I need to remember a subset?</strong>
+    </p>
+
+    <pre><code>↓
+Bitmask.</code></pre>
+
+    <p>
+        <strong>Is n small, approximately 20 or less?</strong>
+    </p>
+
+    <pre><code>↓
+Consider 2^n enumeration / DP.</code></pre>
+
+    <p>
+        <strong>Is the objective maximum XOR?</strong>
+    </p>
+
+    <pre><code>↓
+Binary Trie / XOR Basis.</code></pre>
+
+    <p>
+        <strong>Are there many subset XOR queries?</strong>
+    </p>
+
+    <pre><code>↓
+XOR Basis.</code></pre>
+
+    <p>
+        <strong>Is the number bounded by N and constraints depend on binary digits?</strong>
+    </p>
+
+    <pre><code>↓
+Bit DP / Digit DP.</code></pre>
+
+    <p>
+        <strong>Do I need every submask of a mask?</strong>
+    </p>
+
+    <pre><code>↓
+(sub - 1) &amp; mask</code></pre>
+
+
+    <h2>59. Complete Learning Progression</h2>
+
+    <pre><code>BIT OPERATORS
+      ↓
+BIT MASKS
+      ↓
+XOR PATTERNS
+      ↓
+SUBSETS
+      ↓
+SUBMASKS
+      ↓
+BITMASK DP
+      ↓
+BINARY TRIE
+      ↓
+XOR BASIS
+      ↓
+BIT / DIGIT DP</code></pre>
+
+    <p>
+        Once you understand this progression, bitwise problems stop looking
+        like random tricks.
+    </p>
+
+    <p>
+        Most problems become variations of a relatively small number of
+        reusable patterns.
+    </p>
+
+
+    <h2>60. Final LeetCode Checklist</h2>
+
+    <p>
+        Before solving a bitwise problem, check whether one of these patterns
+        applies:
+    </p>
+
+    <pre><code>□ Binary representation
+
+□ AND / OR / XOR
+
+□ Check a bit
+
+□ Set a bit
+
+□ Clear a bit
+
+□ Toggle a bit
+
+□ Lowest set bit
+
+□ Remove lowest set bit
+
+□ Count set bits
+
+□ Power of two
+
+□ Power of four
+
+□ Odd / Even
+
+□ XOR cancellation
+
+□ Missing number
+
+□ Hamming distance
+
+□ Prefix XOR
+
+□ Bitmask
+
+□ Enumerate subsets
+
+□ Enumerate submasks
+
+□ Bitmask DP
+
+□ Binary Trie
+
+□ Maximum XOR
+
+□ XOR Basis
+
+□ Gray Code
+
+□ Range AND
+
+□ Bit DP / Digit DP</code></pre>
+
+
+    <h2>Important Patterns to Remember</h2>
+
+    <pre><code>1 &lt;&lt; i
+    → create mask for bit i
+
+n &amp; (1 &lt;&lt; i)
+    → check bit i
+
+n | (1 &lt;&lt; i)
+    → set bit i
+
+n &amp; ~(1 &lt;&lt; i)
+    → clear bit i
+
+n ^ (1 &lt;&lt; i)
+    → toggle bit i
+
+n &amp; -n
+    → extract lowest set bit
+
+n &amp; (n - 1)
+    → remove lowest set bit
+
+n.bit_count()
+    → count set bits
+
+x ^ x
+    → 0
+
+x ^ 0
+    → x
+
+x ^ y
+    → identify differing bits
+
+1 &lt;&lt; n
+    → number of possible subsets
+
+(sub - 1) &amp; mask
+    → next submask
+
+n ^ (n &gt;&gt; 1)
+    → Gray code</code></pre>
+
+
+    <h2>Final Goal</h2>
+
+    <p>
+        The goal is not to memorize hundreds of bitwise tricks.
+        The goal is to recognize the underlying pattern.
+    </p>
+
+    <pre><code>Basic Operators
+      ↓
+Bit Manipulation
+      ↓
+XOR
+      ↓
+Bit Masks
+      ↓
+Subset Enumeration
+      ↓
+Submask Enumeration
+      ↓
+Bitmask DP
+      ↓
+Binary Trie
+      ↓
+XOR Basis
+      ↓
+Bit / Digit DP</code></pre>
+
+    <p>
+        Master these patterns and you will be able to approach the majority
+        of LeetCode bitwise problems systematically.
+    </p>
+
+</div>

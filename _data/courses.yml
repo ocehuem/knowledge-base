@@ -12,6 +12,8 @@ Revision:
   lessons:
     - title: "Data Structures Revision"
       url: /courses/Revision/datastructures.html
+    - title: "Bit Wise Operations"
+      url: /courses/Revision/bitWiseOperations.html
     - title: "Basic Web Architecture & Databases"
       url: /courses/Revision/oneServerTwoServer.html
     - title: "MySQL"
@@ -36,5 +38,7 @@ improvement:
       url: /courses/improvement/8MonthAIMLTrack.html
     - title: Books Read
       url: /courses/improvement/BooksRead.html
+    - title: Gv Prep
+      url: /courses/improvement/SSC_CGL.html
     - title: AI Mindmap
       url: /courses/improvement/aimlMindmap.html
